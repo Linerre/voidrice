@@ -9,6 +9,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
 Plug 'lervag/vimtex'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ajmwagar/vim-deus'
 call plug#end()
 
 
@@ -19,7 +20,11 @@ set nocompatible
 set nohlsearch
 set t_Co=256
 set clipboard+=unnamedplus
-set paste
+set background=dark
+colorscheme deus
+
+
+
 
 " Keymaps
 map <LEADER>ev :edit $MYVIMRC<CR>
@@ -28,7 +33,7 @@ map <LEADER>vv :vsplit<CR> "split view
 map <LEADER>vn :vsplit     "split to a new file
 map <C-s> :w<CR>
 nnoremap <C-q> :q<CR>
-inoremap jj <Esc>
+inoremap jk <Esc>
 vnoremap jk <Esc> 
 
 inoremap [ []<Esc>i
@@ -38,8 +43,9 @@ inoremap { {}<Esc>i
 " vimtex
 let g:tex_flavor = 'latex'
 
-
+" ==========
 " coc
+" ==========
 set hidden
 set updatetime=100
 set shortmess+=c
@@ -54,3 +60,16 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+let g:coc_global_extensions = [
+	\ 'coc-emmet',
+	\ 'coc-json',
+	\ 'coc-vimtex',
+	\ 'coc-vimlsp',
+	\ 'coc-powershell',
+	\ 'coc-python'
+\]
+
+" ==========
+" airline
+" ==========
+let g:airline_theme='base16_gruvbox_dark_hard'

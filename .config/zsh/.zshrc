@@ -120,3 +120,7 @@ alias nvr="nvim ~/.vimrc"
 
 # cmd shorthands
 alias ll="ls -al"
+
+
+# git
+alias pa="git push origin main"
