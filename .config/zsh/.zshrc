@@ -107,11 +107,20 @@ alias dr="brightnessctl -d intel_backlight s 10%-"
 alias v="vim"
 alias n="nvim"
 
-# pacman
-alias ins="sudo pacman -S"
-alias upd="sudo pacman -Sy"
-alias unis="sudo pacman -R"
-alias sch="sudo pacman -Ss"
+# pacman or xbps
+if [ -d /etc/xbps.d ]; then
+		alias ins="sudo xbps-install -S"
+		alias upd="sudo xbps-install -Sy"
+		alias unis="sudo xbps-remove -R"
+		alias sch="xbps-query -R"
+fi
+
+if [ -d /etc/pacman.d ]; then
+		alias ins="sudo pacman -S"
+		alias upd="sudo pacman -Sy"
+		alias unis="sudo pacman -Rns"
+		alias sch="pacman -Qi"
+fi
 
 # open, source dotfiles 
 alias nz="nvim ~/.zshrc"
