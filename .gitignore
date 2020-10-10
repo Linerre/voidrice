@@ -2,3 +2,4 @@
 .local/share/nvim/
 .config/nvim/plugged/
 .config/coc/
+.config/configstore
