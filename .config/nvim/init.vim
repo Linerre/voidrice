@@ -26,7 +26,7 @@ map <LEADER>ev :edit $MYVIMRC<CR>
 map <LEADER>sv :source $MYVIMRC<CR>
 map <LEADER>vv :vsplit<CR> "split view
 map <LEADER>vn :vsplit     "split to a new file
-nnoremap <C-s> :w<CR>
+map <C-s> :w<CR>
 nnoremap <C-q> :q<CR>
 inoremap jj <Esc>
 vnoremap jk <Esc> 

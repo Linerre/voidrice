@@ -1,1 +1,3 @@
 # ignore rules as follows
+.local/share/nvim/
+.config/nvim/plugged/
