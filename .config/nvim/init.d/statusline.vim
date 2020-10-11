@@ -2,4 +2,8 @@
 " airline
 " ==========
 "let g:airline_theme='base16_gruvbox_dark_hard'
-let g:airline_theme='deus'
+"let g:airline_theme='deus'
+"
+"
+set laststatus=2
+set statusline=helloworld

@@ -1,11 +1,37 @@
 " Basics
 set number relativenumber
+set noexpandtab
 set tabstop=4
 set softtabstop=4
 set nocompatible
 set nohlsearch
-set t_Co=256
 set clipboard+=unnamedplus
-set background=dark
-colorscheme deus
+"syntax on
 
+set t_Co=256
+set termguicolors
+
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+set background=dark    " Setting dark mode
+colorscheme deus
+let g:deus_termcolors=256
+
+" terminal colors
+let g:terminal_color_0  ='#000000'
+let g:terminal_color_1  ='#d54e53'
+let g:terminal_color_2  ='#98c379'
+let g:terminal_color_3  ='#e5c07b'
+let g:terminal_color_4  ='#4c6886'
+let g:terminal_color_5  ='#c678dd'
+let g:terminal_color_6  ='#83a598'
+let g:terminal_color_7  ='#eaeaea'
+let g:terminal_color_8  ='#000000'
+let g:terminal_color_9  ='#d54e53'
+let g:terminal_color_10 ='#98c07b'
+let g:terminal_color_11 ='#e5c07b'
+let g:terminal_color_12 ='#4c6886'
+let g:terminal_color_13 ='#c678dd'
+let g:terminal_color_14 ='#83a598'
+let g:terminal_color_15 ='#eaeaea'
