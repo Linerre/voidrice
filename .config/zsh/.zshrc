@@ -104,7 +104,7 @@ alias br="brightnessctl -d intel_backlight s +10%"
 alias dr="brightnessctl -d intel_backlight s 10%-"
 
 # open programms
-alias v="vim"
+alias v="nvim"
 alias n="nvim"
 
 # pacman or xbps
