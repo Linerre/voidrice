@@ -1,7 +1,7 @@
 " Key mappings
 let mapleader = ','
 
-noremap <Leader>ev :edit $MYVIMRC<CR>
+noremap <Leader>ev :vsplit $MYVIMRC<CR>
 noremap <Leader>sv :source $MYVIMRC<CR>
 noremap <Leader>vv :vsplit<CR> "split view
 noremap <Leader>vn :vsplit     "split to a new file
