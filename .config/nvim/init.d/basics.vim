@@ -1,4 +1,5 @@
 " Basics
+set fileencoding="utf-8"
 set number relativenumber
 set noexpandtab
 set tabstop=4
