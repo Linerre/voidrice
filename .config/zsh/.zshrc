@@ -113,13 +113,15 @@ if [ -d /etc/xbps.d ]; then
 		alias upd="sudo xbps-install -Sy"
 		alias unis="sudo xbps-remove -R"
 		alias sch="xbps-query -R"
+		alias lpk="xbps-query -l"
 fi
 
 if [ -d /etc/pacman.d ]; then
 		alias ins="sudo pacman -S"
 		alias upd="sudo pacman -Sy"
 		alias unis="sudo pacman -Rns"
-		alias sch="pacman -Qi"
+		alias sch="pacman -Ss"
+		alias lpk="pacman -Qi"
 fi
 
 # open, source dotfiles 
