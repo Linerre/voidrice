@@ -4,3 +4,5 @@
 .config/nvim/plugged/
 .config/coc/
 .config/configstore
+.local/lib/
+.local/include/
