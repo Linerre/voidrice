@@ -113,7 +113,7 @@ alias n="nvim"
 if [ -d /etc/xbps.d ]; then
 		alias ins="sudo xbps-install -S"
 		alias upd="sudo xbps-install -Sy"
-		alias unis="sudo xbps-remove -R"
+		alias unins="sudo xbps-remove -R"
 		alias sch="xbps-query -R"
 		alias lpk="xbps-query -l"
 fi
