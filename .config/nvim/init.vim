@@ -7,6 +7,8 @@ Plug 'vimwiki/vimwiki'
 Plug 'lervag/vimtex'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ajmwagar/vim-deus'
+Plug 'honza/vim-snippets'
+Plug 'machakann/vim-highlightedyank'
 call plug#end()
 
 
