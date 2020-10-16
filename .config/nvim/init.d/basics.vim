@@ -4,10 +4,18 @@ set number relativenumber
 set noexpandtab
 set tabstop=4
 set softtabstop=4
+set shiftwidth=2
+set numberwidth=4
+set textwidth=90
+set autoindent
 set nocompatible
 set nohlsearch
+
 set clipboard+=unnamedplus
 "syntax on
+filetype plugin indent on
+
+
 
 "set t_Co=256
 set termguicolors
