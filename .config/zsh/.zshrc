@@ -103,6 +103,8 @@ export XDG_CONFIG_HOME="$HOME/voidrice/.config/"
 alias br="brightnessctl -d intel_backlight s +10%"
 alias dr="brightnessctl -d intel_backlight s 10%-"
 
+alias sx="startx"
+
 # open programms
 alias v="nvim"
 alias n="nvim"
