@@ -42,6 +42,9 @@ picom --config $HOME/.config/picom/picom.conf &
 # wallpaper
 ~/.fehbg &
 
+# dwm blocks
+dwmblocks &
+
 # loop
 while true; do
 	dwm > /dev/null 2>&1
