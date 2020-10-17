@@ -6,3 +6,4 @@
 .config/configstore
 .local/lib/
 .local/include/
+.netrwhist
