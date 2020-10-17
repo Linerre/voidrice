@@ -17,4 +17,5 @@ runtime init.d/mappings.vim
 runtime init.d/statusline.vim
 runtime init.d/coc.vim
 runtime init.d/vimtex.vim
+runtime init.d/yankhi.vim
 
