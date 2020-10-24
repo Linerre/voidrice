@@ -76,6 +76,7 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 export XDG_CONFIG_HOME="$HOME/voidrice/.config/"
+export PATH="$PATH:$HOME/.local/bin"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -138,3 +139,7 @@ alias ll="ls -al"
 
 # git
 alias pa="git push origin main"
+
+
+# texlive
+alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode' 
