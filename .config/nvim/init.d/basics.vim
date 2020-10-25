@@ -15,8 +15,6 @@ set clipboard+=unnamedplus
 "syntax on
 filetype plugin indent on
 
-
-
 "set t_Co=256
 set termguicolors
 
@@ -44,3 +42,8 @@ let g:terminal_color_12 ='#4c6886'
 let g:terminal_color_13 ='#c678dd'
 let g:terminal_color_14 ='#83a598'
 let g:terminal_color_15 ='#eaeaea'
+
+" autocmd
+""augroup suckless
+""  au!
+"  au BufReadPost *.h :!
