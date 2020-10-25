@@ -1,2 +1,7 @@
+# girara
 set default-bg "#000000"
 set default-fg "#eaeaea"
+
+# zathura
+set selection-clipboard clipboard
+set statusbar-home-tilde true
