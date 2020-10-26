@@ -24,9 +24,9 @@ nnoremap <silent> <A-k> :<C-w>k
 nnoremap <silent> <A-l> :<C-w>l
 
 " Move btw buffers
-nnoremap <silent> <S-j> :bnext<CR>
-nnoremap <silent> <S-k> :bprevious<CR>
-nnoremap <silent> <S-x> :bd!<CR>
+nnoremap <silent> <C-j> :bnext<CR>
+nnoremap <silent> <C-k> :bprevious<CR>
+nnoremap <silent> <C-x> :bd!<CR>
 
 " netrw
 nnoremap <silent> <Leader>f :Vexplore<CR>
