@@ -1,6 +1,8 @@
 # girara
-set default-bg "#000000"
-set default-fg "#eaeaea"
+set recolor "true"
+set default-bg rgba(0,0,0,0.8)
+set recolor-lightcolor rgba(0,0,0,0)
+#set default-fg "#eaeaea"
 
 # zathura
 set selection-clipboard clipboard
