@@ -9,3 +9,5 @@
 .netrwhist
 Brave*
 .config/TabNine/
+*.db
+history.cmdline
