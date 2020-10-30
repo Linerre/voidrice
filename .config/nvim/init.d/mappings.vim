@@ -17,11 +17,6 @@ inoremap { {}<Esc>i
 inoremap ' ''<Esc>i
 inoremap " ""<Esc>i
 
-" Move btw windows
-nnoremap <silent> <A-h> :<C-w>h
-nnoremap <silent> <A-j> :<C-w>j
-nnoremap <silent> <A-k> :<C-w>k
-nnoremap <silent> <A-l> :<C-w>l
 
 " Move btw buffers
 nnoremap <silent> <C-j> :bnext<CR>
