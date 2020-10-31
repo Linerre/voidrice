@@ -109,7 +109,8 @@ alias sx="startx"
 # open programms
 alias v="nvim"
 alias n="nvim"
-
+alias rr="ranger"
+alias em="emacs -nw"
 # pacman or xbps
 if [ -d /etc/xbps.d ]; then
 		alias ins="sudo xbps-install -S"
