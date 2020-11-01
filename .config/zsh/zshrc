@@ -101,9 +101,6 @@ export PATH="$PATH:$HOME/.local/bin"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 # Utilities
-alias br="brightnessctl -d intel_backlight s +10%"
-alias dr="brightnessctl -d intel_backlight s 10%-"
-
 alias sx="startx"
 
 # open programms
@@ -118,6 +115,9 @@ if [ -d /etc/xbps.d ]; then
 		alias unins="sudo xbps-remove -R"
 		alias sch="xbps-query -R"
 		alias lpk="xbps-query -l"
+		alias br="brightnessctl -d intel_backlight s +10%"
+		alias dr="brightnessctl -d intel_backlight s 10%-"
+
 fi
 
 if [ -d /etc/pacman.d ]; then
@@ -126,6 +126,8 @@ if [ -d /etc/pacman.d ]; then
 		alias unis="sudo pacman -Rns"
 		alias sch="pacman -Ss"
 		alias lpk="pacman -Qi"
+		alias br="xbacklight -inc 10"
+		alias dr="xbacklight -dec 10"
 fi
 
 # open, source dotfiles 
