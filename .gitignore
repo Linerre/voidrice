@@ -6,8 +6,17 @@
 .config/configstore
 .local/lib/
 .local/include/
+
+
 .netrwhist
 Brave*
 .config/TabNine/
 *.db
 history.cmdline
+
+# ignore emacs files
+lisp/
+auto-save-list/
+elpa/
+custom-file.el
+
