@@ -1,6 +1,7 @@
 # ignore rules as follows
 .local/share/nvim/
 .local/share/ranger/
+.config/ranger/commands*
 .config/nvim/plugged/
 .config/coc/
 .config/configstore
