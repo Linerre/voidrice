@@ -6,8 +6,6 @@
 ;;(add-to-list 'load-path
 ;;	     (expand-file-name (concat user-emacs-directory "lisp")))
 
-
-
 ;;; (require 'init-const)
 ;;; ------------------- init-const  ---------------------
 (defconst *is-mac* (eq system-type 'darwin))
@@ -17,28 +15,29 @@
 ;;; ------------------ change default ---------------------
 ;;; set the default encoding system
 (prefer-coding-system 'utf-8)
-(setq default-file-name-coding-system 'utf-8)
+(setq default-file-name-coding-system 'utf-8
+      default-buffer-file-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
-(setq default-buffer-file-coding-system 'utf-8)
+
 
 
 ;; (auto-save-mode -1)
-(setq make-backup-files nil)
+(setq make-backup-files nil
+      inhibit-compacting-font-caches t)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
-(setq inhibit-compacting-font-caches t)
+
 
 
 ;;; ------------------- about company ----------------------
 (global-company-mode t)
 (define-key company-active-map (kbd "<tab>") 'company-select-next)
 (define-key company-active-map (kbd "p") 'company-select-previous)
-(setq company-idle-delay 0.0)
-
-(setq inhibit-startup-screen t)
+(setq company-idle-delay 0.0
+      inhibit-startup-screen t)
 
 ;;; -------------------  init-pkgs  ---------------------
 (use-package benchmark-init
