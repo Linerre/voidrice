@@ -6,6 +6,12 @@
 ;;(add-to-list 'load-path
 ;;	     (expand-file-name (concat user-emacs-directory "lisp")))
 
+
+
+
+
+
+
 ;;; (require 'init-const)
 ;;; ------------------- init-const  ---------------------
 (defconst *is-mac* (eq system-type 'darwin))
@@ -91,7 +97,7 @@
 ;; (require 'init-ui)
 ;; gruvbox theme
 (use-package gruvbox-theme
- :init (load-theme 'gruvbox-dark-soft t))
+ :init (load-theme 'gruvbox-dark-hard t))
 
 ;;(use-package spacemacs-theme
 ;;  :init (load-theme 'spacemacs-dark t))
@@ -110,9 +116,9 @@
 
 ;; (require 'init-pkgs)
 ;;; -------------------  init-ui ---------------------
-(use-package benchmark-init
-  :init (benchmark-init/activate)
-  :hook (after-init . benchmark-init/deactivate))
+;; (use-package benchmark-init
+;;  :init (benchmark-init/activate)
+;;  :hook (after-init . benchmark-init/deactivate))
 
 (use-package which-key
   :defer nil
@@ -123,12 +129,10 @@
 ;;(require 'org-mode)			     
 ;;; ------------------- org-mode ---------------------
 ;; org-mode keys
-
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
+(setq org-agenda-files '("~/org/bujo" "~/org/roam/daily"))
 (setq org-agenda-include-diary t)
-(setq org-agenda-files '("~/proj/org-roam/"))
+;;      org-log-done 'time
+
 
 ;; regarding *org-startup-folded*
 ;; ="content"= won't work! but ='content= works!
@@ -142,11 +146,13 @@
 ;; org-mode to do
 (setq org-todo-keywords
       '((sequence "TODO(t)" "|" "DONE(d)")
-	(sequence "CANCELLED(c)" "|" "EVENT(e)" "IDEA(a)" "WATCH(w)")
+	(sequence "CANCELLED(c@)" "|" "EVENT(e)" "NOTE(n)" "IDEA(a)" "WATCH(w)")
+;; right arrow: migrate to Futher; left arrow: migrate to Other collections
 	(sequence "✝TODO(i)" "|" ">(f)" "<(o)")))
 
-;; right arrow: migrate to Futher; left arrow: migrate to Other collections
-
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
 ;;; ------------------ org bullets -------------------
 ;;; enabling bullet will *significantly* slow the performance, see
 ;;; 1. https://github.com/sabof/org-bullets/issues/11
@@ -161,7 +167,7 @@
 
 (use-package org-journal
   :custom
-  (org-journal-dir "~/proj/org-roam/")
+  (org-journal-dir "~/org/roam/daily")
   (org-journal-file-type 'daily)
   (org-journal-date-format "%m.%d %a")
   ;; must contain %Y
@@ -172,6 +178,10 @@
   (setq org-journal-find-file #'find-file-other-window
 	org-journal-enable-agenda-integration t))
 
+
+
+
 ;;; write cutome stuff to a singel file
 (setq custom-file "~/.emacs.d/custom-file.el")
 (load-file custom-file)
+
