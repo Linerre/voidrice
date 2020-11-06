@@ -8,7 +8,11 @@ sta=$( acpi | sed -r 's/Battery [0-9]: //;s/.*[Dd]ischarging, //;s/[Cc]harging, 
 
 [[ "$sta" > "90" ]] && echo -e "\uf240 " ${sta}%
 [[ "$sta" > "75" ]] && echo -e "\uf241 " ${sta}%
+[[ "$sta" > "50" ]] && echo -e "\uf242 " ${sta}%
+[[ "$sta" = "50" ]] && echo -e "\uf242 " ${sta}%
 [[ "$sta" > "20" ]] && echo -e "\uf243 " ${sta}%
-[[ "$sta" < "20" ]] && echo -e "\uf243 " ${sta}%
+[[ "$sta" = "20" ]] && echo -e "\uf243 " ${sta}%
+[[ "$sta" < "20" ]] && echo -e "\uf244 " ${sta}%
+ exit 0
 
   
