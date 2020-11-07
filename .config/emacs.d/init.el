@@ -181,7 +181,7 @@
 (use-package org-journal
   :custom
   (org-journal-dir "~/org/bujo")
-  (org-journal-file-type 'daily)
+  (org-journal-file-type 'weekly)
   (org-journal-date-format "%m.%d %a")
   ;; must contain %Y
   ;; see https://github.com/bastibe/org-journal/blob/78d575213c7cf7c069e52bfc46430090c0500000/org-journal.el#L158
