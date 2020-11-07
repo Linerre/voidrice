@@ -36,6 +36,14 @@
 (add-to-list 'default-frame-alist
 	     '(font . "JetBrainsMono Nerd Font-11:Medium"))
 
+;; show week number in calendar view
+(setq calendar-intermonth-text
+      '(propertize
+	(format "%2d"
+		(car
+		 (calendar-iso-from-absolute
+		  (calendar-absolute-from-gregorian (list month day year)))))
+	'font-lock-face 'calendar-iso-week-face))
 
 ;;; ------------------- about company ----------------------
 (global-company-mode t)
@@ -152,6 +160,10 @@
 ;; right arrow: migrate to Futher; left arrow: migrate to Other collections
 	(sequence "✝TODO(i)" "|" ">(f)" "<(o)")))
 
+(setq org-tag-faces
+      '(("work" . "#b16286")
+	("personal" . "#458588")))
+
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
@@ -185,7 +197,7 @@
   (org-journal-date-format "%m.%d %a")
   ;; must contain %Y
   ;; see https://github.com/bastibe/org-journal/blob/78d575213c7cf7c069e52bfc46430090c0500000/org-journal.el#L158
-  (org-journal-file-format "%Y-%m-%d.org")
+  (org-journal-file-format "%Y-%m-%d-%V.org")
   :config
   (setq org-journal-find-file #'find-file-other-window
 	org-journal-enable-agenda-integration t))
