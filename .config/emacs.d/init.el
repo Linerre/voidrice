@@ -7,11 +7,6 @@
 ;;	     (expand-file-name (concat user-emacs-directory "lisp")))
 
 
-
-
-
-
-
 ;;; (require 'init-const)
 ;;; ------------------- init-const  ---------------------
 (defconst *is-mac* (eq system-type 'darwin))
@@ -36,6 +31,10 @@
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
 
+
+;; set font
+(add-to-list 'default-frame-alist
+	     '(font . "JetBrainsMono Nerd Font-11:Medium"))
 
 
 ;;; ------------------- about company ----------------------
@@ -131,7 +130,10 @@
 ;; org-mode keys
 (setq org-agenda-files '("~/org/bujo" "~/org/roam/daily"))
 (setq org-agenda-include-diary t)
-;;      org-log-done 'time
+
+;; I don't want this becasue every time I change a state
+;; from TODO-state, it will insert the CLOSED timestamp
+;; (setq org-log-done 'time)
 
 
 ;; regarding *org-startup-folded*
@@ -159,21 +161,31 @@
 ;;; 2. https://www.reddit.com/r/emacs/comments/98flwy/does_anyone_know_a_good_alternative_to_orgbullets/
 ;;; 3. https://www.reddit.com/r/emacs/comments/8ug077/orgbullets_slow_with_certain_fonts/
 ;;; (require 'org-bullets)
-;;; (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-;;; (setq org-bullets-bullet-list '("⌬" "◉" "●" "○"))
+(add-hook 'org-mode-hook
+	  (lambda ()
+	    (org-bullets-mode t)))
+(setq org-ellipsis "⤵")
+(setq org-bullets-bullet-list '("◉"
+				"☰"
+				"☱"
+				"☲"
+				"☳"
+				"☴"
+				"☵"
+				"☶"
+				"☷"))
 
 ;;; ------------------ org journal -------------------
 ;;; customized so to adjust to Bullet Journal style
 
 (use-package org-journal
   :custom
-  (org-journal-dir "~/org/roam/daily")
+  (org-journal-dir "~/org/bujo")
   (org-journal-file-type 'daily)
   (org-journal-date-format "%m.%d %a")
   ;; must contain %Y
   ;; see https://github.com/bastibe/org-journal/blob/78d575213c7cf7c069e52bfc46430090c0500000/org-journal.el#L158
   (org-journal-file-format "%Y-%m-%d.org")
-  (org-journal-time-prefix "** %R")
   :config
   (setq org-journal-find-file #'find-file-other-window
 	org-journal-enable-agenda-integration t))
@@ -183,5 +195,5 @@
 
 ;;; write cutome stuff to a singel file
 (setq custom-file "~/.emacs.d/custom-file.el")
-(load-file custom-file)
+;; (load-file custom-file)
 
