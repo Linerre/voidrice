@@ -104,7 +104,7 @@
 ;; (require 'init-ui)
 ;; gruvbox theme
 (use-package gruvbox-theme
- :init (load-theme 'gruvbox-dark-hard t))
+ :init (load-theme 'gruvbox-dark-medium t))
 
 ;;(use-package spacemacs-theme
 ;;  :init (load-theme 'spacemacs-dark t))
@@ -156,13 +156,21 @@
 ;; org-mode to do
 (setq org-todo-keywords
       '((sequence "TODO(t)" "|" "DONE(d)")
-	(sequence "CANCELLED(c@)" "|" "EVENT(e)" "NOTE(n)" "IDEA(a)" "WATCH(w)")
+	(sequence "CANCELLED(c)" "|" "EVENT(e)" "NOTE(n)" "IDEA(a)" "WATCH(w)")
 ;; right arrow: migrate to Futher; left arrow: migrate to Other collections
 	(sequence "✝TODO(i)" "|" ">(f)" "<(o)")))
 
+;;(setq org-todo-keyword-faces
+;;     '(("TODO" . (:background "#9d0006" :foreground "fbf1c7"))
+;;        ("DONE" . (:background "#427b58" :foreground "#fbf1c7"))))
+
+
 (setq org-tag-faces
-      '(("work" . "#b16286")
-	("personal" . "#458588")))
+      '(("work" . "#d65d0e")
+	("personal" . "#fe8019")))
+
+
+
 
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
@@ -203,9 +211,28 @@
 	org-journal-enable-agenda-integration t))
 
 
+;;; ------------------ org roam ----------------------
+(executable-find "sqlite3")
+(use-package org-roam
+  :hook
+  (after-init . org-roam-mode)
+  :custom
+  org-roam-directory "~/org/roam"
+  :bind (:map org-roam-mode-map
+	      (("C-c n l" . org-roam)
+	       ("C-c n f" . org-roam-find-file)
+	       ("C-c n g" . org-roam-graph))
+	       :map org-mode-map
+	       (("C-c n i" . org-roam-insert))
+	       (("C-c n I" . org-roam-insert-immediate))))
 
+(use-package deft
+  :bind ("<f8>" . deft)
+  :commands (deft)
+  :config (setq deft-directory "~/org/roam"
+		deft-extensions '("org" "md" "txt" "tex")))
 
 ;;; write cutome stuff to a singel file
 (setq custom-file "~/.emacs.d/custom-file.el")
-;; (load-file custom-file)
+(load-file custom-file)
 
