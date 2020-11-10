@@ -22,7 +22,7 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
-
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
 
 ;; (auto-save-mode -1)
 (setq make-backup-files nil
