@@ -123,7 +123,7 @@ fi
 if [ -d /etc/pacman.d ]; then
 		alias ins="sudo pacman -S"
 		alias upd="sudo pacman -Sy"
-		alias unis="sudo pacman -Rns"
+		alias unins="sudo pacman -Rns"
 		alias sch="pacman -Ss"
 		alias lpk="pacman -Qi"
 		alias br="xbacklight -inc 10"
