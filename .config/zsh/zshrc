@@ -146,3 +146,7 @@ alias pa="git push origin main"
 
 # texlive
 alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode' 
+
+
+# emacs
+alias emacs="emacs -nw"
