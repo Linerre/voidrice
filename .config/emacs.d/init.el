@@ -34,7 +34,7 @@
 
 ;; set font
 (add-to-list 'default-frame-alist
-	     '(font . "JetBrainsMono Nerd Font-11:Medium"))
+	     '(font . "FiraCode Nerd Font Mono-12:Bold"))
 
 ;; show week number in calendar view
 (setq calendar-intermonth-text
@@ -65,6 +65,14 @@
 
 ;; start emacs in fullscreen
 (setq initial-frame-alist (quote ((fullscreen . maximized))))
+
+;; show paired braces
+(add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
+
+;; (add-hook 'after-init-hook 'org-roam-mode)
+
+
+
 
 ;;; ------------------- about company ----------------------
 (global-company-mode t)
@@ -252,6 +260,19 @@
   :commands (deft)
   :config (setq deft-directory "~/org/roam"
 		deft-extensions '("org" "md" "txt" "tex")))
+
+
+(use-package org-roam-server
+  :config
+  (setq org-roam-server-host "127.0.0.1"
+	org-roam-server-port 9090
+	org-roam-server-authenticate nil
+	org-roam-server-export-inline-images t
+	org-roam-server-network-poll t
+	org-roam-server-network-arrows nil
+	org-roam-server-network-label-truncate t
+	org-roam-server-network-label-truncate-length 60
+	org-roam-server-network-label-wrap-length 20))
 
 ;;; write cutome stuff to a singel file
 (setq custom-file "~/.emacs.d/custom-file.el")
