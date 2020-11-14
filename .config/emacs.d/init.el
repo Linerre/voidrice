@@ -56,6 +56,16 @@
 
 (global-set-key (kbd "<f2>") 'open-init-file)
 
+;; open recent files
+(require 'recentf)
+(recentf-mode 1)
+(setq recnetf-max-menu-item 10)
+(global-set-key (kbd "C-x C-r") 'recentf-open-files)
+
+
+;; start emacs in fullscreen
+(setq initial-frame-alist (quote ((fullscreen . maximized))))
+
 ;;; ------------------- about company ----------------------
 (global-company-mode t)
 (define-key company-active-map (kbd "<tab>") 'company-select-next)
@@ -181,7 +191,7 @@
 	("personal" . "#fe8019")))
 
 
-
+(setq org-src-fontify-natively t)
 
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
