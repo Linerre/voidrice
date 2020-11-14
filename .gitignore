@@ -19,7 +19,6 @@ history.cmdline
 lisp/
 auto-save-list/
 elpa/
-custom-file.el
 bookmarks
 recentf
 
