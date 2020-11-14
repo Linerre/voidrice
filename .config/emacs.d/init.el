@@ -45,6 +45,17 @@
 		  (calendar-absolute-from-gregorian (list month day year)))))
 	'font-lock-face 'calendar-iso-week-face))
 
+
+;; split window vertically
+
+
+;; quick access to init file
+(defun open-init-file()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+
+(global-set-key (kbd "<f2>") 'open-init-file)
+
 ;;; ------------------- about company ----------------------
 (global-company-mode t)
 (define-key company-active-map (kbd "<tab>") 'company-select-next)
@@ -106,8 +117,8 @@
 (use-package gruvbox-theme
  :init (load-theme 'gruvbox-dark-medium t))
 
-;;(use-package spacemacs-theme
-;;  :init (load-theme 'spacemacs-dark t))
+;(use-package spacemacs-theme
+;  :init (load-theme 'spacemacs-dark t))
 
 ;; status line
 (use-package smart-mode-line
