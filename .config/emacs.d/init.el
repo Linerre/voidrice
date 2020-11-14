@@ -6,12 +6,36 @@
 ;;(add-to-list 'load-path
 ;;	     (expand-file-name (concat user-emacs-directory "lisp")))
 
+;;; --------------- mirrors set ----------------------
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+			 ("org"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 
-;;; (require 'init-const)
-;;; ------------------- init-const  ---------------------
-(defconst *is-mac* (eq system-type 'darwin))
-(defconst *is-linux* (eq system-type 'gnu/linux))
-(defconst *is-windows* (or (eq system-type 'ms-dos) (eq system-type 'windows-nt)))
+;; sync signature checking
+(setq package-check-signature nil)
+(require 'package)
+;; initialize package manager
+(unless (bound-and-true-p package--initialized)
+  (package-initialize))
+
+;; sync with source
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(setq use-package-always-ensure t
+      use-package-always-defer t
+      use-package-always-demand nil
+      use-package-expand-minimally t
+      use-package-verbose t)
+
+;; restart emacs
+(require 'use-package)
+
+
 
 ;;; ------------------ change default ---------------------
 ;;; set the default encoding system
@@ -72,9 +96,16 @@
 ;; (add-hook 'after-init-hook 'org-roam-mode)
 
 
+;;; (require 'init-const)
+;;; ------------------- init-const  ---------------------
+(defconst *is-mac* (eq system-type 'darwin))
+(defconst *is-linux* (eq system-type 'gnu/linux))
+(defconst *is-windows* (or (eq system-type 'ms-dos) (eq system-type 'windows-nt)))
 
 
-;;; ------------------- about company ----------------------
+;;; ------------------ PACKAGE AND MODE -------------------
+
+;;; ------------------- COMPANY  ----------------------
 (global-company-mode t)
 (define-key company-active-map (kbd "<tab>") 'company-select-next)
 (define-key company-active-map (kbd "p") 'company-select-previous)
@@ -95,39 +126,7 @@
 
 ;;(require 'init-elpa)
 ;;; -------------------  init-elpa ---------------------
-(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-			 ("org"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 
-;; sync signature checking
-(setq package-check-signature nil)
-
-(require 'package)
-
-;; initialize package manager
-(unless (bound-and-true-p package--initialized)
-  (package-initialize))
-
-
-;; sync with source
-(unless package-archive-contents
-  (package-refresh-contents))
-
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-
-;;
-(setq use-package-always-ensure t
-      use-package-always-defer t
-      use-package-always-demand nil
-      use-package-expand-minimally t
-      use-package-verbose t)
-
-
-;; restart emacs
-(require 'use-package)
 
 ;;; -------------------  init-theme ---------------------
 ;; (require 'init-ui)
