@@ -124,10 +124,6 @@
 (use-package restart-emacs)
 
 
-;;(require 'init-elpa)
-;;; -------------------  init-elpa ---------------------
-
-
 ;;; -------------------  init-theme ---------------------
 ;; (require 'init-ui)
 ;; gruvbox theme
@@ -138,11 +134,11 @@
 ;  :init (load-theme 'spacemacs-dark t))
 
 ;; status line
-(use-package smart-mode-line
-  :init
-  (setq sml/no-confirm-load-theme t
-	sml/theme 'respectful)
-  (sml/setup))
+;;(use-package smart-mode-line
+;;  :init
+;;  (setq sml/no-confirm-load-theme t
+;;	sml/theme 'respectful)
+;;  (sml/setup))
 
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)
