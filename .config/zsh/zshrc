@@ -150,3 +150,8 @@ alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 
 # emacs
 alias emacs="emacs -nw"
+
+# dropbox
+alias dropsync="dropbox.py start"
+alias dropshut="dropbox.py stop"
+alias dropst="dropbox.py status"
