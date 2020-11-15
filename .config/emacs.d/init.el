@@ -32,7 +32,7 @@
       use-package-expand-minimally t
       use-package-verbose t)
 
-;; restart emacs
+
 (require 'use-package)
 
 
@@ -93,8 +93,6 @@
 ;; show paired braces
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 
-;; (add-hook 'after-init-hook 'org-roam-mode)
-
 
 ;;; (require 'init-const)
 ;;; ------------------- init-const  ---------------------
@@ -108,7 +106,7 @@
 ;;; ------------------- COMPANY  ----------------------
 (global-company-mode t)
 (define-key company-active-map (kbd "<tab>") 'company-select-next)
-(define-key company-active-map (kbd "p") 'company-select-previous)
+;;(define-key company-active-map (kbd "<esc>") 'company-select-previous)
 (setq company-idle-delay 0.0
       inhibit-startup-screen t)
 
