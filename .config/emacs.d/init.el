@@ -6,7 +6,9 @@
 ;;(add-to-list 'load-path
 ;;	     (expand-file-name (concat user-emacs-directory "lisp")))
 
-;;; --------------- mirrors set ----------------------
+;;; ----------------------------------------------------
+;;; ------------------ MIRRORS & REPO ------------------
+;;; ----------------------------------------------------
 (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
 			 ("org"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
@@ -36,8 +38,10 @@
 (require 'use-package)
 
 
+;;; ----------------------------------------------------
+;;; -------------------- DEFAULT -----------------------
+;;; ----------------------------------------------------
 
-;;; ------------------ change default ---------------------
 ;;; set the default encoding system
 (prefer-coding-system 'utf-8)
 (setq default-file-name-coding-system 'utf-8
@@ -54,6 +58,10 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (menu-bar-mode -1)
+
+(setq display-line-numbers-type 'relative)
+(global-display-line-numbers-mode t)
+(global-hl-line-mode t)
 
 
 ;; set font
@@ -94,23 +102,30 @@
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 
 
+;;; ----------------------------------------------------
+;;; ----------------------- CONSTS ---------------------
+;;; ----------------------------------------------------
 ;;; (require 'init-const)
-;;; ------------------- init-const  ---------------------
+
 (defconst *is-mac* (eq system-type 'darwin))
 (defconst *is-linux* (eq system-type 'gnu/linux))
 (defconst *is-windows* (or (eq system-type 'ms-dos) (eq system-type 'windows-nt)))
 
 
-;;; ------------------ PACKAGE AND MODE -------------------
+;;; ------------------ PACKAGE AND MODE ----------------
 
-;;; ------------------- COMPANY  ----------------------
+;;; ----------------------------------------------------
+;;; ------------------- COMPANY  -----------------------
+;;; ----------------------------------------------------
 (global-company-mode t)
 (define-key company-active-map (kbd "<tab>") 'company-select-next)
 ;;(define-key company-active-map (kbd "<esc>") 'company-select-previous)
 (setq company-idle-delay 0.0
       inhibit-startup-screen t)
 
-;;; -------------------  init-pkgs  ---------------------
+;;; ----------------------------------------------------
+;;; ------------------- BENCHMARK ----------------------
+;;; ----------------------------------------------------
 (use-package benchmark-init
   :init (benchmark-init/activate)
   :hook (after-init . benchmark-init/deactivate))
@@ -122,14 +137,14 @@
 (use-package restart-emacs)
 
 
-;;; -------------------  init-theme ---------------------
-;; (require 'init-ui)
-;; gruvbox theme
+;;; -----------------------------------------------------
+;;; ----------------------- THEME -----------------------
+;;; -----------------------------------------------------
+
 (use-package gruvbox-theme
  :init (load-theme 'gruvbox-dark-medium t))
 
-;(use-package spacemacs-theme
-;  :init (load-theme 'spacemacs-dark t))
+
 
 ;; status line
 ;;(use-package smart-mode-line
@@ -138,9 +153,6 @@
 ;;	sml/theme 'respectful)
 ;;  (sml/setup))
 
-(setq display-line-numbers-type 'relative)
-(global-display-line-numbers-mode t)
-(global-hl-line-mode t)
 
 
 ;; (require 'init-pkgs)
@@ -155,8 +167,10 @@
 
 (use-package restart-emacs)
 
-;;(require 'org-mode)			     
-;;; ------------------- org-mode ---------------------
+;;(require 'org-mode)
+;;; --------------------------------------------------
+;;; ------------------- ORG MODE ---------------------
+;;; --------------------------------------------------
 ;; org-mode keys
 (setq org-agenda-files '("~/Dropbox/org/inbox.org"
 			 "~/Dropbox/org/projects.org"
@@ -188,11 +202,9 @@
 ;;     '(("TODO" . (:background "#9d0006" :foreground "fbf1c7"))
 ;;        ("DONE" . (:background "#427b58" :foreground "#fbf1c7"))))
 
-
 (setq org-tag-faces
       '(("work" . "#d65d0e")
 	("personal" . "#fe8019")))
-
 
 (setq org-src-fontify-natively t)
 
@@ -204,7 +216,6 @@
                                (file+headline "~/Dropbox/org/reminder.org" "Tickler")
                                "* %i%? \n %U")))
 
-
 (setq org-refile-targets '(("~/Dropbox/org/inbox.org" :maxlevel . 3)
                            ("~/Dropbox/org/reminder.org" :level . 1)
                            ("~/Dropbox/org/projects.org" :maxlevel . 2)))
@@ -212,7 +223,10 @@
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
-;;; ------------------ org bullets -------------------
+
+;;; --------------------------------------------------
+;;; ------------------ ORG BULLET- -------------------
+;;; --------------------------------------------------
 ;;; enabling bullet will *significantly* slow the performance, see
 ;;; 1. https://github.com/sabof/org-bullets/issues/11
 ;;; 2. https://www.reddit.com/r/emacs/comments/98flwy/does_anyone_know_a_good_alternative_to_orgbullets/
@@ -232,8 +246,9 @@
 				"☶"
 				"☷"))
 
-;;; ------------------ org journal -------------------
-;;; customized so to adjust to Bullet Journal style
+;;; --------------------------------------------------
+;;; ------------------ ORG JOURNAL -------------------
+;;; --------------------------------------------------
 
 (use-package org-journal
   :custom
@@ -248,7 +263,9 @@
 	org-journal-enable-agenda-integration t))
 
 
-;;; ------------------ org roam ----------------------
+;;; ---------------------------------------------------
+;;; -------------------- ORG ROAM ---------------------
+;;; ---------------------------------------------------
 (executable-find "sqlite3")
 (use-package org-roam
   :hook
@@ -282,6 +299,9 @@
 	org-roam-server-network-label-truncate-length 60
 	org-roam-server-network-label-wrap-length 20))
 
+;;; -------------------------------------------------------
+;;; ---------------------- CUSTOME ------------------------
+;;; -------------------------------------------------------
 ;;; write cutome stuff to a singel file
 (setq custom-file "~/.emacs.d/custom-file.el")
 (load-file custom-file)
