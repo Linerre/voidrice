@@ -164,7 +164,9 @@
 ;;(require 'org-mode)			     
 ;;; ------------------- org-mode ---------------------
 ;; org-mode keys
-(setq org-agenda-files '("~/org/bujo" "~/org/roam/daily"))
+(setq org-agenda-files '("~/Dropbox/org/inbox.org"
+			 "~/Dropbox/org/projects.org"
+			 "~/Dropbox/org/reminder.org"))
 (setq org-agenda-include-diary t)
 
 ;; I don't want this becasue every time I change a state
@@ -200,6 +202,19 @@
 
 (setq org-src-fontify-natively t)
 
+;; capture stuff anytime to corresponding org files
+(setq org-capture-templates '(("t" "Todo [inbox]" entry
+                               (file+headline "~/Dropbox/org/inbox.org" "Tasks")
+                               "* TODO %i%?")
+                              ("T" "Tickler" entry
+                               (file+headline "~/Dropbox/org/reminder.org" "Tickler")
+                               "* %i%? \n %U")))
+
+
+(setq org-refile-targets '(("~/Dropbox/org/inbox.org" :maxlevel . 3)
+                           ("~/Dropbox/org/reminder.org" :level . 1)
+                           ("~/Dropbox/org/projects.org" :maxlevel . 2)))
+
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
@@ -208,7 +223,7 @@
 ;;; 1. https://github.com/sabof/org-bullets/issues/11
 ;;; 2. https://www.reddit.com/r/emacs/comments/98flwy/does_anyone_know_a_good_alternative_to_orgbullets/
 ;;; 3. https://www.reddit.com/r/emacs/comments/8ug077/orgbullets_slow_with_certain_fonts/
-;;; (require 'org-bullets)
+;;(require 'org-bullets)
 (add-hook 'org-mode-hook
 	  (lambda ()
 	    (org-bullets-mode t)))
@@ -228,7 +243,7 @@
 
 (use-package org-journal
   :custom
-  (org-journal-dir "~/org/bujo")
+  (org-journal-dir "~/Dropbox/org")
   (org-journal-file-type 'weekly)
   (org-journal-date-format "%m.%d %a")
   ;; must contain %Y
@@ -245,7 +260,7 @@
   :hook
   (after-init . org-roam-mode)
   :custom
-  org-roam-directory "~/org/roam"
+  org-roam-directory "~/Dropbox/org/roam"
   :bind (:map org-roam-mode-map
 	      (("C-c n l" . org-roam)
 	       ("C-c n f" . org-roam-find-file)
@@ -257,7 +272,7 @@
 (use-package deft
   :bind ("<f8>" . deft)
   :commands (deft)
-  :config (setq deft-directory "~/org/roam"
+  :config (setq deft-directory "~/Dropbox/org/roam"
 		deft-extensions '("org" "md" "txt" "tex")))
 
 
