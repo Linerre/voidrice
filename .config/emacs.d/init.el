@@ -54,6 +54,7 @@
 
 ;; (auto-save-mode -1)
 (setq make-backup-files nil
+      auto-save-default nil
       inhibit-compacting-font-caches t)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -214,7 +215,7 @@
                                "* TODO %i%?")
                               ("T" "Tickler" entry
                                (file+headline "~/Dropbox/org/reminder.org" "Tickler")
-                               "* %i%? \n %U")))
+                               "* %i%? \n %T")))
 
 (setq org-refile-targets '(("~/Dropbox/org/inbox.org" :maxlevel . 3)
                            ("~/Dropbox/org/reminder.org" :level . 1)
