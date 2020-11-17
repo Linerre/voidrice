@@ -63,7 +63,7 @@
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode t)
 (global-hl-line-mode t)
-
+(global-visual-line-mode 1)
 
 ;; set font
 (add-to-list 'default-frame-alist
@@ -209,13 +209,47 @@
 
 (setq org-src-fontify-natively t)
 
-;; capture stuff anytime to corresponding org files
-(setq org-capture-templates '(("t" "Todo [inbox]" entry
-                               (file+headline "~/Dropbox/org/inbox.org" "Tasks")
-                               "* TODO %i%?")
-                              ("T" "Tickler" entry
-                               (file+headline "~/Dropbox/org/reminder.org" "Tickler")
-                               "* %i%? \n %T")))
+
+;;; --------------------------------------------------------------
+;;; -------------------- ORG CAPTURE -----------------------------
+;;; --------------------------------------------------------------
+(setq org-capture-templates nil)
+
+
+;; inbox-tasks
+(add-to-list 'org-capture-templates
+	     '("t" "Inbox [TODO]" entry
+	       (file+headline "c:/Users/zl37/Dropbox/org/inbox.org" "Tasks")
+	       "* TODO %? %U %^G"))
+
+;; inbox-idea/note/thoughts
+(add-to-list 'org-capture-templates
+	     '("a" "Inbox [IDEA]" entry
+	       (file+headline "c:/Users/zl37/Dropbox/org/inbox.org" "Thoughts")
+               "* IDEA %? \n%u"))
+
+;; inbox-event
+(add-to-list 'org-capture-templates
+	     '("e" "Inbox [EVENTS]" entry
+	       (file+headline "c:/Users/zl37/Dropbox/org/inbox.org" "Events")
+               "* EVENT %? %U"))
+
+;; inbox-reading
+(add-to-list 'org-capture-templates '("r" "Reading"))
+(add-to-list 'org-capture-templates
+	     '("rb" "Inbox [Book]" entry
+	       (file+olp "c:/Users/zl37/Dropbox/org/inbox.org" "Reading" "Book")
+               "* TODO Title: %^{Title} \nAuthor: %^{Author} \n%u\n"))
+(add-to-list 'org-capture-templates
+	     '("ra" "Inbox [Article]" entry
+	       (file+olp "c:/Users/zl37/Dropbox/org/inbox.org" "Reading" "Article")
+               "* TODO [[%^{Link}][%^{Title}]] \n%u\n"))
+
+;; reminder
+(add-to-list 'org-capture-templates
+             '("T" "Tickler" entry
+	      (file+headline "c:/Users/zl37/Dropbox/org/reminder.org" "Tickler")
+              "* TODO %? %T %^G"))
 
 (setq org-refile-targets '(("~/Dropbox/org/inbox.org" :maxlevel . 3)
                            ("~/Dropbox/org/reminder.org" :level . 1)
