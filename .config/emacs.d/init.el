@@ -302,6 +302,7 @@
 ;;; -------------------- ORG ROAM ---------------------
 ;;; ---------------------------------------------------
 (executable-find "sqlite3")
+(executable-find "dot")
 (use-package org-roam
   :hook
   (after-init . org-roam-mode)
@@ -310,16 +311,28 @@
   :bind (:map org-roam-mode-map
 	      (("C-c n l" . org-roam)
 	       ("C-c n f" . org-roam-find-file)
+	       ("C-c n c" . org-roam-capture)
 	       ("C-c n g" . org-roam-graph))
 	       :map org-mode-map
 	       (("C-c n i" . org-roam-insert))
 	       (("C-c n I" . org-roam-insert-immediate))))
 
-(use-package deft
-  :bind ("<f8>" . deft)
-  :commands (deft)
-  :config (setq deft-directory "~/Dropbox/org/roam"
-		deft-extensions '("org" "md" "txt" "tex")))
+
+(setq org-roam-capture-templates
+      '(
+        ("d" "default" plain (function org-roam-capture--get-point)
+         "%?"
+         :file-name "%<%Y%m%d%H%M%S>-${slug}"
+         :head "#+title: ${title}\n#+roam_alias:\n\n")
+        ("g" "group")
+        ("ga" "Group A" plain (function org-roam-capture--get-point)
+         "%?"
+         :file-name "%<%Y%m%d%H%M%S>-${slug}"
+         :head "#+title: ${title}\n#+roam_alias:\n\n")
+        ("gb" "Group B" plain (function org-roam-capture--get-point)
+         "%?"
+         :file-name "%<%Y%m%d%H%M%S>-${slug}"
+         :head "#+title: ${title}\n#+roam_alias:\n\n")))
 
 
 (use-package org-roam-server
@@ -333,6 +346,18 @@
 	org-roam-server-network-label-truncate t
 	org-roam-server-network-label-truncate-length 60
 	org-roam-server-network-label-wrap-length 20))
+(require 'org-roam-protocol)
+
+
+;;; -------------------------------------------------------
+;;; -------------------------- DEFT -----------------------
+;;; -------------------------------------------------------
+(use-package deft
+  :bind ("<f8>" . deft)
+  :commands (deft)
+  :config (setq deft-directory "~/Dropbox/org/roam"
+		deft-extensions '("org" "md" "txt" "tex")))
+
 
 ;;; -------------------------------------------------------
 ;;; ---------------------- CUSTOME ------------------------
