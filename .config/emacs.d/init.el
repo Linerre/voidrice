@@ -89,6 +89,11 @@
 
 (global-set-key (kbd "<f2>") 'open-init-file)
 
+(defun open-org-dir()
+  (interactive)
+  (find-file "~/Dropbox/org"))
+(global-set-key (kbd "<f4>") 'open-org-dir)
+
 ;; open recent files
 (require 'recentf)
 (recentf-mode 1)
