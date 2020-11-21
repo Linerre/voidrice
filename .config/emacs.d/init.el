@@ -214,41 +214,48 @@
 ;; inbox-tasks
 (add-to-list 'org-capture-templates
 	     '("t" "Inbox [TODO]" entry
-	       (file+headline "c:/Users/zl37/Dropbox/org/inbox.org" "Tasks")
+	       (file+headline "~/Dropbox/org/inbox.org" "Tasks")
 	       "* TODO %? %U %^G"))
 
 ;; inbox-idea/note/thoughts
 (add-to-list 'org-capture-templates
 	     '("a" "Inbox [IDEA]" entry
-	       (file+headline "c:/Users/zl37/Dropbox/org/inbox.org" "Thoughts")
+	       (file+headline "~/Dropbox/org/inbox.org" "Thoughts")
                "* IDEA %? \n%u"))
 
 ;; inbox-event
 (add-to-list 'org-capture-templates
 	     '("e" "Inbox [EVENTS]" entry
-	       (file+headline "c:/Users/zl37/Dropbox/org/inbox.org" "Events")
+	       (file+headline "~/Dropbox/org/inbox.org" "Events")
                "* EVENT %? %U"))
+
+;; inbox-note
+(add-to-list 'org-capture-templates
+	     '("n" "Inbox [NOTE]" entry
+	       (file+headline "~/Dropbox/org/inbox.org" "Thoughts")
+	       "* NOTE %? %^G"))
 
 ;; inbox-reading
 (add-to-list 'org-capture-templates '("r" "Reading"))
 (add-to-list 'org-capture-templates
 	     '("rb" "Inbox [Book]" entry
-	       (file+olp "c:/Users/zl37/Dropbox/org/inbox.org" "Reading" "Book")
+	       (file+olp "~/Dropbox/org/inbox.org" "Reading" "Book")
                "* TODO Title: %^{Title} \nAuthor: %^{Author} \n%u\n"))
 (add-to-list 'org-capture-templates
 	     '("ra" "Inbox [Article]" entry
-	       (file+olp "c:/Users/zl37/Dropbox/org/inbox.org" "Reading" "Article")
+	       (file+olp "~/Dropbox/org/inbox.org" "Reading" "Article")
                "* TODO [[%^{Link}][%^{Title}]] \n%u\n"))
 
 ;; reminder
 (add-to-list 'org-capture-templates
              '("T" "Tickler" entry
-	      (file+headline "c:/Users/zl37/Dropbox/org/reminder.org" "Tickler")
+	      (file+headline "~/Dropbox/org/reminder.org" "Tickler")
               "* TODO %? %T %^G"))
 
 (setq org-refile-targets '(("~/Dropbox/org/inbox.org" :maxlevel . 3)
                            ("~/Dropbox/org/reminder.org" :level . 1)
-                           ("~/Dropbox/org/projects.org" :maxlevel . 2)))
+                           ("~/Dropbox/org/projects.org" :maxlevel . 2)
+			   ("~/Dropbox/org/barn.org" :level . 5)))
 
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
