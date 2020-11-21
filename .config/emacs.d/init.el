@@ -67,7 +67,7 @@
 
 ;; set font
 (add-to-list 'default-frame-alist
-	     '(font . "FiraCode Nerd Font Mono-12:Bold"))
+	     '(font . "FiraCode Nerd Font Mono-13:Medium"))
 
 ;; show week number in calendar view
 (setq calendar-intermonth-text
@@ -147,10 +147,12 @@
 ;;; ----------------------- THEME -----------------------
 ;;; -----------------------------------------------------
 
-(use-package gruvbox-theme
- :init (load-theme 'gruvbox-dark-medium t))
+;;(use-package gruvbox-theme
+;; :init (load-theme 'gruvbox-dark-medium t))
 
-
+(use-package kaolin-themes
+  :config
+  (load-theme 'kaolin-dark t)
 
 ;; status line
 ;;(use-package smart-mode-line
@@ -161,7 +163,7 @@
 
 
 
-;; (require 'init-pkgs)
+
 ;;; -------------------  init-ui ---------------------
 ;; (use-package benchmark-init
 ;;  :init (benchmark-init/activate)

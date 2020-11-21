@@ -17,4 +17,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(org-roam-server which-key use-package smart-mode-line restart-emacs org-roam org-journal-list org-journal org-bullets gruvbox-theme deft company benchmark-init)))
+   '(kaolin-themes org-roam-server which-key use-package smart-mode-line restart-emacs org-roam org-journal-list org-journal org-bullets gruvbox-theme deft company benchmark-init)))
