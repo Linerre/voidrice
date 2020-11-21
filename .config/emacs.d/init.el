@@ -34,7 +34,6 @@
       use-package-expand-minimally t
       use-package-verbose t)
 
-
 (require 'use-package)
 
 
@@ -67,7 +66,8 @@
 
 ;; set font
 (add-to-list 'default-frame-alist
-	     '(font . "FiraCode Nerd Font Mono-13:Medium"))
+	     ;;'(font . "FiraCode Nerd Font Mono-13:Medium")
+	     '(font . "Monaco-13"))
 
 ;; show week number in calendar view
 (setq calendar-intermonth-text
@@ -130,11 +130,11 @@
       inhibit-startup-screen t)
 
 ;;; ----------------------------------------------------
-;;; ------------------- BENCHMARK ----------------------
+;;; ------------------- MISCHELLEOUS -------------------
 ;;; ----------------------------------------------------
-(use-package benchmark-init
-  :init (benchmark-init/activate)
-  :hook (after-init . benchmark-init/deactivate))
+;;(use-package benchmark-init
+;;  :init (benchmark-init/activate)
+;;  :hook (after-init . benchmark-init/deactivate))
 
 (use-package which-key
   :defer nil
@@ -147,12 +147,14 @@
 ;;; ----------------------- THEME -----------------------
 ;;; -----------------------------------------------------
 
-;;(use-package gruvbox-theme
+;; (use-package gruvbox-theme
 ;; :init (load-theme 'gruvbox-dark-medium t))
 
 (use-package kaolin-themes
-  :config
+  :init
   (load-theme 'kaolin-dark t)
+  :config
+  (setq kaolin-themes-italic-comments t))
 
 ;; status line
 ;;(use-package smart-mode-line
@@ -162,20 +164,6 @@
 ;;  (sml/setup))
 
 
-
-
-;;; -------------------  init-ui ---------------------
-;; (use-package benchmark-init
-;;  :init (benchmark-init/activate)
-;;  :hook (after-init . benchmark-init/deactivate))
-
-(use-package which-key
-  :defer nil
-  :config (which-key-mode))
-
-(use-package restart-emacs)
-
-;;(require 'org-mode)
 ;;; --------------------------------------------------
 ;;; ------------------- ORG MODE ---------------------
 ;;; --------------------------------------------------
