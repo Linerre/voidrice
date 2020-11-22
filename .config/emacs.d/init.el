@@ -238,12 +238,12 @@
 ;; inbox-reading
 (add-to-list 'org-capture-templates '("r" "Reading"))
 (add-to-list 'org-capture-templates
-	     '("rb" "Inbox [Book]" entry
-	       (file+olp "~/Dropbox/org/inbox.org" "Reading" "Book")
+	     '("rb" "Readings [Book]" entry
+	       (file+headline "~/Dropbox/org/readings.org" "Book")
                "* TODO Title: %^{Title} \nAuthor: %^{Author} \n%u\n"))
 (add-to-list 'org-capture-templates
-	     '("ra" "Inbox [Article]" entry
-	       (file+olp "~/Dropbox/org/inbox.org" "Reading" "Article")
+	     '("ra" "Readings [Article]" entry
+	       (file+headline "~/Dropbox/org/readings.org" "Article")
                "* TODO [[%^{Link}][%^{Title}]] \n%u\n"))
 
 ;; reminder
@@ -255,7 +255,8 @@
 (setq org-refile-targets '(("~/Dropbox/org/inbox.org" :maxlevel . 3)
                            ("~/Dropbox/org/reminder.org" :level . 1)
                            ("~/Dropbox/org/projects.org" :maxlevel . 2)
-			   ("~/Dropbox/org/barn.org" :level . 5)))
+			   ("~/Dropbox/org/readings.org" :maxlevel . 1)
+			   ("~/Dropbox/org/barn.org" :maxlevel . 5)))
 
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
