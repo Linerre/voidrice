@@ -327,8 +327,8 @@
          :file-name "%<%Y%m%d%H%M%S>-${slug}"
          :head "#+title: ${title}\n#+roam_alias:\n\n")
         ("g" "group")
-        ("ga" "Group A" plain (function org-roam-capture--get-point)
-         "%?"
+        ("gr" "Reference" plain (function org-roam-capture--get-point)
+         "* %^{Topic} \n 1. %?"
          :file-name "%<%Y%m%d%H%M%S>-${slug}"
          :head "#+title: ${title}\n#+roam_alias:\n\n")
         ("gb" "Group B" plain (function org-roam-capture--get-point)
