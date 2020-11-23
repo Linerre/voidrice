@@ -215,7 +215,7 @@
 (add-to-list 'org-capture-templates
 	     '("t" "Inbox [TODO]" entry
 	       (file+headline "~/Dropbox/org/inbox.org" "Tasks")
-	       "* TODO %? %U %^G"))
+	       "* TODO %? %^G"))
 
 ;; inbox-idea/note/thoughts
 (add-to-list 'org-capture-templates
@@ -240,7 +240,7 @@
 (add-to-list 'org-capture-templates
 	     '("rb" "Readings [Book]" entry
 	       (file+headline "~/Dropbox/org/readings.org" "Book")
-               "* TODO Title: %^{Title} \nAuthor: %^{Author} \n%u\n"))
+               "* TODO Title: %^{Title} \nSource: %^{Link} \n%u\n"))
 (add-to-list 'org-capture-templates
 	     '("ra" "Readings [Article]" entry
 	       (file+headline "~/Dropbox/org/readings.org" "Article")
