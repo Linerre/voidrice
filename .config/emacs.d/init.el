@@ -345,7 +345,7 @@
         ("d" "default" plain (function org-roam-capture--get-point)
          "%?"
          :file-name "%<%Y%m%d%H%M%S>-${slug}"
-         :head "#+title: ${title}\n#+roam_alias: \n\n")
+         :head "#+title: ${title}\n#+roam_alias: \n#+roam_key: \n")
         ("g" "group")
         ("gr" "Reference" plain (function org-roam-capture--get-point)
          "* %^{Topic} \n 1. %?"
