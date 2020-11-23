@@ -266,6 +266,21 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 
+
+;;; --------------------------------------------------
+;;; ------------------- ORG BABEL --------------------
+;;; --------------------------------------------------
+(require 'org-tempo)
+(setq org-src-fontify-natively t)
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((lua . t)
+   (python . t)
+   (C . t)
+   (sqlite . t)
+   (latex . t)
+   (emacs-lisp . t)))
+
 ;;; --------------------------------------------------
 ;;; ------------------ ORG BULLET- -------------------
 ;;; --------------------------------------------------
@@ -330,7 +345,7 @@
         ("d" "default" plain (function org-roam-capture--get-point)
          "%?"
          :file-name "%<%Y%m%d%H%M%S>-${slug}"
-         :head "#+title: ${title}\n#+roam_alias:\n\n")
+         :head "#+title: ${title}\n#+roam_alias: \n\n")
         ("g" "group")
         ("gr" "Reference" plain (function org-roam-capture--get-point)
          "* %^{Topic} \n 1. %?"
@@ -339,7 +354,7 @@
         ("gb" "Group B" plain (function org-roam-capture--get-point)
          "%?"
          :file-name "%<%Y%m%d%H%M%S>-${slug}"
-         :head "#+title: ${title}\n#+roam_alias:\n\n")))
+         :head "#+title: ${title}\n#+roam_alias: \n\n")))
 
 
 (use-package org-roam-server
