@@ -258,6 +258,10 @@
 			   ("~/Dropbox/org/readings.org" :maxlevel . 1)
 			   ("~/Dropbox/org/barn.org" :maxlevel . 5)))
 
+
+(setq org-refile-use-outline-path 'file
+      org-log-refile t)
+
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
