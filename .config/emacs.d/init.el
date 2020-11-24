@@ -215,42 +215,42 @@
 (add-to-list 'org-capture-templates
 	     '("t" "Inbox [TODO]" entry
 	       (file+headline "~/Dropbox/org/inbox.org" "Tasks")
-	       "* TODO %? %^G"))
+	       "* TODO %? %^G" :kill-buffer t))
 
 ;; inbox-idea/note/thoughts
 (add-to-list 'org-capture-templates
 	     '("a" "Inbox [IDEA]" entry
 	       (file+headline "~/Dropbox/org/inbox.org" "Thoughts")
-               "* IDEA %? \n%u"))
+               "* IDEA %? \n%u" :kill-buffer t))
 
 ;; inbox-event
 (add-to-list 'org-capture-templates
 	     '("e" "Inbox [EVENTS]" entry
 	       (file+headline "~/Dropbox/org/inbox.org" "Events")
-               "* EVENT %? %U"))
+               "* EVENT %? %U" :kill-buffer t))
 
 ;; inbox-note
 (add-to-list 'org-capture-templates
 	     '("n" "Inbox [NOTE]" entry
 	       (file+headline "~/Dropbox/org/inbox.org" "Thoughts")
-	       "* NOTE %? %^G"))
+	       "* NOTE %? %^G" :kill-buffer t))
 
 ;; inbox-reading
 (add-to-list 'org-capture-templates '("r" "Reading"))
 (add-to-list 'org-capture-templates
 	     '("rb" "Readings [Book]" entry
 	       (file+headline "~/Dropbox/org/readings.org" "Book")
-               "* TODO Title: %^{Title} \nSource: %^{Link} \n%u\n"))
+               "* TODO Title: %^{Title} \nSource: %^{Link} \n%u\n" :kill-buffer t))
 (add-to-list 'org-capture-templates
 	     '("ra" "Readings [Article]" entry
 	       (file+headline "~/Dropbox/org/readings.org" "Article")
-               "* TODO [[%^{Link}][%^{Title}]] \n%u\n"))
+               "* TODO [[%^{Link}][%^{Title}]] \n%u\n" :kill-buffer t))
 
 ;; reminder
 (add-to-list 'org-capture-templates
              '("T" "Tickler" entry
 	      (file+headline "~/Dropbox/org/reminder.org" "Tickler")
-              "* TODO %? %T %^G"))
+              "* TODO %? %T %^G" :kill-buffer t))
 
 (setq org-refile-targets '(("~/Dropbox/org/inbox.org" :maxlevel . 3)
                            ("~/Dropbox/org/reminder.org" :level . 1)
