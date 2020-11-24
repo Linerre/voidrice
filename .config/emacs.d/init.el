@@ -189,14 +189,14 @@
 
 ;; org-mode to do
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "|" "DONE(d)")
-	(sequence "CANCELLED(c)" "|" "EVENT(e)" "NOTE(n)" "IDEA(a)" "WATCH(w)")
+      '((sequence "TODO(t)" "|" "DOING(n)" "DONE(d)")
+	(sequence "CANCELLED(c@)" "|" "EVENT(e)" "IDEA(a)" "WATCH(w)")
 ;; right arrow: migrate to Futher; left arrow: migrate to Other collections
 	(sequence "✝TODO(i)" "|" ">(f)" "<(o)")))
 
-;;(setq org-todo-keyword-faces
-;;     '(("TODO" . (:background "#9d0006" :foreground "fbf1c7"))
-;;        ("DONE" . (:background "#427b58" :foreground "#fbf1c7"))))
+(setq org-todo-keyword-faces
+      '(("CANCELLED" . (:foreground "#a89984"))
+        ("DOING" . (:foreground "#f3c91f"))))
 
 (setq org-tag-faces
       '(("work" . "#d65d0e")
