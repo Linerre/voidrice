@@ -252,6 +252,11 @@
 	      (file+headline "~/Dropbox/org/reminder.org" "Tickler")
               "* TODO %? %T %^G" :kill-buffer t))
 
+(add-to-list 'org-capture-templates
+             '("b" "Billing" plain
+               (file+function "~/Dropbox/org/bills.org" find-month-tree)
+               " | %U | %^{Type} | %^{Detail} | %^{Amount} |" :kill-buffer t))
+
 (setq org-refile-targets '(("~/Dropbox/org/inbox.org" :maxlevel . 3)
                            ("~/Dropbox/org/reminder.org" :level . 1)
                            ("~/Dropbox/org/projects.org" :maxlevel . 2)
@@ -261,6 +266,34 @@
 
 (setq org-refile-use-outline-path 'file
       org-log-refile t)
+
+
+;;; ---------------------- CAPTURE BILLS ---------------------
+;; copied from https://www.zmonster.me/2018/02/28/org-mode-capture.html#org12c36ad
+(defun get-year-and-month ()
+  (list (format-time-string "%Y") (format-time-string "%m")))
+
+(defun find-month-tree ()
+  (let* ((path (get-year-and-month))
+         (level 1)
+         end)
+    (unless (derived-mode-p 'org-mode)
+      (error "Target buffer \"%s\" should be in Org mode" (current-buffer)))
+    (goto-char (point-min))             ;移动到 buffer 的开始位置
+    ;; 先定位表示年份的 headline，再定位表示月份的 headline
+    (dolist (heading path)
+      (let ((re (format org-complex-heading-regexp-format
+                        (regexp-quote heading)))
+            (cnt 0))
+        (if (re-search-forward re end t)
+            (goto-char (point-at-bol))  ;如果找到了 headline 就移动到对应的位置
+          (progn                        ;否则就新建一个 headline
+            (or (bolp) (insert "\n"))
+            (if (/= (point) (point-min)) (org-end-of-subtree t t))
+            (insert (make-string level ?*) " " heading "\n"))))
+      (setq level (1+ level))
+      (setq end (save-excursion (org-end-of-subtree t t))))
+    (org-end-of-subtree)))
 
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
