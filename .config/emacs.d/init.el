@@ -250,7 +250,7 @@
 (add-to-list 'org-capture-templates
              '("T" "Tickler" entry
 	      (file+headline "~/Dropbox/org/reminder.org" "Tickler")
-              "* TODO %? %T %^G" :kill-buffer t))
+              "* TODO %? %^G" :kill-buffer t))
 
 (add-to-list 'org-capture-templates
              '("b" "Billing" plain
