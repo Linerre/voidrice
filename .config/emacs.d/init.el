@@ -94,6 +94,12 @@
   (find-file "~/Dropbox/org"))
 (global-set-key (kbd "<f4>") 'open-org-dir)
 
+
+(defun open-longreads-dir()
+  (interactive)
+  (find-file "~/Projects/gitty/wechat"))
+(global-set-key (kbd "<f5>") 'open-longreads-dir)
+  
 ;; open recent files
 (require 'recentf)
 (recentf-mode 1)
