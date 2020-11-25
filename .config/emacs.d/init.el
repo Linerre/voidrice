@@ -403,6 +403,8 @@
 	:unnarrowed t
 	:empty-lines-after 1))
 
+;;; ---------------------- ORG-ROAM ------------------------
+
 (use-package org-roam-server
   :config
   (setq org-roam-server-host "127.0.0.1"
@@ -426,6 +428,21 @@
   :config (setq deft-directory "~/Dropbox/org/roam"
 		deft-extensions '("org" "md" "txt" "tex")))
 
+
+
+;;; -------------------------------------------------------
+;;; ---------------------- YASnippets ---------------------
+;;; -------------------------------------------------------
+(setq yas-snippet-dirs
+      ;; personal snippets
+      '("~/.emacs.d/snippets"
+	"~/.emacs.d/elpa/yasnippet-snippets-20201118.2148/snippets"))
+
+(yas-global-mode 1)
+(setq yas-prompt-functions '(yas-ido-prompt yas-x-prompt yas-completing-prompt))
+
+(add-hook 'sgml-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook  'emmet-mode)
 
 ;;; -------------------------------------------------------
 ;;; ---------------------- CUSTOME ------------------------
