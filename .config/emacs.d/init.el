@@ -395,6 +395,13 @@
          :file-name "%<%Y%m%d%H%M%S>-${slug}"
          :head "#+title: ${title}\n#+roam_alias: \n\n")))
 
+(setq org-roam-capture-immediate-template
+      '("d" "default" plain (function org-roam-capture--get-point)
+	"%?"
+	:file-name "%<%Y%m%d%H%S>-${slug}"
+	:head "#+title: ${title}\n"
+	:unnarrowed t
+	:empty-lines-after 1))
 
 (use-package org-roam-server
   :config
