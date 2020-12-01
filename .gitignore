@@ -2,6 +2,7 @@
 .local/share/nvim/
 .local/share/ranger/
 .config/ranger/commands*
+.config/ranger/plugins/
 .config/nvim/plugged/
 .config/coc/
 .config/configstore
