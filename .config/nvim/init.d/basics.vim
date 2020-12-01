@@ -1,4 +1,5 @@
 " Basics
+set encoding=UTF-8
 set fileencoding="utf-8"
 set nocompatible
 set showmatch
@@ -47,7 +48,3 @@ let g:terminal_color_13 ='#c678dd'
 let g:terminal_color_14 ='#83a598'
 let g:terminal_color_15 ='#eaeaea'
 
-" autocmd
-""augroup suckless
-""  au!
-"  au BufReadPost *.h :!
