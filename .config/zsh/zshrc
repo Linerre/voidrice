@@ -138,7 +138,7 @@ alias nvr="nvim ~/.vimrc"
 
 # cmd shorthands
 alias ll="ls -al"
-
+alias logout="pkill -KILL -u leon"
 
 # git
 alias pa="git push origin main"
