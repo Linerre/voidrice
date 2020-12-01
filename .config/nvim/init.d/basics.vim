@@ -1,17 +1,21 @@
 " Basics
 set fileencoding="utf-8"
+set nocompatible
+set showmatch
 set number relativenumber
 set noexpandtab
 set tabstop=4
 set softtabstop=4
+set expandtab
 set shiftwidth=2
 set numberwidth=4
 set textwidth=90
 set autoindent
-set nocompatible
+set wildmode=longest,list
+set cc=80
 set nohlsearch
-
 set clipboard+=unnamedplus
+
 "syntax on
 filetype plugin indent on
 
