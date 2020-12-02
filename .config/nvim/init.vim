@@ -8,8 +8,8 @@ Plug 'ajmwagar/vim-deus'
 Plug 'honza/vim-snippets'
 Plug 'Yggdroot/indentLine'
 Plug 'machakann/vim-highlightedyank'
-""Plug 'ryanoasis/vim-devicons'
 Plug 'bagrat/vim-buffet'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 runtime init.d/basics.vim
