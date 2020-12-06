@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: wikipedia
+# key: bb
+# --
+<!-- wiki -->
+<blockquote class="wiki">
+❉<span class="wiki-title">WikipediA</span>
+  <p class="wiki-entry">$1</p>
+  <p>$2</p>
+</blockquote>

@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: bias
+# key: bb
+# --
+<!-- bias -->
+<blockquote class="note">
+  <span class="bias-title">☠Bias</span>
+  <p>$1</p>
+</blockquote>

@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: footnote
+# key: bb
+# --
+<!-- ft -->
+<blockquote class="ft">
+ <span class="ft-title">↸Footnote</span>
+ <ol>
+  <li>$1</li>
+ </ol>
+</blockquote>

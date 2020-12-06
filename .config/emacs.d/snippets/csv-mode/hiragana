@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: hiragana
+# binding: C-c C-h
+# --
+<ruby>%<rt>$1</rt></ruby>,$0

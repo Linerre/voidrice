@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ruby
+# binding: C-c C-u
+# --
+<ruby>`yas-selected-text`<rt>$1</rt></ruby>

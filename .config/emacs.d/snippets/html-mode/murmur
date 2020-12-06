@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: murmur
+# key: bb
+# --
+<!-- murmur -->
+<blockquote class="note">
+  <span class="note-title">㋡Murmurs</span>
+  <p>$1</p>
+</blockquote>
