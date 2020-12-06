@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: pattern
+# key: bb
+# --
+<blockquote class=\"sentence-pattern\">
+<span class="sentence-pattern-title">⌘Sentence Pattern</span>
+<p class="pattern-num">
+  <b>pattern $1</b>:
+</p>
+<p class="pattern-explain">
+  <span>$2</span>
+</p>
+</blockquote>

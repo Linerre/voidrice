@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: wiki_symbol
+# binding: C-c C-w
+# --
+<sup>❉</sup>
