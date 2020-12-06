@@ -22,5 +22,5 @@ auto-save-list/
 elpa/
 bookmarks
 recentf
-snippets/
+#snippets/
 rime/
