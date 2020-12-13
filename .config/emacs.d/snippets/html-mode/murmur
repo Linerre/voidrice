@@ -3,7 +3,7 @@
 # key: bb
 # --
 <!-- murmur -->
-<blockquote class="note">
+<blockquote class="note $1">
   <span class="note-title">㋡Murmurs</span>
-  <p>$1</p>
+  <p>$0</p>
 </blockquote>
