@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
 # name: sup_note
-# key: oo
+# binding: C-c C-c C-n
 # --
 <${1:$$(yas-choose-value '("sup" "span"))} style="color: #B48EAD;">${2:$$(yas-choose-value '("❶" "❷" "❸" "❹" "❺" "❻" "❼" "❽" "❾" "❿"))}</$1>
