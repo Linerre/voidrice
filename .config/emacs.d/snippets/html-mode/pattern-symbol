@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: sentence_pattern_symbol
-# binding: C-c C-p
-# --
-<span class="u-mark">☈</span>

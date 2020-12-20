@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: paraphrase
-# key: bb
-# --
-<!-- para -->
-<blockquote class="pp">
-<span class="pp-title">☈Paraphrase</span>
-  <p>$1</p>
-</blockquote>
