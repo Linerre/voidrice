@@ -2,4 +2,4 @@
 # name: footnotes_sup
 # binding: C-c C-f 
 # --
-<sup style="color: #88c0d0">[$1]</sup>
+<sup style="color: ${1:$$(yas-choose-value '("#B48EAD" "#81A1C1"))}">${2:$$(yas-choose-value '("㋡" "[1]" "[2]" "[3]" "[4]" "[5]"))}</sup>
