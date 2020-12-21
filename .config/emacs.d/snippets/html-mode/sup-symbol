@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: sup_symbol
-# binding: C-c C-c C-o
-# --
-<sup style="color: ${1:$$(yas-choose-value '( "#BF616A" "#B48EAD" "#88C0D0"))}">${2:$$(yas-choose-value '("☠" "㋡" "SP"))}</sup>
