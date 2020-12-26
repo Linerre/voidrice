@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: ox-wf
+# key: oxe
+# --
+<section class="ox-extra">
+	<section class="ox-extra-heading">
+		<span><span style="color: #F08B6E">▼</span> Wordfinder</span>
+	</section>
+	<section class="ox-extra-cont">
+		<p>
+			<span style="font-weight: 600; color: #0069B4;">${1:word-1}</span>
+			<span style="color: #6F6F6F; padding: 0rem 0.25rem; font-weight: 600">•</span>
+		</p> 
+	</section>
+</section>

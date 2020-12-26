@@ -1,0 +1,28 @@
+# -*- mode: snippet -*-
+# name: ox-collocations
+# key: oxe
+# --
+<section class="ox-extra">
+	<section class="ox-extra-heading">
+		<span><span style="color: #F08B6E">▼</span> Collocations</span>
+	</section>
+	<section class="ox-extra-cont">
+		<!-- one section -->
+		<p class="ox-extra-col-cato">
+			${1:adjective}
+		</p>
+		<p style="margin-top: 0; margin-bottom: .5rem">
+		<span class="ox-extra-dot">•</span>
+		<span>alcohol${2:word}</span>
+		</p> 
+
+		<!-- another section -->
+		<p class="ox-extra-col-cato">
+			${3:verb}
+		</p>
+		<p style="margin-top: 0; margin-bottom: .5rem">
+		<span class="ox-extra-dot">•</span>
+		<span>${4:word}</span>
+		</p>
+	</section>
+</section>
