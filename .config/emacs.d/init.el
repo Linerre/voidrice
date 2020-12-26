@@ -129,11 +129,14 @@
 ;;; ----------------------------------------------------
 ;;; ------------------- COMPANY  -----------------------
 ;;; ----------------------------------------------------
-(global-company-mode t)
-(define-key company-active-map (kbd "<tab>") 'company-select-next)
+(use-package company
+  :init
+  (global-company-mode t)
+  (define-key company-active-map (kbd "<tab>") 'company-select-next)
 ;;(define-key company-active-map (kbd "<esc>") 'company-select-previous)
-(setq company-idle-delay 0.0
-      inhibit-startup-screen t)
+  :config
+  (setq company-idle-delay 0.0
+      inhibit-startup-screen t))
 
 ;;; ----------------------------------------------------
 ;;; ------------------- MISCHELLEOUS -------------------
@@ -433,6 +436,7 @@
 ;;; -------------------------------------------------------
 ;;; ---------------------- YASnippets ---------------------
 ;;; -------------------------------------------------------
+(use-package yasnippet)
 (setq yas-snippet-dirs
       ;; personal snippets
       '("~/.emacs.d/snippets"
@@ -441,8 +445,12 @@
 (yas-global-mode 1)
 (setq yas-prompt-functions '(yas-ido-prompt yas-x-prompt yas-completing-prompt))
 
-(add-hook 'sgml-mode-hook 'emmet-mode)
-(add-hook 'css-mode-hook  'emmet-mode)
+(use-package emmet-mode
+  :hook
+  ('sgml-mode-hook . 'emmet-mode)
+  ('css-mode-hook  'emmet-mode))
+
+
 
 
 ;;; ----------------------- INDENT ------------------------

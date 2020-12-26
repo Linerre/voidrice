@@ -1,0 +1,155 @@
+# -*- mode: snippet -*-
+# name: ox-c1
+# key: oxc
+# --
+<section class="ox-dict-frame">
+
+			<!-- dict name -->
+			<section class="ox-dict-band">
+				<span>
+					Oxford Advanced Learner's Dictionary
+				</span>
+			</section>
+
+			<!-- entry -->
+			<section class="ox-dict-content">
+
+				<!-- head word -->
+				<section class="ox-entry">
+					<section class="ox-headword">
+						<span>${1:headword}</span>
+					</section>
+					<section class="ox-pos">
+						<span>${2:pos}</span>
+					</section>
+				</section>
+
+				<!-- level icon -->
+				<section class="ox-level">
+		  		<svg width="40px" height="20px" viewBox="0 0 48 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    			<!-- Generator: Sketch 48 (47235) - http://www.bohemiancoding.com/sketch -->
+    			<title>ox5000_c1</title>
+    			<desc>Created with Sketch.</desc>
+    			<defs>
+        	<rect id="path-1" x="0" y="0" width="48" height="24" rx="12"/>
+    			</defs>
+    				<g id="entry-icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-609.000000, -264.000000)">
+        			<g id="ox5000_c1" transform="translate(609.000000, 264.000000)">
+            		<g id="Rectangle">
+                	<use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"/>
+                	<rect stroke="#1A3561" stroke-width="1" x="0.5" y="0.5" width="47" height="23" rx="11.5"/>
+            		</g>
+            		<circle id="Oval" fill="#1A3561" fill-rule="nonzero" cx="12" cy="12" r="12"/>
+            		<path d="M8.952,3.00128901 L12.744,3.00128901 C13.56,2.97728901 14.232,3.28928901 14.808,3.86528901 C15.384,4.44128901 15.672,5.16128901 15.672,5.97728901 C15.672,6.81728901 15.384,7.53728901 14.832,8.11328901 C14.256,8.68928901 13.56,8.97728901 12.768,9.00128901 L12.336,9.00128901 L12.336,13.945289 L16.32,13.921289 L16.344,15.913289 L14.664,15.913289 L14.664,17.785289 L16.344,17.785289 L16.344,19.777289 L9.48,19.801289 L9.456,9.00128901 L8.928,9.00128901 C8.136,9.00128901 7.44,8.71328901 6.864,8.16128901 C6.288,7.58528901 6,6.86528901 6,6.00128901 C6,5.18528901 6.288,4.48928901 6.864,3.88928901 C7.464,3.28928901 8.16,3.00128901 8.952,3.00128901 Z M9.336,4.80128901 C8.712,4.80128901 8.16,5.32928901 8.16,6.00128901 C8.16,6.64928901 8.688,7.20128901 9.336,7.20128901 L12.36,7.20128901 C13.032,7.20128901 13.536,6.62528901 13.536,5.97728901 C13.536,5.30528901 13.032,4.80128901 12.36,4.80128901 L9.336,4.80128901 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"/>
+            		<g id="Group" transform="translate(15.000000, 7.000000)" stroke="#FFFFFF" stroke-width="0.942857143">
+                	<path d="M3.82473146,3.88954954 L6.85714443,3.88954954 L6.85714443,4.68186647 L3.82473146,4.68186647 L3.82473146,7.71427944 L3.03241453,7.71427944 L3.03241453,4.68186647 L1.56947544e-06,4.68186647 L1.56947544e-06,3.88954954 L3.03241453,3.88954954 L3.03241453,0.857136579 L3.82473146,0.857136579 L3.82473146,3.88954954 Z" id="Combined-Shape"/>
+            		</g>
+            		<path d="M27,11.956 C27,8.532 29.144,6.5 31.832,6.5 C33.096,6.5 34.152,7.124 34.808,7.828 L33.768,8.98 C33.24,8.452 32.648,8.116 31.848,8.116 C30.12,8.116 28.904,9.556 28.904,11.908 C28.904,14.292 30.024,15.732 31.784,15.732 C32.712,15.732 33.384,15.348 33.976,14.692 L35.016,15.828 C34.168,16.804 33.064,17.348 31.752,17.348 C29.08,17.348 27,15.428 27,11.956 Z M36.2301176,17.156 L36.2301176,15.652 L38.5021176,15.652 L38.5021176,8.964 L36.6301176,8.964 L36.6301176,7.812 C37.6381176,7.62 38.3421176,7.364 38.9821176,6.98 L40.3581176,6.98 L40.3581176,15.652 L42.3581176,15.652 L42.3581176,17.156 L36.2301176,17.156 Z" id="C1" fill="#1A3561"/>
+        			</g>
+    				</g>
+					</svg>
+				</section>
+
+				<!-- phonetics -->
+				<section class="ox-phonetics">
+					<section class="phon-audio">
+						<svg width="23px" height="20px"
+							viewBox="0 0 31 28"
+							xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink">
+							<g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<g id="audio_#FFFFFF_off">
+									<g id="OLDNAmEaudio">
+										<path d="M29.8928571,28 L1.10714286,28 C0.498214286,28 0,27.496 0,26.88 L0,1.12 C0,0.504 0.498214286,0 1.10714286,0 L29.8928571,0 C30.5017857,0 31,0.504 31,1.12 L31,26.88 C31,27.496 30.5017857,28 29.8928571,28 Z" id="Shape"/>
+										<g id="Group" transform="translate(4.428571, 2.800000)">
+											<rect id="Rectangle-path" fill="#C91352" fill-rule="nonzero" x="0" y="7.224" width="5.14821429" height="8.484"/>
+											<polygon id="Shape" fill="#C91352" fill-rule="nonzero" points="3.21071429 7.252 3.21071429 15.708 11.2098214 22.484 11.2098214 22.484 11.2098214 0.112"/>
+												<g transform="translate(13.839286, 3.360000)" id="Shape" stroke="#C91352" stroke-linecap="round" stroke-width="1.68">
+													<path d="M0.166071429,4.76 C0.166071429,4.76 1.85446429,5.908 1.85446429,8.232 C1.85446429,10.556 0.166071429,11.452 0.166071429,11.452"/>
+													<path d="M2.325,2.632 C2.325,2.632 4.73303571,4.312 4.73303571,8.064 C4.73303571,11.452 1.68839286,14.224 1.68839286,14.224"/>
+													<path d="M4.06875,0.224 C4.06875,0.224 7.58392857,2.968 7.58392857,8.092 C7.58392857,12.908 3.57053571,16.492 3.57053571,16.492"/>
+												</g>
+										</g>
+									</g>
+								</g>
+							</g>
+						</svg>
+					</section>
+					<section class="ox-phon">
+						<span>${3:pron}</span>
+					</section>
+				</section>
+		
+				<!-- sense -->
+				<section class="ox-sense">
+					<section class="ox-sense-num">
+						<span>${4:sense-num}</span>
+					</section>
+					<section class="ox-sense-specs">
+						<svg width="36px" height="18px" viewBox="0 0 48 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  						<!-- Generator: Sketch 48 (47235) - http://www.bohemiancoding.com/sketch -->
+  						<title>ox5000_c1</title>
+  						<desc>Created with Sketch.</desc>
+							<defs>
+							  <rect id="path-1" x="0" y="0" width="48" height="24" rx="12"/>
+							</defs>
+							<g id="entry-icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-609.000000, -264.000000)">
+        				<g id="ox5000_c1" transform="translate(609.000000, 264.000000)">
+            			<g id="Rectangle">
+				            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"/>
+				            <rect stroke="#1A3561" stroke-width="1" x="0.5" y="0.5" width="47" height="23" rx="11.5"/>
+            			</g>
+            			<circle id="Oval" fill="#1A3561" fill-rule="nonzero" cx="12" cy="12" r="12"/>
+            			<path d="M8.952,3.00128901 L12.744,3.00128901 C13.56,2.97728901 14.232,3.28928901 14.808,3.86528901 C15.384,4.44128901 15.672,5.16128901 15.672,5.97728901 C15.672,6.81728901 15.384,7.53728901 14.832,8.11328901 C14.256,8.68928901 13.56,8.97728901 12.768,9.00128901 L12.336,9.00128901 L12.336,13.945289 L16.32,13.921289 L16.344,15.913289 L14.664,15.913289 L14.664,17.785289 L16.344,17.785289 L16.344,19.777289 L9.48,19.801289 L9.456,9.00128901 L8.928,9.00128901 C8.136,9.00128901 7.44,8.71328901 6.864,8.16128901 C6.288,7.58528901 6,6.86528901 6,6.00128901 C6,5.18528901 6.288,4.48928901 6.864,3.88928901 C7.464,3.28928901 8.16,3.00128901 8.952,3.00128901 Z M9.336,4.80128901 C8.712,4.80128901 8.16,5.32928901 8.16,6.00128901 C8.16,6.64928901 8.688,7.20128901 9.336,7.20128901 L12.36,7.20128901 C13.032,7.20128901 13.536,6.62528901 13.536,5.97728901 C13.536,5.30528901 13.032,4.80128901 12.36,4.80128901 L9.336,4.80128901 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"/>
+            			<g id="Group" transform="translate(15.000000, 7.000000)" stroke="#FFFFFF" stroke-width="0.942857143">
+                		<path d="M3.82473146,3.88954954 L6.85714443,3.88954954 L6.85714443,4.68186647 L3.82473146,4.68186647 L3.82473146,7.71427944 L3.03241453,7.71427944 L3.03241453,4.68186647 L1.56947544e-06,4.68186647 L1.56947544e-06,3.88954954 L3.03241453,3.88954954 L3.03241453,0.857136579 L3.82473146,0.857136579 L3.82473146,3.88954954 Z" id="Combined-Shape"/>
+            			</g>
+            			<path d="M27,11.956 C27,8.532 29.144,6.5 31.832,6.5 C33.096,6.5 34.152,7.124 34.808,7.828 L33.768,8.98 C33.24,8.452 32.648,8.116 31.848,8.116 C30.12,8.116 28.904,9.556 28.904,11.908 C28.904,14.292 30.024,15.732 31.784,15.732 C32.712,15.732 33.384,15.348 33.976,14.692 L35.016,15.828 C34.168,16.804 33.064,17.348 31.752,17.348 C29.08,17.348 27,15.428 27,11.956 Z M36.2301176,17.156 L36.2301176,15.652 L38.5021176,15.652 L38.5021176,8.964 L36.6301176,8.964 L36.6301176,7.812 C37.6381176,7.62 38.3421176,7.364 38.9821176,6.98 L40.3581176,6.98 L40.3581176,15.652 L42.3581176,15.652 L42.3581176,17.156 L36.2301176,17.156 Z" id="C1" fill="#1A3561"/>
+        				</g>
+    					</g>
+						</svg>
+						<!-- optionsla sensetop -->
+						<span class="ox-sensetop">
+						      ${5:topsense}
+						</span>
+						<!-- optional grammar -->
+						<span class="ox-sense-gram">
+							${6:grammar}
+						</span>
+						<span class="ox-sense-def">
+    						${7:def}
+    				</span>
+    				<!-- optional syns -->
+						
+					</section>
+				</section>
+				
+				<!-- exmaple -->
+				<section class="ox-examples">
+						<ul class="ox-example">
+							<li>${8:eg}</li>
+						</ul>
+				</section>
+
+				<!-- optional see-also -->
+				
+				<!-- optional collocations -->
+
+				<!-- optional extra example -->
+
+			        <!-- word origin -->
+				<section class="ox-extra">
+					<section class="ox-extra-heading">
+						<span>
+							<span style="color: #F08B6E">▼</span> Word Origin
+						</span>
+					</section>
+					<section class="ox-extra-cont">
+						<p>
+						${9:word-origin}
+						</p>
+					</section>
+				</section>
+			</section>
+
+		</section>
