@@ -55,56 +55,49 @@
 
       <!-- sense  -->
       <section class="ox-sense">
-      <section class="ox-sense-num">
-        <span>${4:sense-num}</span>
+        <section class="ox-sense-num">
+          <span>${4:sense-num}</span>
+        </section>
+        <section class="ox-sense-specs">
+
+         <!-- ox-def-gram: to align def and syn sections -->
+          <section class="ox-def-gram">
+   	    <!-- optional sensetop -->
+
+	    <!-- optional grammar -->
+	     <span class="ox-sense-gram">${5:grammar}</span>
+	     <span class="ox-sense-def">${6:def}</span>
+	   </section>
+
+	   <!-- optional synonyms -->			
+        </section>
       </section>
-	    		<section class="ox-sense-specs">
-	    			<!-- ox-def-gram: to align def and syn sections -->
-	    			<section class="ox-def-gram">
-	    				<!-- optional sensetop -->
-	    				
-	    				<!-- optional grammar -->
-	    				<span class="ox-sense-gram">
-	    					${5:grammar}
-	    				</span>
-	    				<span class="ox-sense-def">
-	    					${6:def}
-	    				</span>
-	    			</section>
-	    			<!-- optional synonyms -->
-				
-	    		</section>
-				</section>
-				
-				<!-- exmaples -->
-				<section class="ox-examples">
-	      	<ul class="ox-example">
-	      		<li>${7:eg}</li>
-	      	</ul>
-	    	</section>
 
-	    	<!-- optional topics section-->
-	    	
+      <!-- exmaples -->
+      <section class="ox-examples">
+        <ul class="ox-example">
+          <li>${7:eg}</li>
+	</ul>
+      </section>
 
-	      <!-- optional wordfinder exmaples -->
-	      
+      <!-- optional topics section-->
 
-	      <!-- optional collocation -->
-	      
+      <!-- optional wordfinder exmaples -->
 
-	      <!-- optional extra example -->
-	     
+      <!-- optional collocation -->
 
-	      <!-- word origin -->
-			  <section class="ox-extra">
-			    <section class="ox-extra-heading">
-			      <span><span style="color: #F08B6E">▼</span> Word Origin</span>
-			    </section>
-			    <section class="ox-extra-cont">
-			    	<p>
-			     ${8:word-origin}
-			    	</p>
-			    </section>
-			  </section>
+      <!-- optional extra example -->
 
-   </section>
+      <!-- word origin -->
+      <section class="ox-extra">
+        <section class="ox-extra-heading">
+	  <span><span style="color: #F08B6E">▼</span> Word Origin</span>
+	</section>
+	<section class="ox-extra-cont">
+	  <p>
+	    ${8:word-origin}
+	  </p>
+	</section>
+      </section>
+
+</section>
