@@ -4,15 +4,18 @@
 # the intervals controlled by dwmblocks in blocks.h file
 
 
-sta=$( acpi | sed -r 's/Battery [0-9]: //;s/.*[Dd]ischarging, //;s/[Cc]harging, //;s/[Ff]ull, //;s/([0-9][0-9])%.*/\1/;s/[0-9]{2}:.*//' )
+sta_str=$( acpi | sed -r 's/Battery [0-9]: //;s/.*[Dd]ischarging, //;s/[Cc]harging, //;s/[Ff]ull, //;s/([0-9][0-9])%.*/\1/;s/[0-9]{2}:.*//' )
 
-[[ "$sta" > "90" ]] && echo -e "\uf240 " ${sta}%
-[[ "$sta" > "75" ]] && echo -e "\uf241 " ${sta}%
-[[ "$sta" > "50" ]] && echo -e "\uf242 " ${sta}%
-[[ "$sta" = "50" ]] && echo -e "\uf242 " ${sta}%
-[[ "$sta" > "20" ]] && echo -e "\uf243 " ${sta}%
-[[ "$sta" = "20" ]] && echo -e "\uf243 " ${sta}%
-[[ "$sta" < "20" ]] && echo -e "\uf244 " ${sta}%
- exit 0
+# convert status string to a integer
+sta=$(( sta_str + 0))
+[[ $sta -gt 90 ]] && echo -e "\uf240" ${sta}%
+[[ $sta -gt 75 ]] && [[ $sta -le 90 ]] && echo -e "\uf241" ${sta}%
+[[ $sta -gt 50 ]] && [[ $sta -le 75 ]] && echo -e "\uf242" ${sta}%
+[[ $sta -eq 50 ]] && echo -e "\uf242" ${sta}%
+[[ $sta -gt 20 ]] && [[ $sta -lt 50 ]] && echo -e "\uf243" ${sta}%
+[[ $sta -eq 20 ]] && echo -e "\uf243" ${sta}%
+[[ $sta < 20 ]] && echo -e "\uf244" ${sta}%
+
+exit 0
 
   
