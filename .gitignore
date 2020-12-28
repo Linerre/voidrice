@@ -8,6 +8,7 @@
 .config/configstore
 .local/lib/
 .local/include/
+.local/bin/dropbox.py
 
 
 .netrwhist
