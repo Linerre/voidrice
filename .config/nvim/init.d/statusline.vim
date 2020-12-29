@@ -5,8 +5,8 @@
 set statusline=
 
 " left side
-set statusline+=%1*\ [B-%.2n]\ %*
-set statusline+=%2*\ %t\ %*
+" set statusline+=%1*\ [B-%.2n]\ %*
+set statusline+=%2*\ %F\ %*
 set statusline+=\ %m 
 
 " right side
