@@ -27,7 +27,8 @@ set termguicolors
 " let &t_8b = \"\<Esc>[48;2;%lu;%lu;%lum"
 
 set background=dark    " Setting dark mode
-colorscheme deus
+colorscheme gruvbox
+"colorscheme deus
 let g:deus_termcolors=256
 
 " terminal colors

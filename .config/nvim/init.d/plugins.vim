@@ -4,6 +4,7 @@ Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
 Plug 'lervag/vimtex'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'morhetz/gruvbox'
 Plug 'ajmwagar/vim-deus'
 Plug 'honza/vim-snippets'
 Plug 'Yggdroot/indentLine'
