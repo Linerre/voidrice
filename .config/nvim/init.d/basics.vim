@@ -13,7 +13,6 @@ set numberwidth=4
 set textwidth=90
 set autoindent
 set wildmode=longest,list
-set cc=80
 set nohlsearch
 set clipboard+=unnamedplus
 
@@ -28,8 +27,14 @@ set termguicolors
 
 set background=dark    " Setting dark mode
 colorscheme gruvbox
+
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
+
+
 "colorscheme deus
-let g:deus_termcolors=256
+"let g:deus_termcolors=256
 
 " terminal colors
 let g:terminal_color_0  ='#000000'
