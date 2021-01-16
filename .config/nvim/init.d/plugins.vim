@@ -12,6 +12,7 @@ Plug 'honza/vim-snippets'
 Plug 'Yggdroot/indentLine'
 Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-fugitive'
+Plug 'lepture/vim-jinja'
 Plug 'ryanoasis/vim-devicons'
 Plug 'bagrat/vim-buffet'
 call plug#end()
