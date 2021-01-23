@@ -10,8 +10,10 @@ let g:coc_global_extensions = [
 	\ 'coc-vimtex',
 	\ 'coc-vimlsp',
 	\ 'coc-powershell',
-	\ 'coc-python',
-	\ 'coc-tabnine'
+	\ 'coc-pyright',
+	\ 'coc-tabnine',
+	\ 'coc-tesserver',
+	\ 'coc-snippets'
 \]
 "
 " Use tab for trigger completion with characters ahead and navigate.
