@@ -67,7 +67,7 @@
 ;; set font
 (add-to-list 'default-frame-alist
 	     ;;'(font . "FiraCode Nerd Font Mono-13:Medium")
-	     '(font . "Monaco-13"))
+	     '(font . "Monaco-16"))
 
 ;; show week number in calendar view
 (setq calendar-intermonth-text
