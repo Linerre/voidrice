@@ -12,7 +12,7 @@ let g:coc_global_extensions = [
 	\ 'coc-powershell',
 	\ 'coc-pyright',
 	\ 'coc-tabnine',
-	\ 'coc-tesserver',
+	\ 'coc-tsserver',
 	\ 'coc-snippets'
 \]
 "
