@@ -97,7 +97,7 @@
 
 (defun open-longreads-dir()
   (interactive)
-  (find-file "~/Projects/gitty/wechat"))
+  (find-file "~/projects/gitty/wechat"))
 (global-set-key (kbd "<f5>") 'open-longreads-dir)
   
 ;; open recent files
