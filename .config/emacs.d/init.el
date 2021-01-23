@@ -447,8 +447,8 @@
 
 (use-package emmet-mode
   :hook
-  ('sgml-mode-hook . 'emmet-mode)
-  ('css-mode-hook  'emmet-mode))
+  (sgml-mode . emmet-mode)
+  (css-mode  . emmet-mode))
 
 
 
