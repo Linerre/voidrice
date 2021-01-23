@@ -1,0 +1,9 @@
+[user]
+	name = Linerre
+	email = leon.errelin@outlook.com
+[alias]
+	st = status
+	cm = commit
+	br = branch
+[core]
+	editor = nvim
