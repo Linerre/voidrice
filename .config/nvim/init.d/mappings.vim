@@ -1,5 +1,5 @@
 " Key mappings
-let mapleader = ','
+let mapleader = '\'
 
 noremap <silent> <Leader>ev :vsplit $MYVIMRC<CR>
 noremap <silent> <Leader>sv :source $MYVIMRC<CR>
@@ -8,8 +8,6 @@ noremap <silent> <Leader>vn :vsplit     "split to a new file
 
 noremap <silent> <C-s> :w<Esc>
 inoremap <silent> <C-s> :w<Esc>
-inoremap jk <Esc>
-vnoremap jk <Esc> 
 
 inoremap [ []<Esc>i
 inoremap ( ()<Esc>i
