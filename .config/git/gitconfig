@@ -7,3 +7,6 @@
 	br = branch
 [core]
 	editor = nvim
+[pull]
+	ff = only
+	rebase = false
