@@ -19,14 +19,16 @@ set clipboard+=unnamedplus
 "syntax on
 filetype plugin indent on
 
-"set t_Co=256
-" set termguicolors
+""set t_Co=256
 
-" let &t_8f = \"\<Esc>[38;2;%lu;%lu;%lum"
-" let &t_8b = \"\<Esc>[48;2;%lu;%lu;%lum"
+" below two lines only necessary when using xterm
+"let &t_8f = \"\<Esc>[38;2;%lu;%lu;%lum"
+"let &t_8b = \"\<Esc>[48;2;%lu;%lu;%lum"
 
 set background=dark    " Setting dark mode
 colorscheme gruvbox
+
+"set termguicolors
 
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
