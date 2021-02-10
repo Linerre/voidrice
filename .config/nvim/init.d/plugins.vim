@@ -1,5 +1,5 @@
 " Plugins
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/.local/nvim/site/plugged')
 Plug 'tpope/vim-surround'
 Plug 'vimwiki/vimwiki'
 Plug 'lervag/vimtex'
