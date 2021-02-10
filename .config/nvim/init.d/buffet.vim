@@ -11,4 +11,3 @@ function! g:BuffetSetCustomColors()
 endfunction
 
 
-

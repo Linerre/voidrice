@@ -25,10 +25,12 @@ filetype plugin indent on
 "let &t_8f = \"\<Esc>[38;2;%lu;%lu;%lum"
 "let &t_8b = \"\<Esc>[48;2;%lu;%lu;%lum"
 
-set background=dark    " Setting dark mode
 colorscheme gruvbox
+set background=dark    " Setting dark mode
 
-"set termguicolors
+" This line is important, see 
+" https://github.com/morhetz/gruvbox/wiki/Terminal-specific#0-recommended-neovimvim-true-color-support
+set termguicolors
 
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
