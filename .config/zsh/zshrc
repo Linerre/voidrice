@@ -1,3 +1,16 @@
+###########################
+# Zshrc 0.0.1
+# by Errelin
+###########################
+
+
+# prompt
+if [ $(whoami) = 'leon' ]; then
+	PROMPT='%F{green}%n%f %~ '
+else
+	PROMPT='%F{red}%n%f %~ '
+fi
+
 # export MANPATH="/usr/local/man:$MANPATH"
 export XDG_CONFIG_HOME="$HOME/voidrice/.config/"
 export PATH="$PATH:$HOME/.local/bin"
