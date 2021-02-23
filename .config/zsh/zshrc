@@ -6,7 +6,7 @@
 
 # prompt
 if [ $(whoami) = 'leon' ]; then
-	PROMPT='%F{green}%n%f %~ '
+	PROMPT=' %F{green}%~ %f'
 else
 	PROMPT='%F{red}%n%f %~ '
 fi
