@@ -42,18 +42,25 @@ fi
 # export XMODIFIERS=@im=fcitx
 
 # Compositor
-picom --config $HOME/.config/picom/picom.conf &
+picom --config ${HOME}/.config/picom/picom.conf &
 
 # wallpaper
-~/.fehbg &
+feh --no-fehbg --bg-scale ${HOME}/Pictures/wallpaper/japan1.jpg &
+
+# xbindkeys
+xbindkeys &
 
 # dwm blocks
 dwmblocks &
 
 # loop
-while true; do
+while :; do
 	dwm > /dev/null 2>&1
 done
 
-# Execute dwm
+
+## Execute dwm
 exec dwm
+
+# Execute awesome
+#exec awesome
