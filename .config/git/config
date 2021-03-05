@@ -5,6 +5,7 @@
 	st = status
 	cm = commit
 	br = branch
+	sw = switch
 [core]
 	editor = nvim
 [pull]
