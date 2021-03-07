@@ -50,17 +50,11 @@ feh --no-fehbg --bg-scale ${HOME}/Pictures/wallpaper/japan1.jpg &
 # xbindkeys
 xbindkeys &
 
-# dwm blocks
-dwmblocks &
-
-# loop
-while :; do
-	dwm > /dev/null 2>&1
-done
-
 
 ## Execute dwm
-exec dwm
+sxhkd &
+st &
+exec bspwm
 
 # Execute awesome
 #exec awesome
