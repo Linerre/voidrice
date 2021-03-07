@@ -1,4 +1,2 @@
-sxhkd &
-#xterm -bg black -fg white &
-st &
-bspwm
+#!/usr/bin/env bash
+source $HOME/.xinitrc
