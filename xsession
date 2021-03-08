@@ -1,2 +1,2 @@
-#!/usr/bin/env bash
-source $HOME/.xinitrc
+#!/usr/local/bin/env bash
+. ~/.xinitrc

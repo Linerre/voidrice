@@ -48,7 +48,7 @@ picom --config ${HOME}/.config/picom/picom.conf &
 feh --no-fehbg --bg-scale ${HOME}/Pictures/wallpaper/japan1.jpg &
 
 # xbindkeys
-xbindkeys &
+#xbindkeys &
 
 
 ## Execute dwm
