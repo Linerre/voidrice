@@ -13,7 +13,7 @@ fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 #export XDG_CONFIG_HOME="$HOME/voidrice/.config/"
-export PATH="$PATH:$HOME/.local/bin"
+export PATH=$HOME/.local/bin:$PATH
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
