@@ -6,37 +6,25 @@
 
 # prompt
 if [ $(whoami) = 'leon' ]; then
-	PROMPT=' %F{green}%~ %f'
+	PS1="%F{magenta}> %f"
+    PS2="%F{yellow}>> %f"
+    RPS1="%(?..(%?%)) %B%F{green}%3c %f%b"
 else
-	PROMPT='%F{red}%n%f %~ '
+	PS1="%F{red}%n%f %~ "
+    PS2="%F{yellow}>> %f"
+    RPS1="%(?..(%?%))"
 fi
 
+autoload -U promptinit
+promptinit
+
+
+# some paths moved to zshenv
 # export MANPATH="/usr/local/man:$MANPATH"
-#export XDG_CONFIG_HOME="$HOME/voidrice/.config/"
-export PATH=$HOME/.local/bin:$PATH
+# export XDG_CONFIG_HOME="$HOME/voidrice/.config/"
+# export PATH=$HOME/.local/bin:$PATH
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
 # Utilities
 alias sx="startx"
 
@@ -92,3 +80,6 @@ alias emacs="emacs -nw"
 alias dropsync="dropbox.py start"
 alias dropshut="dropbox.py stop"
 alias dropst="dropbox.py status"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
