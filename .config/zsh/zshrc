@@ -16,11 +16,11 @@ else
 fi
 
 # options
-# autoload -U promptinit
-# promptinit
+setopt AUTO_CD
+setopt HIST_VERIFY
 
-setopt autocd
-
+# keybindings
+bindkey -e
 
 # some paths moved to zshenv
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -38,6 +38,9 @@ hash -d bks=$HOME/Documents/books/
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
+# filter history 
+alias hg='history | grep -i'
 
 # Utilities
 alias sx="startx"
