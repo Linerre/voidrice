@@ -15,14 +15,21 @@ else
     RPS1="%(?..(%?%))"
 fi
 
-autoload -U promptinit
-promptinit
+# options
+# autoload -U promptinit
+# promptinit
 
 
 # some paths moved to zshenv
 # export MANPATH="/usr/local/man:$MANPATH"
 # export XDG_CONFIG_HOME="$HOME/voidrice/.config/"
 # export PATH=$HOME/.local/bin:$PATH
+#
+
+# Hash
+hash -d dotfiles=$HOME/projetcs/voidrice
+hash -d suckless=$HOME/projetcs/suckless
+hash -d bks=$HOME/Documents/books
 
 
 # Utilities
@@ -40,8 +47,6 @@ if [ -d /etc/xbps.d ]; then
 		alias unins="sudo xbps-remove -R"
 		alias sch="xbps-query -R"
 		alias lpk="xbps-query -l"
-		alias br="brightnessctl -d intel_backlight s +10%"
-		alias dr="brightnessctl -d intel_backlight s 10%-"
 
 fi
 
@@ -51,8 +56,6 @@ if [ -d /etc/pacman.d ]; then
 		alias unins="sudo pacman -Rns"
 		alias sch="pacman -Ss"
 		alias lpk="pacman -Qi"
-		alias br="xbacklight -inc 10"
-		alias dr="xbacklight -dec 10"
 fi
 
 # open, source dotfiles 
@@ -62,11 +65,14 @@ alias nr="nvim ~/.config/nvim/init.vim"
 alias nvr="nvim ~/.vimrc"
 
 # cmd shorthands
-alias ll="ls -al"
-alias logout="pkill -KILL -u leon"
+alias ls="ls --color=auto"
+alias ll="ls -alh"
+alias la="ls -a"
+alias lla="ls -alhF"
+#alias logout="pkill -KILL -u leon"
 
 # git
-alias pa="git push origin main"
+#alias pa="git push origin main"
 
 
 # texlive
@@ -80,6 +86,5 @@ alias emacs="emacs -nw"
 alias dropsync="dropbox.py start"
 alias dropshut="dropbox.py stop"
 alias dropst="dropbox.py status"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+
+alias za='zathura'
