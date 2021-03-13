@@ -29,9 +29,9 @@ setopt autocd
 #
 
 # Hash
-hash -d dotfiles=$HOME/projetcs/voidrice
-hash -d suckless=$HOME/projetcs/suckless
-hash -d bks=$HOME/Documents/books
+hash -d dotfiles=$HOME/projetcs/voidrice/
+hash -d suckless=$HOME/projetcs/suckless/
+hash -d bks=$HOME/Documents/books/
 
 
 # moving
