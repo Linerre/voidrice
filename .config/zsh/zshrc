@@ -19,6 +19,8 @@ fi
 # autoload -U promptinit
 # promptinit
 
+setopt autocd
+
 
 # some paths moved to zshenv
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -31,6 +33,11 @@ hash -d dotfiles=$HOME/projetcs/voidrice
 hash -d suckless=$HOME/projetcs/suckless
 hash -d bks=$HOME/Documents/books
 
+
+# moving
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 # Utilities
 alias sx="startx"
