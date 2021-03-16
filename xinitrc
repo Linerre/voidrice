@@ -45,7 +45,7 @@ fi
 picom --config ${HOME}/.config/picom/picom.conf &
 
 # wallpaper
-feh --no-fehbg --bg-scale ${HOME}/Pictures/wallpaper/japan1.jpg &
+feh --no-fehbg --bg-scale ${HOME}/Pictures/wallpaper/cyberpunk2.jpg &
 
 # xbindkeys
 xbindkeys &
