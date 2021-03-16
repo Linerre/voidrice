@@ -22,13 +22,6 @@ setopt HIST_VERIFY
 # keybindings
 bindkey -e
 
-# some paths moved to zshenv
-# export MANPATH="/usr/local/man:$MANPATH"
-# export XDG_CONFIG_HOME="$HOME/voidrice/.config/"
-# export PATH=$HOME/.local/bin:$PATH
-# remove duplicate entried from $PATH 
-# since zsh has a $path array to manupilate all paths
-typeset -U PATH path
 
 # Hash
 hash -d dotfiles=$HOME/projetcs/voidrice/

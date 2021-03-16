@@ -5,7 +5,14 @@
 export EDITOR=nvim
 export PAGER=less
 
-export ZDOTDIR=$HOME/projects/voidrice/.config
+# remove duplicate entried from $PATH 
+# since zsh has a $path array to manupilate all paths
+typeset -U PATH path
+
+export MANPATH="/usr/local/man:$MANPATH"
+# export XDG_CONFIG_HOME="$HOME/voidrice/.config/"
+export PATH=$HOME/.local/bin:$PATH
+# export ZDOTDIR=$HOME/projects/voidrice/.config
 
 # user compiled python as default python
 export PATH=$HOME/python/bin:$PATH
