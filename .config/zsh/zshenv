@@ -5,6 +5,7 @@
 export EDITOR=nvim
 export PAGER=less
 
+export ZDOTDIR=$HOME/projects/voidrice/.config
 
 # user compiled python as default python
 export PATH=$HOME/python/bin:$PATH
