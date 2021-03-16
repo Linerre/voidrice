@@ -4,6 +4,7 @@
 #
 export EDITOR=nvim
 export PAGER=less
+export XDG_CONFIG_HOME=$HOME/.config
 
 
 # user compiled python as default python
