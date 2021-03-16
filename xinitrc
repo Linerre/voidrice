@@ -45,10 +45,10 @@ fi
 picom --config ${HOME}/.config/picom/picom.conf &
 
 # wallpaper
-feh --no-fehbg --bg-scale ${HOME}/Pictures/wallpaper/japan1.jpg &
+feh --no-fehbg --bg-scale ${HOME}/Pictures/wallpaper/japan-bsd.jpg &
 
 # xbindkeys
-xbindkeys &
+#xbindkeys &
 
 # dwm blocks
 dwmblocks &

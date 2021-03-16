@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+# Get Wifi connection signal level for dwmblocks
+# using cmd `awk` and file `/proc/net/wireless` as below
+#Inter-| sta-|   Quality        |   Discarded packets               | Missed | WE
+# face | tus | link level noise |  nwid  crypt   frag  retry   misc | beacon | 22
+#wlp1s0: 0000   63.  -47.  -256        0      0      0      0     10        0
+
+case "$(cat /sys/class/net/w*/operstate 2>/dev/null)" in
+	down) wifiicon="睊" ;;
+	up) wifiicon="$(awk '/^\s*w/ {print " ", int($3 * 100 / 70) "%"}' /proc/net/wireless)" ;;
+esac
+
+printf "%s" "$wifiicon"
+	
