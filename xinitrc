@@ -51,7 +51,7 @@ feh --no-fehbg --bg-scale ${HOME}/Pictures/wallpaper/japan-bsd.jpg &
 #xbindkeys &
 
 # dwm blocks
-#dwmblocks &
+dwmblocks &
 
 # loop
 while :; do

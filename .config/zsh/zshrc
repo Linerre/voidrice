@@ -6,37 +6,42 @@
 
 # prompt
 if [ $(whoami) = 'leon' ]; then
-	PROMPT=' %F{green}%~ %f'
+	PS1="%F{magenta}> %f"
+    PS2="%F{yellow}>> %f"
+    RPS1="%(?..(%?%)) %B%F{green}%3c %f%b"
 else
-	PROMPT='%F{red}%n%f %~ '
+	PS1="%F{red}%n%f %~ "
+    PS2="%F{yellow}>> %f"
+    RPS1="%(?..(%?%))"
 fi
 
+# options
+setopt AUTO_CD
+setopt HIST_VERIFY
+
+# keybindings
+bindkey -e
+
+# some paths moved to zshenv
 # export MANPATH="/usr/local/man:$MANPATH"
-#export XDG_CONFIG_HOME="$HOME/voidrice/.config/"
-export PATH="$PATH:$HOME/.local/bin"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
+# export XDG_CONFIG_HOME="$HOME/voidrice/.config/"
+# export PATH=$HOME/.local/bin:$PATH
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
+
+# Hash
+hash -d dotfiles=$HOME/projetcs/voidrice/
+hash -d suckless=$HOME/projetcs/suckless/
+hash -d bks=$HOME/Documents/books/
+
+
+# moving
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# filter history 
+alias hg='history | grep -i'
+
 # Utilities
 alias sx="startx"
 
@@ -52,8 +57,6 @@ if [ -d /etc/xbps.d ]; then
 		alias unins="sudo xbps-remove -R"
 		alias sch="xbps-query -R"
 		alias lpk="xbps-query -l"
-		alias br="brightnessctl -d intel_backlight s +10%"
-		alias dr="brightnessctl -d intel_backlight s 10%-"
 
 fi
 
@@ -63,8 +66,6 @@ if [ -d /etc/pacman.d ]; then
 		alias unins="sudo pacman -Rns"
 		alias sch="pacman -Ss"
 		alias lpk="pacman -Qi"
-		alias br="xbacklight -inc 10"
-		alias dr="xbacklight -dec 10"
 fi
 
 # open, source dotfiles 
@@ -74,11 +75,14 @@ alias nr="nvim ~/.config/nvim/init.vim"
 alias nvr="nvim ~/.vimrc"
 
 # cmd shorthands
-alias ll="ls -al"
-alias logout="pkill -KILL -u leon"
+alias ls="ls --color=auto"
+alias ll="ls -alh"
+alias la="ls -a"
+alias lla="ls -alhF"
+#alias logout="pkill -KILL -u leon"
 
 # git
-alias pa="git push origin main"
+#alias pa="git push origin main"
 
 
 # texlive
@@ -92,3 +96,5 @@ alias emacs="emacs -nw"
 alias dropsync="dropbox.py start"
 alias dropshut="dropbox.py stop"
 alias dropst="dropbox.py status"
+
+alias za='zathura'

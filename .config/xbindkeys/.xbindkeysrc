@@ -1,0 +1,31 @@
+# For the benefit of emacs users: -*- shell-script -*-
+###########################
+# xbindkeys configuration #
+###########################
+#
+
+# Toggle Mute
+"amixer set Master toggle && pkill -RTMIN+11 dwmblocks"
+   m:0x0 + c:67
+
+# Decrease volume by 5%: Fn + F2
+"amixer set Master 5%- && pkill -RTMIN+11 dwmblocks"
+   m:0x0 + c:68 
+
+# Increase Volume by 5%: Fn + F3
+"amixer set Master 5%+ && pkill -RTMIN+11 dwmblocks"
+   m:0x0 + c:69
+
+
+# Decrease brightness by 5%: Fn + F5
+#"brightnessctl -d amdgpu_bl0 set 10%-"
+#   m:0x0 + c:151 + m:0x0 + c:71
+
+"brightnessctl -d amdgpu_bl0 set 5%-"
+   m:0x0 +  c:71
+# Increase brightness by 5%: Fn + F6
+"brightnessctl -d amdgpu_bl0 set +5%"
+   m:0x0 +  c:72
+##################################
+# End of xbindkeys configuration #
+##################################
