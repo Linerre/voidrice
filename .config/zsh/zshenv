@@ -4,7 +4,12 @@
 #
 export EDITOR=nvim
 export PAGER=less
-export XDG_CONFIG_HOME=$HOME/.config
+# export XDG_CONFIG_HOME=$HOME/.config
+
+
+# remove duplicat entries from $PATH
+# zsh uses $path array along with $PATH 
+typeset -U PATH path
 
 
 # user compiled python as default python
