@@ -1,4 +1,4 @@
-# ignore rules as follows
+# ignoring rules as follows
 .local/share/nvim/
 .local/share/ranger/
 .config/ranger/commands*

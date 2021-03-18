@@ -1,0 +1,6 @@
+#/usr/bin/env sh
+
+# This script get date and time
+
+date "+%b-%d %a %I:%M%p"
+
