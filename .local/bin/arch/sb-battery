@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+
+# Just BAT0 and AC there
+battery=/sys/class/power_supply/BAT0
+
+case "$(cat "$battery/status")" in
+	"Full") status="" ;;
+	"Discharging") status="" ;;
+	"Charging") status="" ;;
+	"Not charging") status="" ;;
+	"Unknow" ) status="" ;;
+esac
+
+capacity=$(cat "$battery/capacity")
+
+# echo $capacity
+
+if [ "$status" = "" ]; then
+	[ "$capacity" -ge 90 ] && printf "%s %d%%" "" "$capacity" && exit 0
+	[ "$capacity" -ge 80 ] && printf "%s %d%%" "" "$capacity" && exit 0
+	[ "$capacity" -ge 70 ] && printf "%s %d%%" "" "$capacity" && exit 0
+	[ "$capacity" -ge 60 ] && printf "%s %d%%" "" "$capacity" && exit 0
+	[ "$capacity" -ge 50 ] && printf "%s %d%%" "" "$capacity" && exit 0
+	[ "$capacity" -ge 40 ] && printf "%s %d%%" "" "$capacity" && exit 0
+	[ "$capacity" -ge 30 ] && printf "%s %d%%" "" "$capacity" && exit 0
+	[ "$capacity" -ge 20 ] && printf "%s %d%%" "" "$capacity" && exit 0
+	[ "$capacity" -ge 10 ] && printf "%s %d%%" "" "$capacity" && exit 0
+	[ "$capacity" -lt 10 ] && printf "%s %d%%" "" "$capacity" && exit 0
+elif [ "$status" = "" ]; then
+	printf "%s %d%%" "" "$capacity" && exit 0
+elif [ "$status" = "" ]; then
+	printf "%s %d%%" "" "$capacity" && exit 0
+fi
+
