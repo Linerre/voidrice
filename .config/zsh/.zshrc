@@ -47,25 +47,26 @@ alias rr="ranger"
 alias em="emacs -nw"
 # pacman or xbps
 if [ -d /etc/xbps.d ]; then
-		alias ins="sudo xbps-install -S"
-		alias upd="sudo xbps-install -Sy"
-		alias unins="sudo xbps-remove -R"
-		alias sch="xbps-query -R"
-		alias lpk="xbps-query -l"
+		alias xi="sudo xbps-install -S"
+		alias xu="sudo xbps-install -Su"
+		alias xr="sudo xbps-remove -R"
+		alias xq="xbps-query -R"
+		alias xql="xbps-query -l"
 
 fi
 
 if [ -d /etc/pacman.d ]; then
-		alias ins="sudo pacman -S"
-		alias upd="sudo pacman -Sy"
-		alias unins="sudo pacman -Rns"
-		alias sch="pacman -Ss"
-		alias lpk="pacman -Qi"
+		alias pi="sudo pacman -S"
+		alias pu="sudo pacman -Sy"
+		alias pr="sudo pacman -Rns"
+		alias ps="pacman -Ss"
+		alias psq="pacman -Qi"
 fi
 
 # open, source dotfiles 
-alias nz="nvim ~/.zshrc"
-alias sz="source ~/.zshrc"
+alias nz="nvim $ZDOTDIR/.zshrc"
+alias ne="source $ZDOTDIR/.zshenv"
+alias sz="source $ZDOTDIR/.zshrc"
 alias nr="nvim ~/.config/nvim/init.vim"
 alias nvr="nvim ~/.vimrc"
 
