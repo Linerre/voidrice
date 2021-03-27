@@ -4,7 +4,9 @@
 #
 export EDITOR=nvim
 export PAGER=less
-# export XDG_CONFIG_HOME=$HOME/.config
+export ZDOTDIR=$HOME/.config/zsh
+export XDG_CONFIG_HOME=$HOME/.config
+
 
 
 # remove duplicat entries from $PATH
