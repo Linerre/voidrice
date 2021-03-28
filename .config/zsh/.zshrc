@@ -8,7 +8,7 @@
 if [ $(whoami) = 'leon' ]; then
 	PS1="%F{magenta}> %f"
     PS2="%F{yellow}>> %f"
-    RPS1="%(?..(%?%)) %B%F{green}%3c %f%b"
+    RPS1="%(?..(%?%)) %B%F{lightgreen}%3c %f%b"
 else
 	PS1="%F{red}%n%f %~ "
     PS2="%F{yellow}>> %f"
