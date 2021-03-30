@@ -5,6 +5,9 @@
 
 # Fn key does not work with sxhkd 
 # so `super` key is used instead
-super + F1
-    amixer set Master toggle && pkill -RTMIN+11 dwmblocks
 
+XF86Audio{Raise,Lower}Volume
+  amixer -q sset Master {5%+,5%-} unmute && pkill -RTMIN+11 dwmblocks
+
+XF86AudioMute
+  amixer -q sset Master toggle && pkill -RTMIN+11 dwmblocks
