@@ -1,41 +1,29 @@
+! Basics
+st.background:    #fbf1c7
+st.foreground:    #3c3836
 
-! colors -- daivasmara zsh theme
-! Daivasmara / daivasmara.zsh-theme:
-! github.com/Daivasmara/davasmara.zsh-them
-
-! basics
-*.foreground:	#cbe3e7
-*.background:	#1e1c31
-*.cursorColor:	#fbfcfc
-
-! black
-*.color0:	#565575
-*.color8:	#100e23
-
+! Colors
+! white and gray
+st.color0:			#fbf1c7
+st.color8:			#928374
 ! red
-*.color1:	#ff8080
-*.color9:	#ff5458
-
+st.color1:			#cc241d
+st.color9:			#9d0006
 ! green
-*.color2: 	#95ffa4
-*.color10:	#62d196
-
+st.color2:			#98971a
+st.color10:			#79740e
 ! yellow
-*.color3:	#ffe9aa
-*.color11:	#ffb378
-
-! blue 
-*.color4:	#91ddff
-*.color12:	#65b2ff
-
-! magenta
-*.color5:	#c991e1
-*.color13:	#906cff
-
-! cyan
-*.color6:	#aaffe4
-*.color14:	#63f2f1
-
-! white
-*.color7: 	#cbe3e7
-*.color15:	#a6b3cc
+st.color3:			#d79921
+st.color11:			#b57614
+! blue
+st.color4:			#458588
+st.color12:			#076678
+! purple
+st.color5:			#b16286
+st.color13:			#8f3f71
+! aqua
+st.color6:			#689d6a
+st.color14:			#427b58
+! black
+st.color7:			#7c6f64
+st.color15:			#3c3836
