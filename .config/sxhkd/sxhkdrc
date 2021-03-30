@@ -11,3 +11,7 @@ XF86Audio{Raise,Lower}Volume
 
 XF86AudioMute
   amixer -q sset Master toggle && pkill -RTMIN+11 dwmblocks
+
+
+XF86MonBrightness{Up,Down}
+  brightnessctl -q -d amdgpu_bl0 set {+8%,8%-}
