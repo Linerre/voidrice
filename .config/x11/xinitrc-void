@@ -47,8 +47,8 @@ picom --config ${HOME}/.config/picom/picom.conf &
 # wallpaper
 feh --no-fehbg --bg-scale ${HOME}/Pictures/wallpaper/void1.png &
 
-# xbindkeys
-xbindkeys &
+# sxhkd
+sxhkd &
 
 # dwm blocks
 dwmblocks &
