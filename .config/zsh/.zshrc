@@ -82,7 +82,7 @@ alias lla="ls -alhF"
 
 
 # texlive
-alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode' 
+# alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode' 
 
 
 # emacs

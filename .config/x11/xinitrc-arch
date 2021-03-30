@@ -47,8 +47,8 @@ picom --config ${HOME}/.config/picom/picom.conf &
 # wallpaper
 feh --no-fehbg --bg-scale ${HOME}/Pictures/wallpaper/cyberpunk2.jpg &
 
-# xbindkeys && sxhkd
-xbindkeys &
+# only one of sxhkd and xbindkeys could run
+# xbindkeys &
 sxhkd &
 
 # dwm blocks
