@@ -1,0 +1,10 @@
+# =================
+# == keybindings ==
+# ==   Errelin   ==  
+# ==================
+
+# Fn key does not work with sxhkd 
+# so `super` key is used instead
+super + F1
+    amixer set Master toggle && pkill -RTMIN+11 dwmblocks
+
