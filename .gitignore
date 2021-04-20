@@ -5,6 +5,7 @@
 .config/ranger/plugins/
 .config/nvim/plugged/
 .config/vim/plugged/
+.config/vim/autoload/plug.vim
 .config/coc/
 .config/configstore
 .local/lib/
