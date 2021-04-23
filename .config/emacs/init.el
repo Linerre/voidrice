@@ -164,7 +164,7 @@
 
 (use-package kaolin-themes
   :init
-  (load-theme 'kaolin-dark t)
+  (load-theme 'kaolin-light t)
   :config
   (setq kaolin-themes-italic-comments t))
 
