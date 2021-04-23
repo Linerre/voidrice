@@ -9,9 +9,12 @@
 ;;; ----------------------------------------------------
 ;;; ------------------ MIRRORS & REPO ------------------
 ;;; ----------------------------------------------------
-(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-			 ("org"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+;;; (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+;;;                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+;;; 			 ("org"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+(setq package-archives '(("gnu"   . "https://mirrors.sjtug.sjtu.edu.cn/emacs-elpa/gnu/")
+                         ("melpa" . "https://mirrors.sjtug.sjtu.edu.cn/emacs-elpa/melpa/")
+                         ("org"   . "https://mirrors.sjtug.sjtu.edu.cn/emacs-elpa/org/")))
 
 ;; sync signature checking
 (setq package-check-signature nil)
