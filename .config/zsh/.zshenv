@@ -27,5 +27,5 @@ case $KERNEL_NAME in
     'linux')
         source "$HOME/.cargo/env"
         ;;
-    *)
+    *) ;;
 esac
