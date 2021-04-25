@@ -23,5 +23,9 @@ export PYTHONPATH=$HOME/python/
 export PATH="$HOME/node/node-v16.0.0-${KERNEL_NAME}-x64"/bin:$PATH
 export NODE_MIRROR=https://mirrors.ustc.edu.cn/node/
 	
-
-source "$HOME/.cargo/env"
+case $KERNEL_NAME in
+    'linux')
+        source "$HOME/.cargo/env"
+        ;;
+    *)
+esac
