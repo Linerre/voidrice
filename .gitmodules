@@ -1,0 +1,3 @@
+[submodule ".config/vim"]
+	path = .config/vim
+	url = git@github.com:Linerre/myvimrc
