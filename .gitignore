@@ -27,3 +27,7 @@ bookmarks
 recentf
 #snippets/
 rime/
+
+# ignore zsh history
+.zsh_history
+.zsh_sessions/
