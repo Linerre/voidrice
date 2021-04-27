@@ -93,6 +93,7 @@ case $KERNEL_NAME in
         alias la="ls -a"
         alias lla="ls -alhF"
         ;;
+esac
 
 #alias logout="pkill -KILL -u leon"
 
