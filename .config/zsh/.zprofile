@@ -17,7 +17,7 @@ export KERNEL_NAME=$( uname | tr '[:upper:]' '[:lower:]' )
 
 # remove duplicat entries from $PATH
 # zsh uses $path array along with $PATH 
-typeset -U path
+typeset -U path PATH
 #path=(${path#/home/leon/node/node-v14.16.0-linux-x64/bin})
 
 # user compiled python as default python
@@ -34,6 +34,7 @@ case $KERNEL_NAME in
         ;;
     'darwin')
         export PATH="/opt/local/bin:/opt/local/sbin":$PATH
+        ;;
     *) ;;
 esac
 
