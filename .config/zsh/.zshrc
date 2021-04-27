@@ -3,6 +3,8 @@
 # by Errelin
 ###########################
 
+# source ~/.zprofile; see comments there for why
+source ~/.zprofile
 
 # prompt
 if [ $(whoami) = 'leon' ]; then
