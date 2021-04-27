@@ -1,6 +1,12 @@
 # ignoring rules as follows
+# ignore .local stuff
 .local/share/nvim/
 .local/share/ranger/
+.local/lib/
+.local/include/
+.local/bin/dropbox.py
+
+# ignore .config stuff
 .config/ranger/commands*
 .config/ranger/plugins/
 .config/nvim/plugged/
@@ -8,10 +14,7 @@
 .config/vim/autoload/plug.vim
 .config/coc/
 .config/configstore
-.local/lib/
-.local/include/
-.local/bin/dropbox.py
-
+.config/*old*
 
 .netrwhist
 Brave*
