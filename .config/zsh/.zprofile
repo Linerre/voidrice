@@ -18,7 +18,6 @@ export KERNEL_NAME=$( uname | tr '[:upper:]' '[:lower:]' )
 # remove duplicat entries from $PATH
 # zsh uses $path array along with $PATH 
 typeset -U PATH path 
-#path=(${path#/home/leon/node/node-v14.16.0-linux-x64/bin})
 
 # user compiled python as default python
 export PATH=$HOME/python/bin:$PATH
