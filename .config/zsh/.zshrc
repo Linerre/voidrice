@@ -80,10 +80,20 @@ alias nr="nvim ~/.config/nvim/init.vim"
 alias nvr="nvim ~/.vimrc"
 
 # cmd shorthands
-alias ls="ls --color=auto"
-alias ll="ls -alh"
-alias la="ls -a"
-alias lla="ls -alhF"
+case $KERNEL_NAME in
+    'linux')
+        alias ls="ls --color=auto"
+        alias ll="ls -alh"
+        alias la="ls -a"
+        alias lla="ls -alhF"
+        ;;
+    'darwin')
+        alias ls="ls -G"
+        alias ll="ls -alh"
+        alias la="ls -a"
+        alias lla="ls -alhF"
+        ;;
+
 #alias logout="pkill -KILL -u leon"
 
 # git
@@ -92,10 +102,6 @@ alias lla="ls -alhF"
 
 # texlive
 # alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode' 
-
-
-# emacs
-alias emacs="emacs -nw"
 
 # dropbox
 alias dropsync="dropbox.py start"
