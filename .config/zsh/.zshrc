@@ -3,8 +3,15 @@
 # by Errelin
 ###########################
 
-# source ~/.zprofile; see comments there for why
-source ~/.zprofile
+# source $ZDOTDIR/.zprofile; see comments there for why
+# on macOS, always login, thus it is $ZDOTDIR/.zprofile itself instead
+# on Linux this is always sourced since terminal is interactive
+ZPROFILE="$HOME/.config/zsh/.zprofile"
+if [[ -f $ZPROFILE ]]; then
+    source $ZPROFILE
+else
+    echo '.zprofile not found; $PATH may not be set properly.'
+fi
 
 # prompt
 if [ $(whoami) = 'leon' ]; then
