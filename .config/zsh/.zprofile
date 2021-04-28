@@ -26,6 +26,9 @@ export PYTHONPATH=$HOME/python/
 # user installed node as default node
 export PATH="$HOME/node/node-v16.0.0-${KERNEL_NAME}-x64"/bin:$PATH
 export NODE_MIRROR=https://mirrors.ustc.edu.cn/node/
+
+# user compliled neovime (until 0.5.0 official release)
+export PATH=$HOME/neovim/bin/:$PATH
 	
 case $KERNEL_NAME in
     'linux')
