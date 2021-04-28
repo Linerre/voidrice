@@ -13,6 +13,7 @@ export EDITOR=nvim
 export PAGER=less
 export ZDOTDIR=$HOME/.config/zsh
 export XDG_CONFIG_HOME=$HOME/.config
+export XDG_DATA_HOME=$HOME/.local/share
 export KERNEL_NAME=$( uname | tr '[:upper:]' '[:lower:]' )
 
 # remove duplicat entries from $PATH
