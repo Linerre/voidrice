@@ -13,6 +13,7 @@ export EDITOR=nvim
 export PAGER=less
 export ZDOTDIR=$HOME/.config/zsh
 export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export KERNEL_NAME=$( uname | tr '[:upper:]' '[:lower:]' )
 
@@ -20,16 +21,15 @@ export KERNEL_NAME=$( uname | tr '[:upper:]' '[:lower:]' )
 # zsh uses $path array along with $PATH 
 typeset -U PATH path 
 
+# ~/.local/bin analogous to /usr/local/bin
+export PATH=$HOME/.local/bin:$PATH
+
 # user compiled python as default python
-export PATH=$HOME/python/bin:$PATH
 export PYTHONPATH=$HOME/python/
 
-# user installed node as default node
-export PATH="$HOME/node/node-v16.0.0-${KERNEL_NAME}-x64"/bin:$PATH
+# change Nodejs mirror 
 export NODE_MIRROR=https://mirrors.ustc.edu.cn/node/
 
-# user compliled neovime (until 0.5.0 official release)
-export PATH=$HOME/neovim/bin/:$PATH
 	
 case $KERNEL_NAME in
     'linux')
@@ -40,4 +40,3 @@ case $KERNEL_NAME in
         ;;
     *) ;;
 esac
-
