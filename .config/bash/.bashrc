@@ -10,11 +10,11 @@ export PATH=$HOME/.local/bin:$PATH
 
 
 # prompt
-if [ $(whoami) = 'leon' ]; then
-    PS1='  \w \$ '
-else
-    PS1='  \w \$ '
-fi
+PS1='  \w \$ '
+#PS1='  \w \$ '
 
+
+# alias
 alias ls='ls --color=auto'
+alias rr='ranger'
 #PS1='[\u@\h \W]\$ '
