@@ -64,20 +64,11 @@ if [ -d /etc/xbps.d ]; then
 
 fi
 
-if [ -d /etc/pacman.d ]; then
-		alias pi="sudo pacman -S"
-		alias pu="sudo pacman -Sy"
-		alias pr="sudo pacman -Rns"
-		alias ps="pacman -Ss"
-		alias psq="pacman -Qi"
-fi
-
 # open, source dotfiles 
 alias nz="nvim $ZDOTDIR/.zshrc"
-alias ne="source $ZDOTDIR/.zshenv"
 alias sz="source $ZDOTDIR/.zshrc"
-alias nr="nvim ~/.config/nvim/init.vim"
-alias nvr="nvim ~/.vimrc"
+alias nr="nvim $HOME/projetcs/nvim/init.vim"
+alias nvr="nvim $HOME/.vim/vimrc"
 
 # cmd shorthands
 case $KERNEL_NAME in
@@ -96,10 +87,6 @@ case $KERNEL_NAME in
 esac
 
 #alias logout="pkill -KILL -u leon"
-
-# git
-#alias pa="git push origin main"
-
 
 # texlive
 # alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode' 
