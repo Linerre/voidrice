@@ -20,4 +20,7 @@ fi
 # alias
 alias ls='ls --color=auto'
 alias rr='ranger'
-#PS1='[\u@\h \W]\$ '
+alias bz="nvim $HOME/.bashrc"
+alias bz="source $HOME/.bashrc"
+alias nr="nvim $HOME/projetcs/nvim/init.vim"
+alias nvr="nvim $HOME/.vim/vimrc"
