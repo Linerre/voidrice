@@ -7,24 +7,33 @@
 
 
 # user vars
-if [[ $( cat /etc/os-release | head -1) =~ "Arch" ]]; then
-    distro=' '
-elif [[ $( cat /etc/os-release | head -1) =~ "Gentoo" ]]; then
-    distro=' '
+if [[ $(tty) != *'tty'* ]]; then
+    if [[ $( cat /etc/os-release | head -1 ) =~ 'Arch' ]]; then
+        distro=' '
+    elif [[ $( cat /etc/os-release | head -1 ) =~ 'Gentoo' ]]; then
+        distro=' '
+    else
+        distro=''
+    fi
+    # prompt for interactive Xorg shells
+    if [ $(whoami) = 'leon' ]; then
+        PS1=' \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
+    else
+        PS1='\[\e[0;34m${distro}\]\[\e[0m\] \[\e[1;31m\]\w \$\[\e[0m\] '
+    fi
 else
-    distro=''
+    if [ $(whoami) = 'leon' ]; then
+        PS1='[\[\e[0;32m\]\w\[\e[0m\] \[\e[0;35m\]\$\[\e[0m\]] '
+    else
+        PS1='\[\e[1;31m\]\h \w\[\e[0m\] '
+    fi
 fi
+
 
 # env vars
 export PATH=$HOME/.local/bin:$PATH
 
 
-# prompt
-if [ $(whoami) = 'leon' ]; then
-    PS1=' \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
-else
-    PS1='\[\e[0;34m${distro}\]\e[0m\] \[\e[1;31m\]\w \$\e[0m\] '
-fi
 
 
 # alias
