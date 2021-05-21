@@ -33,8 +33,8 @@ fi
 # env vars
 export PATH=$HOME/.local/bin:$PATH
 
-
-
+# source  cargo only when rust was installed under $HOME
+[[ -d $HOME/.cargo ]] && . "$HOME/.cargo/env"
 
 # alias
 alias ls='ls --color=auto'
@@ -43,4 +43,3 @@ alias bz="nvim $HOME/.bashrc"
 alias bz="source $HOME/.bashrc"
 alias nr="nvim $HOME/projetcs/nvim/init.vim"
 alias nvr="nvim $HOME/.vim/vimrc"
-. "$HOME/.cargo/env"

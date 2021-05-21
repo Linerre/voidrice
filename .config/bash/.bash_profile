@@ -5,4 +5,4 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 export TEST=$(uname -a)
-. "$HOME/.cargo/env"
+[[ -d $HOME/.cargo ]] && . "$HOME/.cargo/env"
