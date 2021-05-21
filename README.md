@@ -9,3 +9,5 @@ This repo contains my dotfiles for the following \*nix systems:
 4. OpenBSD and Void Linux (QEMU/KVM)
 
 It is for this reason that quite a few **if** blocks spread throught some configs.
+
+Also, I'm using both Vim and Emacs, both dwm and bspwm, both bash and zsh.
