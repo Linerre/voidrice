@@ -7,7 +7,8 @@
 
 
 # user vars
-if [[ $(tty) != *'tty'* ]]; then
+# prompt for X sessions with glyphs (icons) from nerd fonts
+if [[ $(tty) != *'tty'* ]] && [[ $(tty) != *'pts'* ]]; then
     if [[ $( cat /etc/os-release | head -1 ) =~ 'Arch' ]]; then
         distro=' '
     elif [[ $( cat /etc/os-release | head -1 ) =~ 'Gentoo' ]]; then
