@@ -22,6 +22,7 @@ if [[ $(tty) != *'tty'* ]] && [[ $(tty) != *'pts'* ]]; then
     else
         PS1='\[\e[0;34m${distro}\]\[\e[0m\] \[\e[1;31m\]\w \$\[\e[0m\] '
     fi
+# prompt for tty or pts 
 else
     if [ $(whoami) = 'leon' ]; then
         PS1='[\[\e[0;32m\]\w\[\e[0m\] \[\e[0;35m\]\$\[\e[0m\]] '
