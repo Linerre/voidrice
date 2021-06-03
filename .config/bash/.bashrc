@@ -8,7 +8,9 @@
 
 # user vars
 # prompt for X sessions with glyphs (icons) from nerd fonts
-if [[ $(tty) != *'tty'* ]] && [[ $(tty) != *'pts'* ]]; then
+#if [[ $(tty) != *'tty'* ]] && [[ $(tty) != *'pts'* ]]; then
+# non-login, interactive shell
+if [[ $(echo $0) != '-'* ]]; then
     if [[ $( cat /etc/os-release | head -1 ) =~ 'Arch' ]]; then
         distro=' '
     elif [[ $( cat /etc/os-release | head -1 ) =~ 'Gentoo' ]]; then
@@ -22,7 +24,7 @@ if [[ $(tty) != *'tty'* ]] && [[ $(tty) != *'pts'* ]]; then
     else
         PS1='\[\e[0;34m${distro}\]\[\e[0m\] \[\e[1;31m\]\w \$\[\e[0m\] '
     fi
-# prompt for tty or pts 
+# prompt for login, interactive shell 
 else
     if [ $(whoami) = 'leon' ]; then
         PS1='[\[\e[0;32m\]\h: \w\[\e[0m\] \[\e[0;35m\]\$\[\e[0m\]] '
