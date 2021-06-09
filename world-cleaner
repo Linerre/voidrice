@@ -1,4 +1,6 @@
 #!/bin/bash
+# This script was copied from the below link:
+# https://wiki.gentoo.org/wiki/Selected-packages_set_(Portage)#Keeping_the_world_file_clean
 
 world_file='/var/lib/portage/world'
 deselect='/tmp/deselect'

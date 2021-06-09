@@ -43,7 +43,7 @@ export PATH=$HOME/.local/bin:$PATH
 [[ -d $HOME/.cargo ]] && . "$HOME/.cargo/env"
 
 # alias
-alias ls='ls --color=auto'
+alias ls='ls --color=auto' # NOTE: not posix
 alias rr='ranger'
 alias bz="nvim $HOME/.bashrc"
 alias bz="source $HOME/.bashrc"
