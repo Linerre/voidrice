@@ -11,7 +11,7 @@
 #if [[ $(tty) != *'tty'* ]] && [[ $(tty) != *'pts'* ]]; then
 # non-login, interactive shell
 #if [[ $(echo $0) != '-'* ]]; then
-if [[ $(echo $TERM) != 'linux' ]]; then 
+if [[ $(echo $TERM) != 'linux' ]] && [[ $(tty) != *'pts'* ]]; then 
     # this could be st-256color or xterm-256color
     if [[ $( cat /etc/os-release | head -1 ) =~ 'Arch' ]]; then
         distro=' '
