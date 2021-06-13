@@ -38,6 +38,7 @@ fi
 
 # env vars
 export PATH=$HOME/.local/bin:$PATH
+export PROJECTS_HOME=$HOME/projects
 
 # source  cargo only when rust was installed under $HOME
 [[ -d $HOME/.cargo ]] && . "$HOME/.cargo/env"
