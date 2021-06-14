@@ -22,10 +22,10 @@ export KERNEL_NAME=$( uname | tr '[:upper:]' '[:lower:]' )
 typeset -U PATH path 
 
 # ~/.local/bin analogous to /usr/local/bin
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:${PATH}:${HOME}/Library/Python/3.9/bin
 
 # user compiled python as default python
-export PYTHONPATH=$HOME/python/
+# export PYTHONPATH=$HOME/python/
 
 # change Nodejs mirror 
 export NODE_MIRROR=https://mirrors.ustc.edu.cn/node/
