@@ -11,7 +11,8 @@
 #if [[ $(tty) != *'tty'* ]] && [[ $(tty) != *'pts'* ]]; then
 # non-login, interactive shell
 #if [[ $(echo $0) != '-'* ]]; then
-if [[ $(echo $TERM) != 'linux' ]]; then 
+term=$(echo $TERM)
+if [[ $term == 'xterm-256color' ]] || [[ $term == 'st-256color' ]]; then 
     # this could be st-256color or xterm-256color
     if [[ $( cat /etc/os-release | head -1 ) =~ 'Arch' ]]; then
         distro=' '
@@ -27,7 +28,7 @@ if [[ $(echo $TERM) != 'linux' ]]; then
         PS1='\[\e[0;34m${distro}\]\[\e[0m\] \[\e[1;31m\]\w \$\[\e[0m\] '
     fi
 # prompt for login, interactive shell 
-else
+elif [[ $term == 'linux' ]]; then 
     if [ $(whoami) = 'leon' ]; then
         PS1='[\[\e[0;32m\]\h: \w\[\e[0m\] \[\e[0;35m\]\$\[\e[0m\]] '
     else
