@@ -54,15 +54,6 @@ alias v="nvim"
 alias n="nvim"
 alias rr="ranger"
 alias em="emacs -nw"
-# pacman or xbps
-if [ -d /etc/xbps.d ]; then
-		alias xi="sudo xbps-install -S"
-		alias xu="sudo xbps-install -Su"
-		alias xr="sudo xbps-remove -R"
-		alias xq="xbps-query -R"
-		alias xql="xbps-query -l"
-
-fi
 
 # open, source dotfiles 
 alias nz="nvim $ZDOTDIR/.zshrc"
