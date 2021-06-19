@@ -10,12 +10,12 @@
 # prompt for X sessions with glyphs (icons) from nerd fonts
 #if [[ $(tty) != *'tty'* ]] && [[ $(tty) != *'pts'* ]]; then
 
-# non-login, interactive shell
+# make use of nerd font when using Arch ssh or Xorg
 term=$(echo $TERM)
 if [[ $term == 'xterm-256color' ]] || [[ $term == 'st-256color' ]]; then 
     # this could be st-256color or xterm-256color
     PS1=' \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
-# prompt for login, interactive shell 
+# if in tty-like environment
 elif [[ $term == 'linux' ]]; then 
     PS1='[\[\e[0;32m\]\h: \w\[\e[0m\] \[\e[0;35m\]\$\[\e[0m\]] '
 fi
