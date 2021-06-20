@@ -9,8 +9,6 @@
 # ignore .config stuff
 .config/ranger/commands*
 .config/ranger/plugins/
-.config/nvim/plugged/
-.config/vim/plugged/
 .config/vim/autoload/plug.vim
 .config/coc/
 .config/configstore
@@ -18,7 +16,6 @@
 
 .netrwhist
 Brave*
-.config/TabNine/
 *.db
 history.cmdline
 
@@ -34,3 +31,7 @@ rime/
 # ignore zsh history
 .zsh_history
 .zsh_sessions/
+.zshenv
+
+# ignore macOS stuff
+.DS_Store
