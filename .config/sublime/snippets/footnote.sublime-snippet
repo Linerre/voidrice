@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[
+{% macro footnote(nl=3) %}
+<!-- footnote -->
+<section class="ft">
+    <span class="ft-title">↸Footnote</span>
+    <section class="ft-links">
+      <ol start="${1:start_num}"">
+        {% for i in range(nl) %}
+        <li>
+          {{ 'url' ~ loop.index }}
+        </li>
+        {% endfor %}
+        </li>
+      </ol>
+    </section>
+</section>
+{% endmacro %}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>fn</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>text.html</scope>
+</snippet>

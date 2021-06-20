@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[
+{% macro wiki_plaintext() %}
+<!-- wikipedia -->
+<!-- wiki no img -->
+<section class="wiki">
+  <section class="wiki-heading">
+    ❉<span class="wiki-title">
+      WikipediA
+    </span>
+    <p class="wiki-entry">${1:entry-name}</p>
+  </section>
+  
+  <section class="wiki-content">
+    <p>
+      ${2:entry-detail}
+    </p>
+    <p>
+      ${3:more-detail}
+    </p>
+  </section>
+</section>
+{% endmacro %}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>wkt</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>text.html</scope>
+</snippet>

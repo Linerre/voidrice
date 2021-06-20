@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[
+{% macro wiki_large_img() %}
+<!-- wiki with large img -->
+<section class="wiki">
+  <section class="wiki-heading">
+    ❉<span class="wiki-title">
+      WikipediA
+    </span>
+    <p class="wiki-entry">${1:wiki-entry}</p>
+  </section>
+  
+  <section class="wiki-content wiki-with-large-img">
+    <p>
+      ${2:detail} 
+    </p>  
+    <figure class="wiki-large-img">
+      <img src="${3:img-src}" alt="table1">
+      <figcaption>${4:img-caption}</figcaption>
+    </figure>
+  </section>
+</section>
+{% endmacro %}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>wkl</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>text.html</scope>
+</snippet>

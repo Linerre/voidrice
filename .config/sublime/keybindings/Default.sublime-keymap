@@ -1,0 +1,47 @@
+[
+	// note mark: 1,2,3 ...
+	{
+		"keys": ["ctrl+x", "ctrl+n"], 
+		"command": "insert_snippet", 
+		"args": {
+			"name": "Packages/User/snippets/notemark.sublime-snippet"
+		}
+	},
+	
+	// small captitals
+	{
+		"keys": ["ctrl+x", "ctrl+s"],
+		"command": "insert_snippet",
+		"args": {
+			"name": "Packages/User/snippets/smallcap.sublime-snippet"
+		}
+	},
+
+	// wiki notation ❉
+	{
+		"keys": ["ctrl+x", "ctrl+w"],
+		"command": "insert_snippet",
+		"args": {
+			"name": "Packages/User/snippets/wikisymbol.sublime-snippet"
+		}
+	},
+
+		// note notation ㋡
+	{
+		"keys": ["ctrl+x", "ctrl+m"],
+		"command": "insert_snippet",
+		"args": {
+			"name": "Packages/User/snippets/notesymbol.sublime-snippet"
+		}
+	},
+
+	// footnote number [num]
+	{
+		"keys": ["ctrl+x", "ctrl+f"],
+		"command": "insert_snippet",
+		"args": {
+			"name": "Packages/User/snippets/footnotesymbol.sublime-snippet"
+		}
+	},
+
+]

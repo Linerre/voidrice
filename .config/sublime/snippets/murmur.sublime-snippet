@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[
+{% macro murmurs() %}
+<section class="note">
+  <section class="note-title">
+    <span>㋡Murmurs</span>
+  </section>
+  
+  <section class="note-content">
+    <p>
+      ${1:note}
+    </p>
+  </section>
+</section>
+{% endmacro %}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>mm</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>text.html</scope>
+</snippet>
