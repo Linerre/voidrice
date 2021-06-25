@@ -1,14 +1,14 @@
 <snippet>
 	<content><![CDATA[
-{% macro footnote(nl=3) %}
+{% macro footnote(urls) %}
 <!-- footnote -->
 <section class="ft">
     <span class="ft-title">↸Footnote</span>
     <section class="ft-links">
-      <ol start="${1:start_num}"">
-        {% for i in range(nl) %}
+      <ol start="${1:start_num}">
+        {% for url in urls %}
         <li>
-          {{ 'url' ~ loop.index }}
+          {{ url }}
         </li>
         {% endfor %}
       </ol>
