@@ -44,4 +44,12 @@
 		}
 	},
 
+		{
+		"keys": ["ctrl+x", "ctrl+l"],
+		"command": "insert_snippet",
+		"args": {
+			"name": "Packages/User/snippets/urlslist.sublime-snippet"
+		}
+	},
+
 ]
