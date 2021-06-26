@@ -44,6 +44,7 @@
 		}
 	},
 
+	// urls
 		{
 		"keys": ["ctrl+x", "ctrl+l"],
 		"command": "insert_snippet",
@@ -52,4 +53,12 @@
 		}
 	},
 
+	// ruby
+	{
+		"keys": ["ctrl+x", "ctrl+u"],
+		"command": "insert_snippet",
+		"args": {
+			"name": "Packages/User/snippets/rubytag.sublime-snippet"
+		}
+	},
 ]
