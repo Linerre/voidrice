@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[
-<${2:tag} style="color: #B48EAD;">${1:note-num}</$2>
+<${2:tag} style="color: #B48EAD;">{{ notes.notemarks['${1:note-num}'] }}</$2>
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
 	<!-- <tabTrigger></tabTrigger> -->
