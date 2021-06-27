@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[
-{{ notes.ftnum(${1:ft number}) }}
+{{ nb.ftnum(${1:ft-number}) }}
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
 	<!-- <tabTrigger></tabTrigger> -->
