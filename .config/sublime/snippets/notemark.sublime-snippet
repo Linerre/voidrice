@@ -1,9 +1,0 @@
-<snippet>
-	<content><![CDATA[
-<${2:span-or-sup} style="color: #B48EAD;">{{ nb.notemarks['${1:note-num}'] }}</$2>
-]]></content>
-	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<!-- <tabTrigger></tabTrigger> -->
-	<!-- Optional: Set a scope to limit where the snippet will trigger -->
-	<scope>text.html</scope>
-</snippet>
