@@ -1,10 +1,28 @@
 [
+	// footnote number [num]
+	{
+		"keys": ["ctrl+x", "ctrl+f"],
+		"command": "insert_snippet",
+		"args": {
+			"characters": "Packages/User/snippets/footnote-num-jinja.sublime-snippet"
+		}
+	},
+
 	// note mark: 1,2,3 ...
 	{
 		"keys": ["ctrl+x", "ctrl+n"], 
 		"command": "insert_snippet", 
 		"args": {
 			"name": "Packages/User/snippets/notemark.sublime-snippet"
+		}
+	},
+
+			// note notation ㋡
+	{
+		"keys": ["ctrl+x", "ctrl+m"],
+		"command": "insert_snippet",
+		"args": {
+			"name": "Packages/User/snippets/notesymbol.sublime-snippet"
 		}
 	},
 	
@@ -26,23 +44,9 @@
 		}
 	},
 
-		// note notation ㋡
-	{
-		"keys": ["ctrl+x", "ctrl+m"],
-		"command": "insert_snippet",
-		"args": {
-			"name": "Packages/User/snippets/notesymbol.sublime-snippet"
-		}
-	},
 
-	// footnote number [num]
-	{
-		"keys": ["ctrl+x", "ctrl+f"],
-		"command": "insert_snippet",
-		"args": {
-			"name": "Packages/User/snippets/footnotesymbol.sublime-snippet"
-		}
-	},
+
+
 
 	// urls
 		{
@@ -59,6 +63,15 @@
 		"command": "insert_snippet",
 		"args": {
 			"name": "Packages/User/snippets/rubytag.sublime-snippet"
+		}
+	},
+
+	// jinja dict
+	{
+		"keys": ["ctrl+x", "ctrl+j", "ctrl+d"],
+		"command": "insert_snippet",
+		"args": {
+			"name": "Packages/User/snippets/jinja-dict.sublime-snippet"
 		}
 	},
 ]
