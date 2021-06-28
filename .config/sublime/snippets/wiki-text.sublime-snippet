@@ -3,7 +3,7 @@
 {% set wiki_${1:wiki-name-or-num} = {
   'entry': '${2:entry}',
   'paras': [
-            '${0:para1}',
+            '${3:para1}',
           ]
 %}
 ]]></content>
