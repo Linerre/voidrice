@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[
-{% set wiki_${1:wiki-number-or-name} = {
+{% set wiki${1:wiki-number-or-name} = {
   'entry': '${2:entry}',
   'img': ['${3:src}', '${4:caption}'],
   'paras':['${0:para_1}',
