@@ -1,77 +1,110 @@
 [
-	// footnote number [num]
+		// jinja dict icon
 	{
-		"keys": ["ctrl+x", "ctrl+f"],
+		"keys": ["ctrl+j", "ctrl+d", "ctrl+d"],
 		"command": "insert_snippet",
 		"args": {
-			"characters": "Packages/User/snippets/footnote-num-jinja.sublime-snippet"
+			"contents": "{% include 'icons/dict.html' %}"
+		}
+	},
+
+	// jinja dict word template
+	{
+		"keys": ["ctrl+j", "ctrl+d", "ctrl+w"],
+		"command": "insert_snippet",
+		"args": {
+			"name": "Packages/User/snippets/word.sublime-snippet"
+		}
+	},
+
+	// footnote number [num]
+	{
+		"keys": ["ctrl+j", "ctrl+f"],
+		"command": "insert_snippet",
+		"args": {
+			"contents": "{{ nb.ftnum(${1:ft-number}) }}"
+		}
+	},
+
+	// illustration
+		// small captitals
+	{
+		"keys": ["ctrl+j", "ctrl+i"],
+		"command": "insert",
+		"args": {
+			"contents": "{{ nb.illustration(${1:img}, ${2:caption})}}"
+		}
+	},
+
+	// link set
+		{
+		"keys": ["ctrl+j", "ctrl+l", "ctrl+s"],
+		"command": "insert_snippet",
+		"args": {
+			"contents": "{% set ${1:link-list-name} = [\n\t'${2:first element}'$0]\n%}"
+		}
+	},
+
+		// links jinja
+		{
+		"keys": ["ctrl+j", "ctrl+l", "ctrl+l"],
+		"command": "insert_snippet",
+		"args": {
+			"contents": "{{ nb.footnote(notes.urls_${1:set-num}, start=$2, auto=${3:true-or-false}) }}"
+		}
+	},
+
+		// note notation
+		{
+		"keys": ["ctrl+j", "ctrl+m"],
+		"command": "insert",
+		"args": {
+			"characters": "{{ nb.note_symbol }}"
 		}
 	},
 
 	// note mark: 1,2,3 ...
 	{
-		"keys": ["ctrl+x", "ctrl+n"], 
+		"keys": ["ctrl+j", "ctrl+n"], 
 		"command": "insert_snippet", 
 		"args": {
-			"name": "Packages/User/snippets/notemark.sublime-snippet"
-		}
-	},
-
-			// note notation ㋡
-	{
-		"keys": ["ctrl+x", "ctrl+m"],
-		"command": "insert_snippet",
-		"args": {
-			"name": "Packages/User/snippets/notesymbol.sublime-snippet"
+			"contents": "<${2:span-or-sup} style=\"color: #B48EAD;\">{{ nb.notemarks['${1:note-num}'] }}</$2>"
 		}
 	},
 	
-	// small captitals
+	// ruby
 	{
-		"keys": ["ctrl+x", "ctrl+s"],
+		"keys": ["ctrl+j", "ctrl+u"],
 		"command": "insert_snippet",
 		"args": {
-			"name": "Packages/User/snippets/smallcap.sublime-snippet"
+			"contents": "<ruby>$SELECTION<rt>$1</rt></ruby>"
 		}
 	},
 
 	// wiki notation ❉
 	{
-		"keys": ["ctrl+x", "ctrl+w"],
-		"command": "insert_snippet",
+		"keys": ["ctrl+j", "ctrl+w", "ctrl+w"],
+		"command": "insert",
 		"args": {
-			"name": "Packages/User/snippets/wikisymbol.sublime-snippet"
+			"characters": "{{ nb.wiki_symbol }}"
 		}
 	},
 
-
-
-
-
-	// urls
-		{
-		"keys": ["ctrl+x", "ctrl+l"],
-		"command": "insert_snippet",
-		"args": {
-			"name": "Packages/User/snippets/urlslist.sublime-snippet"
-		}
-	},
-
-	// ruby
+	// wiki pure text ❉
 	{
-		"keys": ["ctrl+x", "ctrl+u"],
+		"keys": ["ctrl+j", "ctrl+w", "ctrl+t"],
 		"command": "insert_snippet",
 		"args": {
-			"name": "Packages/User/snippets/rubytag.sublime-snippet"
+			"name": "Packages/User/snippets/wiki-text.sublime-snippet"
 		}
 	},
 
-	// jinja dict
+	// wiki with img ❉
 	{
-		"keys": ["ctrl+x", "ctrl+j", "ctrl+d"],
+		"keys": ["ctrl+j", "ctrl+w", "ctrl+i"],
 		"command": "insert_snippet",
 		"args": {
-			"name": "Packages/User/snippets/jinja-dict.sublime-snippet"
+			"name": "Packages/User/snippets/wiki-img.sublime-snippet"
 		}
 	},
 ]
