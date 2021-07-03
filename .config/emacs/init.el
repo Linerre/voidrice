@@ -72,6 +72,18 @@
 	     ;;'(font . "FiraCode Nerd Font Mono-13:Medium")
 	     '(font . "Monaco-16"))
 
+;; set default tab char's display width to 2 spaces
+(setq-default tab-width 2)
+;; TODO: remember to set tab size for python to 4 spaces
+
+;; Set indent commands to always use spaces only
+(progn
+  ;; make indent commands use space only (never tab character)
+  (setq-default indent-tabs-mode nil)
+  ;; emacs 23.1 to 26, default to t
+  ;; if indent-tabs-mode is t, it means it may use tab, resulting mixed space and tab
+)
+
 ;; show week number in calendar view
 (setq calendar-intermonth-text
       '(propertize
@@ -393,7 +405,9 @@
   (sgml-mode . emmet-mode)
   (css-mode  . emmet-mode))
 
-
+(use-package jinja2-mode
+  :hook
+  (html-mode . jinja2-mode))
 
 
 ;;; ----------------------- INDENT ------------------------
