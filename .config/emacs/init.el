@@ -405,5 +405,5 @@
 ;;; ---------------------- CUSTOME ------------------------
 ;;; -------------------------------------------------------
 ;;; write cutome stuff to a singel file
-(setq custom-file "~/.emacs.d/custom-file.el")
+(setq custom-file "~/.config/emacs/custom-file.el")
 (load-file custom-file)
