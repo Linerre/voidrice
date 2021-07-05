@@ -319,7 +319,8 @@
       (setq end (save-excursion (org-end-of-subtree t t))))
     (org-end-of-subtree)))
 
-(global-set-key (kbd "C-c l") 'org-store-link)
+;;(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c l") 'org-link-store-props
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 
