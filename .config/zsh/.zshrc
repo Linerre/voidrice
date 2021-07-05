@@ -14,7 +14,7 @@ else
 fi
 
 # prompt
-if [ $(whoami) = 'leon' ]; then
+if [ $(whoami) = 'leon' ] || [ $(whoami) = 'errelin' ]; then
 	PS1="%F{magenta}> %f"
     PS2="%F{yellow}>> %f"
     RPS1="%(?..(%?%)) %B%F{lightgreen}%3c %f%b"
