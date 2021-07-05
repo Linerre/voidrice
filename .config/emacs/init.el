@@ -100,7 +100,7 @@
 ;; quick access to init file
 (defun open-init-file()
   (interactive)
-  (find-file "~/.emacs.d/init.el"))
+  (find-file "~/.config/emacs.d/init.el"))
 
 (global-set-key (kbd "<f2>") 'open-init-file)
 
@@ -112,7 +112,7 @@
 
 (defun open-longreads-dir()
   (interactive)
-  (find-file "~/projects/gitty/wechat"))
+  (find-file "~/projects/posts/wechat"))
 (global-set-key (kbd "<f5>") 'open-longreads-dir)
   
 ;; open recent files
