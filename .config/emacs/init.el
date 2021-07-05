@@ -156,10 +156,6 @@
 ;;; ----------------------------------------------------
 ;;; ------------------- MISCHELLEOUS -------------------
 ;;; ----------------------------------------------------
-;;(use-package benchmark-init
-;;  :init (benchmark-init/activate)
-;;  :hook (after-init . benchmark-init/deactivate))
-
 (use-package which-key
   :defer nil
   :config (which-key-mode))
@@ -180,21 +176,13 @@
   :config
   (setq kaolin-themes-italic-comments t))
 
-;; status line
-;;(use-package smart-mode-line
-;;  :init
-;;  (setq sml/no-confirm-load-theme t
-;;	sml/theme 'respectful)
-;;  (sml/setup))
-
-
 ;;; --------------------------------------------------
 ;;; ------------------- ORG MODE ---------------------
 ;;; --------------------------------------------------
 ;; org-mode keys
-(setq org-agenda-files '("~/Dropbox/org/inbox.org"
-			 "~/Dropbox/org/projects.org"
-			 "~/Dropbox/org/reminder.org"))
+;;(setq org-agenda-files '("~/Dropbox/org/inbox.org"
+;;			 "~/Dropbox/org/projects.org"
+;;			 "~/Dropbox/org/reminder.org"))
 (setq org-agenda-include-diary t)
 
 ;; I don't want this becasue every time I change a state
