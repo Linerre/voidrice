@@ -100,7 +100,7 @@
 ;; quick access to init file
 (defun open-init-file()
   (interactive)
-  (find-file "~/.config/emacs.d/init.el"))
+  (find-file "~/.config/emacs/init.el"))
 
 (global-set-key (kbd "<f2>") 'open-init-file)
 
@@ -409,6 +409,7 @@
 (use-package jinja2-mode
   :hook
   (html-mode . jinja2-mode))
+
 
 
 ;;; ----------------------- INDENT ------------------------
