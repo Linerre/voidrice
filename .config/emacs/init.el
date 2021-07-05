@@ -308,7 +308,7 @@
     (org-end-of-subtree)))
 
 ;;(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c l") 'org-link-store-props
+(global-set-key (kbd "C-c l") 'org-link-store-props)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 
@@ -383,8 +383,8 @@
 (use-package yasnippet)
 (setq yas-snippet-dirs
       ;; personal snippets
-      '("~/.emacs.d/snippets"
-	"~/.emacs.d/elpa/yasnippet-snippets-20201118.2148/snippets"))
+      '("~/.config/emacs/snippets"
+	"~/.config/emacs/elpa/yasnippet-snippets-20201118.2148/snippets"))
 
 (yas-global-mode 1)
 (setq yas-prompt-functions '(yas-ido-prompt yas-x-prompt yas-completing-prompt))
@@ -411,4 +411,4 @@
 ;;; write cutome stuff to a singel file
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 ;;;(setq custom-file "~/.config/emacs/custom-file.el")
-(load-file custom-file)
+(load custom-file)
