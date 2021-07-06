@@ -1,14 +1,17 @@
-;;;; Use on singel config file
-;;;; To stop pre-optimization
-;;;; Once the config grows over 500 lines
-;;;; Start modularizing it then
+;;; init.el --- Load the full configuration -*- lexical-binding: t -*-
 
-;;(add-to-list 'load-path
-;;	     (expand-file-name (concat user-emacs-directory "lisp")))
+;;; Modularized init
+;;; Author: Errelin
+;;; Last Change:
+
+;;; Modules stored in the "lisp" directory 
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+
 
 ;;; ----------------------------------------------------
 ;;; ------------------ MIRRORS & REPO ------------------
 ;;; ----------------------------------------------------
+;;; Use sjtu mirrors
 ;;; (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
 ;;;                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
 ;;; 			 ("org"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
