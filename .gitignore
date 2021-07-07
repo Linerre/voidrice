@@ -20,7 +20,6 @@ Brave*
 history.cmdline
 
 # ignore emacs files
-lisp/
 auto-save-list/
 elpa/
 bookmarks
