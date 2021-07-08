@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
 # name: footnotes_sup
-# binding: C-c C-f 
+# binding: C-c C-f
 # --
-<sup style="color: ${1:$$(yas-choose-value '("#B48EAD" "#81A1C1"))}">${2:$$(yas-choose-value '("㋡" "[1]" "[2]" "[3]" "[4]" "[5]"))}</sup>
+<sup style="color: #458588">[${1:url_num}]</sup>
