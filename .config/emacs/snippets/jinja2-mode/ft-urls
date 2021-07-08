@@ -2,12 +2,7 @@
 # name: footnote
 # key: bb
 # --
-<!-- ft -->
-<section class="ft">
-  <span class="ft-title">↸Footnote</span>
-  <section class="ft-links">
-  <ol>
-    <li>$1</li>
-  </ol>
- </section>
-</section>
+{% set url${1:url_num} = [
+   '${2:url_1}',$0
+   ]
+%}
