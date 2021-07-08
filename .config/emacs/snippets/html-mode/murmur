@@ -2,14 +2,7 @@
 # name: murmur
 # key: bb
 # --
-<!-- murmur -->
-<section class="note">
-  <section class="note-title">
-    <span>㋡Murmurs</span>
-  </section>
-  <section class="note-content $1">
-    <p>
-    $2
-    </p>
-  </section>
-</section>
+{% set mm${1:murmur_num} = [
+   "${2:Murmur_para_1}",
+   ]
+%}
