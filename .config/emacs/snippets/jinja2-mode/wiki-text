@@ -1,20 +1,9 @@
 # -*- mode: snippet -*-
-# name: wikipedia
-# key: bb
+# name: wiki-text
+# key: ww
 # --
-<!-- wiki -->
-<!-- wiki -->
-<section class="wiki">
-  <section class="wiki-heading">
-    ❉
-    <span class="wiki-title">
-      WikipediA
-    </span>
-    <p class="wiki-entry">$1</p>
-  </section>
-  <section class="wiki-content">
-    <p>
-    $2
-    </p>
-  </section>
-</section>
+{% set wiki_${1:wiki_num} = {
+   'content': '${2:wiki-entry}',
+   'paras': ['${3:para_1}',$0]
+   }
+%}
