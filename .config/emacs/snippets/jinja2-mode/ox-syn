@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: ox-syn
-# key: oxe
-# --
-	<section class="ox-synonym">
-		<small>synonym</small>
-		<span>${1:synonym}</span>
-	</section> 

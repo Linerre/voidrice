@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: ox-sensetop
-# key: oxe
-# --
-	<span class="ox-sensetop">
-		${0:sensetop}
-	</span>

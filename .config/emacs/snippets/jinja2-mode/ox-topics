@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: ox-topics
-# key: oxe
-# --
-<section class="ox-topics">
-	<span class="prefix">topics</span>
-	<span class="topic-name">${1:topic-word}</span>
-	<span class="topic-cefr">${2:level}</span>
-</section>

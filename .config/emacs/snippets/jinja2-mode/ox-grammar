@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: ox-grammar
-# key: oxe
-# --
-	<span class="ox-sense-gram">
-	  ${1:$$(yas-choose-value '("[" "("))}${2:grammar}${3:$$(yas-choose-value '("]" ")"))}
-	</span>
