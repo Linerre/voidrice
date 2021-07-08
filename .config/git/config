@@ -8,6 +8,7 @@
 	sw = switch
 [core]
 	editor = nvim
+	#sshCommand = ssh -i ~/.ssh/m1_ed25519
 [pull]
 	ff = only
 	rebase = false
