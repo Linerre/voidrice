@@ -5,7 +5,7 @@
 
 ;;; Make indentation offset 2 spaces (1 tab) globally
 (if (eq major-mode 'css-mode)
-  (setq css-indent-offset 2))
+  (css-indent-offset 2))
 
 ;;; from https://emacsredux.com/blog/2020/06/14/checking-the-major-mode-in-emacs-lisp/
 ;;; (if (derived-mode-p 'prog-mode)
