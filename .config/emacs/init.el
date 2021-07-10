@@ -18,6 +18,7 @@
 (require 'init-theme)
 (require 'init-yasnippets)
 (require 'init-indent)
+(require 'init-css)
 
 ;; Variables configured via the interactive 'customize' interface
 (when (file-exists-p custom-file)
