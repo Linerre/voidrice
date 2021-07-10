@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: word-ox-notes
+# key: wd
+# word entry template used for notes
+# --
+{% set ${1:word} = {
+  'entry': '$1',
+  'pos': '${2:parts of speech}',
+  'pro':'/${3:pronounciation}/',
+  'sense-gram': '${4:countable}',
+  'def': '${5:defination}',
+  'origin': '${6:Etymology}',
+  'sense-labels': '(${7:formal})',
+  'examples': ['${8:example 1}'],
+  'col': {
+  	'tip': '$9}',
+  	'options': {
+  		'${10:empty?}': ['${11:first col}']
+  		}
+  	}
+  }
+%}

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: illus-current
+# binding: C-c C-j
+# Illustration template snippet used in current
+# --
+{{ nb.illustration(${1:img}, ${2:caption}) }}
