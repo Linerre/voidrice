@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: footnotes_sup
-# binding: C-c C-f
+# name: ft-order-current
+# binding: C-c C-j
 # --
 <sup style="color: #458588">[${1:url_num}]</sup>

@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: footnote
-# key: bb
+# name: ft-num-notes
+# key: C-c C-j
 # --
 {% set url${1:url_num} = [
    '${2:url_1}',$0
