@@ -1,0 +1,16 @@
+:# -*- mode: snippet -*-
+# name: mw-word-current
+# binding: C-c C-j
+# --
+{% set word_${1:word_num} = {
+'entry': '${2:word-entry}',
+'pos': '${3:pos}',
+'pro': '${4:pro}',
+'def': '${5:definition}',
+'example-1s': '${6:example-1s}',
+'recent': [
+{'sentence': '$0', 'source': ''},
+],
+'1st-use': '${7:1st-use}',
+}
+%}
