@@ -3,7 +3,7 @@
 # key: ww
 # --
 {% set wiki_${1:wiki_num} = {
-   'content': '${2:wiki-entry}',
+   'entry': '${2:wiki-entry}',
    'img': ['${3:img_url}', '${4:img_cap}'],
    'paras': ['${5:para_1}',$0]
    }
