@@ -12,5 +12,13 @@
 {'sentence': '$0', 'source': ''},
 ],
 '1st-use': '${7:1st-use}',
+'etymology', '',
+'history': '',
+'did-you-know': '',
+'morphs': {'mph-1': '', 'mph-2': ''},
+'morphs-pro': {'pro1': '', 'pro2': ''},
+'grammar': '',
+'multi-def-long': {'order': '', 'defs': []},
+'multi-def-short': {'order': '', 'syns': ['', ''], 'eg': '', 'src': ''},
 }
 %}
