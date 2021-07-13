@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: ft-marco-current
-# key: C-c C-j
+# binding: C-c C-j
 # footnotes urls template used for current
 # --
-{{ nb.footnote(nc.urls_${1:set-num}, start=$2, auto=${3:true-or-false}) }}
+{{ nb.footnote(urls${1:set-num}, start=$2, unscroll=${3:true-or-false}) }}
