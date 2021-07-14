@@ -6,7 +6,7 @@
 'entry': '${2:word-entry}',
 'pos': '${3:pos}',
 'pro': '${4:pro}',
-'def': '${5:definition}',
+'def': ['order': '', 'def': '${5:defiition}'],
 'example-1s': '${6:example-1s}',
 'recent': [
 {'sentence': '$0', 'source': ''},
