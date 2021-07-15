@@ -1,6 +1,6 @@
 ;;; Various emacs built-in options set for both GUI and TUI
 ;;; Author: Errelin
-;;; Last Change;
+;;; Last Change: 
 ;;; set the default encoding system
 
 ;;; UTF-8
@@ -20,7 +20,7 @@
 (global-display-line-numbers-mode t)
 (global-hl-line-mode t)
 (global-visual-line-mode 1)
-(setq display-line-numbers-type 'relative)
+;;;(setq display-line-numbers-type 'relative)
 
 ;;; tab width
 ;; set default tab char's display width to 2 spaces
