@@ -13,7 +13,6 @@
 (require 'init-elpa)
 (require 'init-keymaps)
 (require 'init-gui)
-(require 'init-moodline)
 (require 'init-company)
 (require 'init-which-key)
 (require 'init-theme)
@@ -22,5 +21,5 @@
 (require 'init-css)
 
 ;; Variables configured via the interactive 'customize' interface
-(when (file-exists-p custom-file)
-  (load-file custom-file))
+;;(when (file-exists-p custom-file)
+;;  (load-file custom-file))
