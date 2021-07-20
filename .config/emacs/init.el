@@ -19,6 +19,7 @@
 (require 'init-yasnippets)
 (require 'init-indent)
 (require 'init-css)
+(require 'init-eglot)
 
 ;; Variables configured via the interactive 'customize' interface
 ;;(when (file-exists-p custom-file)
