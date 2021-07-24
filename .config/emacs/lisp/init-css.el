@@ -4,9 +4,10 @@
 
 
 ;;; Make indentation offset 2 spaces (1 tab) globally
-(use-package css-mode
-  :config
-  (setq-default css-indent-offset 2))
+;;(use-package css-mode
+;;  :mode "\\.css\\'"
+;;  :config
+;;  (setq-default css-indent-offset 2))
 
 ;;; from https://emacsredux.com/blog/2020/06/14/checking-the-major-mode-in-emacs-lisp/
 ;;; (if (derived-mode-p 'prog-mode)
@@ -15,5 +16,5 @@
 ;;;	...
 ;;;	)
 
-(provide 'init-css)
+;;(provide 'init-css)
 ;;; init-css.el ends here

@@ -3,7 +3,7 @@
 ;;; Last Change: 
 
 ;;; kill buffer
-(global-set-key (kbd "C-x k") 'kill-this-buffer);;; set the default encoding system
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
  
 ;; open init.el
 (defun open-init-file()

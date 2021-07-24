@@ -5,9 +5,10 @@
 
 ;;; UTF-8
 (set-language-environment "UTF-8")
+(setq default-file-name-coding-system 'utf-8-unix)
 ;;default-buffer-file-coding-system 'utf-8
 ;;(prefer-coding-system 'utf-8)
-;;(setq default-file-name-coding-system 'utf-8)
+
 ;;(set-default-coding-systems 'utf-8)
 ;;(set-terminal-coding-system 'utf-8)
 ;;(set-keyboard-coding-system 'utf-8) 
@@ -44,7 +45,7 @@
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 
 ;; highlight known elisp symbols
-(add-hook 'emacs-lisp-mode-hook 'highlight-defined-mode)
+;;(add-hook 'emacs-lisp-mode-hook 'highlight-defined-mode)
 
 ;; show week number in calendar view
 ;;(setq calendar-intermonth-text

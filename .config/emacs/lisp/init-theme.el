@@ -1,16 +1,6 @@
-;;; -----------------------------------------------------
-;;; ----------------------- THEME -----------------------
-;;; -----------------------------------------------------
-
-;; (use-package gruvbox-theme
-;; :init (load-theme 'gruvbox-dark-medium t))
-
-(use-package kaolin-themes
-  :init
-  (load-theme 'kaolin-light t)
-  :config
-  (setq kaolin-themes-italic-comments t))
-
+;;; ----------------------- THEME ----------------------
+(require 'kaolin-themes)
+(load-theme 'kaolin-light t)
 
 (provide 'init-theme)
 ;;; theme ends here
