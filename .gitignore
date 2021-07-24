@@ -19,14 +19,6 @@ Brave*
 *.db
 history.cmdline
 
-# ignore emacs files
-auto-save-list/
-elpa/
-bookmarks
-recentf
-#snippets/
-rime/
-
 # ignore zsh history
 .zsh_history
 .zsh_sessions/
