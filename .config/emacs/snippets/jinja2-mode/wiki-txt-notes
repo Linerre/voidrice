@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: wiki-text
-# key: ww
-# --
-{% set wiki_${1:wiki_num} = {
-   'content': '${2:wiki-entry}',
-   'paras': ['${3:para_1}',$0]
-   }
-%}

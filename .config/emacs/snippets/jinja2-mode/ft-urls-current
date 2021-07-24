@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: ft-marco-current
-# binding: C-c C-j
-# footnotes urls template used for current
-# --
-{{ nb.footnote(urls${1:set-num}, start=$2, unscroll=${3:true-or-false}) }}

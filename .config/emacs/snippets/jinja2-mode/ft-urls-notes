@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: ft-num-notes
-# binding: C-c C-j
-# --
-{% set urls${1:url_num} = [
-   '${2:url_1}',$0
-   ]
-%}

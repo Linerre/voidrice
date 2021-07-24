@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: dict-icon-current
-# binding: C-c C-j
-# --
-{% include 'icons/dict.html' %}

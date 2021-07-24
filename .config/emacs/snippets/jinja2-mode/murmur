@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: murmur
-# key: mm
-# --
-{% set mm${1:murmur_num} = [
-   '${2:Murmur_para_1}',
-   ]
-%}
