@@ -54,6 +54,7 @@ alias v="nvim"
 alias n="nvim"
 alias rr="ranger"
 alias em="emacs -nw"
+#alias tmux="tmux -2"
 
 # open, source dotfiles 
 alias nz="nvim $ZDOTDIR/.zshrc"
