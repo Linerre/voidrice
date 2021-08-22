@@ -53,7 +53,6 @@ alias sx="startx"
 alias v="nvim"
 alias n="nvim"
 alias rr="ranger"
-alias em="emacs -nw"
 #alias tmux="tmux -2"
 
 # open, source dotfiles 
@@ -75,6 +74,7 @@ case $KERNEL_NAME in
         alias ll="ls -alh"
         alias la="ls -a"
         alias lla="ls -alhF"
+	alias emacs="$HOME/projects/emacs-src/src/emacs -nw"
         ;;
 esac
 
