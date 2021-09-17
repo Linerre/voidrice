@@ -43,17 +43,10 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-# filter history 
-alias hg='history | grep -i'
-
-# Utilities
-alias sx="startx"
-
 # open programms
 alias v="nvim"
 alias n="nvim"
 alias rr="ranger"
-#alias tmux="tmux -2"
 
 # open, source dotfiles 
 alias nz="nvim $ZDOTDIR/.zshrc"
@@ -77,8 +70,6 @@ case $KERNEL_NAME in
 	alias emacs="$HOME/projects/emacs-src/src/emacs -nw"
         ;;
 esac
-
-#alias logout="pkill -KILL -u leon"
 
 # texlive
 # alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode' 
