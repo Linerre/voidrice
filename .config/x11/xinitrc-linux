@@ -42,7 +42,7 @@ fi
 # export XMODIFIERS=@im=fcitx
 
 # Compositor
-picom --config ${HOME}/.config/picom/picom.conf &
+picom --config ${HOME}/projects/voidrice/.config/picom/picom.conf &
 
 # wallpaper
 feh --no-fehbg --bg-scale ${HOME}/Pictures/wallpaper/cyberpunk2.jpg &
