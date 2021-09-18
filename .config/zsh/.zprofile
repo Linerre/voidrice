@@ -16,13 +16,14 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export KERNEL_NAME=$( uname | tr '[:upper:]' '[:lower:]' )
+export JAVA_HOME=$HOME/.local/openjdk17
 
 # remove duplicat entries from $PATH
 # zsh uses $path array along with $PATH 
 typeset -U PATH path 
 
 # ~/.local/bin analogous to /usr/local/bin
-export PATH=$HOME/.local/bin:${PATH}:${HOME}/Library/Python/3.9/bin
+export PATH=${HOME}/.local/bin:${JAVA_HOME}:${PATH}:${HOME}/Library/Python/3.9/bin
 
 # user compiled python as default python
 # export PYTHONPATH=$HOME/python/
