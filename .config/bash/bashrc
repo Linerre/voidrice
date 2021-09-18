@@ -22,6 +22,7 @@ fi
 
 
 # env vars
+export JAVA_HOME=$HOME/.local/openjdk17
 export PATH=$HOME/.local/bin:$PATH
 export PROJECTS_HOME=$HOME/projects
 
