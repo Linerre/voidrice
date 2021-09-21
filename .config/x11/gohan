@@ -1,0 +1,23 @@
+# Programs to be started with X on machine gohan
+
+# wallpaper
+feh --no-fehbg --bg-scale ${HOME}/Pictures/wallpaper/cyberpunk2.jpg &
+
+# only one of sxhkd and xbindkeys could run
+# xbindkeys &
+sxhkd &
+
+# dwm blocks
+dwmblocks &
+
+# loop
+while :; do
+	dwm > /dev/null 2>&1
+done
+
+
+## Execute dwm
+exec dwm
+
+# Execute awesome
+#exec awesome

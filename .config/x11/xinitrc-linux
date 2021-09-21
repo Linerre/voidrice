@@ -44,24 +44,8 @@ fi
 # Compositor
 picom --config ${HOME}/projects/voidrice/.config/picom/picom.conf &
 
-# wallpaper
-feh --no-fehbg --bg-scale ${HOME}/Pictures/wallpaper/cyberpunk2.jpg &
-
-# only one of sxhkd and xbindkeys could run
-# xbindkeys &
-sxhkd &
-
-# dwm blocks
-dwmblocks &
-
-# loop
-while :; do
-	dwm > /dev/null 2>&1
-done
-
-
-## Execute dwm
-exec dwm
-
-# Execute awesome
-#exec awesome
+if [[ "$(hostname)" == "gohan" ]] ; then
+	source ${HOME}/projects/voidrice/.config/x11/gohan
+elif [[ "$(hostname)" == "goku" ]] ; then
+	source ${HOME}/projects/voidrice/.config/x11/goku
+fi
