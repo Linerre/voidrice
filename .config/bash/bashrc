@@ -31,8 +31,8 @@ export PROJECTS_HOME=$HOME/projects
 [[ -d $HOME/.cargo ]] && . "$HOME/.cargo/env"
 
 # added by Nix installer
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then 
-	source $HOME/.nix-profile/etc/profile.d/nix.sh
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then 
+	source "$HOME/.nix-profile/etc/profile.d/nix.sh"
 fi 
 
 # alias
