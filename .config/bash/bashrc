@@ -7,8 +7,6 @@
 
 
 # user vars
-# prompt for X sessions with glyphs (icons) from nerd fonts
-#if [[ $(tty) != *'tty'* ]] && [[ $(tty) != *'pts'* ]]; then
 
 # make use of nerd font when using Arch ssh or Xorg
 term=$(echo $TERM)
