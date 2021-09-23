@@ -18,6 +18,8 @@ export XDG_DATA_HOME=$HOME/.local/share
 export KERNEL_NAME=$( uname | tr '[:upper:]' '[:lower:]' )
 export JAVA_HOME="$HOME/.local/jdk-17.jdk/Contents/Home"
 export MAVEN_HOME="$HOME/.local/apache-maven-3.8.2/bin"
+export PATH=$HOME/.local/bin:${JAVA_HOME}:${MAVEN_HOME}:$PATH
+export PROJECTS_HOME=$HOME/projects
 
 # remove duplicat entries from $PATH
 # zsh uses $path array along with $PATH 
@@ -32,13 +34,10 @@ export PATH=${HOME}/.local/bin:${JAVA_HOME}:${MAVEN_HOME}:${PATH}:${HOME}/Librar
 # change Nodejs mirror 
 export NODE_MIRROR=https://mirrors.ustc.edu.cn/node/
 
-	
-case $KERNEL_NAME in
-    'linux')
-        source "$HOME/.cargo/env"
-        ;;
-    'darwin')
-        export PATH="/opt/local/bin:/opt/local/sbin":$PATH
-        ;;
-    *) ;;
-esac
+# source  cargo only when rust was installed under $HOME
+[[ -d "$HOME/.cargo" ]] && . "$HOME/.cargo/env"
+
+# added by Nix installer
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then 
+    . "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi 

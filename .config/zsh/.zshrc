@@ -10,13 +10,8 @@ ZPROFILE="$HOME/.config/zsh/.zprofile"
 if [[ -f $ZPROFILE ]]; then
     source $ZPROFILE
 else
-    echo '.zprofile not found; $PATH may not be set properly.'
+    echo ".zprofile not found; $PATH may not be set properly."
 fi
-
-# added by Nix installer
-if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then 
-	source "$HOME/.nix-profile/etc/profile.d/nix.sh"
-fi 
 
 # prompt
 if [ $(whoami) = 'leon' ] || [ $(whoami) = 'errelin' ]; then
@@ -56,41 +51,11 @@ alias rr="ranger"
 # open, source dotfiles 
 alias nz="nvim $ZDOTDIR/.zshrc"
 alias sz="source $ZDOTDIR/.zshrc"
-f not running interactively, don't do anything
+# if not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-
-# user vars
-# prompt for X sessions with glyphs (icons) from nerd fonts
-#if [[ $(tty) != *'tty'* ]] && [[ $(tty) != *'pts'* ]]; then
-
-# make use of nerd font when using Arch ssh or Xorg
-term=$(echo $TERM)
-if [[ $term == 'xterm-256color' ]] || [[ $term == 'st-256color' ]]; then 
-    # this could be st-256color or xterm-256color
-    PS1='» \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
-# if in tty-like environment
-elif [[ $term == 'linux' ]]; then 
-    PS1='[\[\e[0;32m\]\h: \w\[\e[0m\] \[\e[0;35m\]\$\[\e[0m\]] '
-fi
-
-
-# env vars
-export JAVA_HOME="$HOME/.local/jdk-17.jdk/Contents/Home"
-export MAVEN_HOME="$HOME/.local/apache-maven-3.8.2/bin"
-export PATH=$HOME/.local/bin:${JAVA_HOME}:${MAVEN_HOME}:$PATH
-export PROJECTS_HOME=$HOME/projects
-
-# source  cargo only when rust was installed under $HOME
-[[ -d "$HOME/.cargo" ]] && . "$HOME/.cargo/env"
-
-# added by Nix installer
-if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then 
-	source "$HOME/.nix-profile/etc/profile.d/nix.sh"
-fi 
-
 # alias
-alias ls='ls --color=auto' # NOTE: not posix
+#alias ls='ls --color=auto' # NOTE: not posix
 alias rr='ranger'
 alias bz="nvim $HOME/.bashrc"
 alias bz="source $HOME/.bashrc"
