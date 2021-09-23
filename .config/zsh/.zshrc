@@ -13,6 +13,11 @@ else
     echo '.zprofile not found; $PATH may not be set properly.'
 fi
 
+# added by Nix installer
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then 
+	source $HOME/.nix-profile/etc/profile.d/nix.sh
+fi 
+
 # prompt
 if [ $(whoami) = 'leon' ] || [ $(whoami) = 'errelin' ]; then
 	PS1="%F{magenta}> %f"
