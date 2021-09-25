@@ -25,13 +25,14 @@
     tokei
     wget
     youtube-dl
+    zsh		# macOS zshell seems trashy
     
     # C/C++
     clang_12
     #gcc11
 
     # editors
-    neovim	
+    neovim
     
   ];
 
