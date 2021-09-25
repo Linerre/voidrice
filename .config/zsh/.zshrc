@@ -77,7 +77,7 @@ case $KERNEL_NAME in
         alias ll="ls -alh"
         alias la="ls -a"
         alias lla="ls -alhF"
-	alias emacs="$HOME/projects/emacs-src/src/emacs -nw"
+	#alias emacs="$HOME/projects/emacs-src/src/emacs -nw"
         ;;
 esac
 
