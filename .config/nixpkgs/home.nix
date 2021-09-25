@@ -7,15 +7,32 @@
   # for now just install these pkgs, do not use home-manager
   # to manage my dotfiles
 
-  home.packages = [
-    pkgs.neovim
-    pkgs.htop
-    pkgs.neofetch
-    pkgs.alacritty
-    pkgs.git
-    pkgs.gcc
-    pkgs.clang_12
+  home.packages = with pkgs; [
+    # terminal
+    alacritty
 
+    # CLI
+    curl
+    ffmpeg
+    neofetch
+    git
+    htop
+    imagemagick
+    mpv
+    openssl
+    sqlite
+    tmux
+    tokei
+    wget
+    youtube-dl
+    
+    # C/C++
+    clang_12
+    #gcc11
+
+    # editors
+    neovim	
+    
   ];
 
   nixpkgs.overlays = [
