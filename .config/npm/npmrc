@@ -1,0 +1,6 @@
+# My user-level npm config
+# Author: Errenil
+# Last Change: 2021-09-27
+
+# see https://docs.npmjs.com/cli/v6/configuring-npm/npmrc#files
+prefix = ${HOME}/.local/
