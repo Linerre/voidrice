@@ -31,6 +31,10 @@
     clang_12
     #gcc11
 
+    # clojure
+    openjdk16
+    clojure
+    leiningen
     # editors
     neovim
     
