@@ -35,6 +35,7 @@
     openjdk16
     clojure
     leiningen
+
     # editors
     neovim
     
