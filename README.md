@@ -16,6 +16,6 @@ It is for this reason that quite a few **if** blocks spread throught some config
 Also, I'm using both Vim and Emacs, both dwm and bspwm, both bash and zsh.
 
 ## Submodules
-Currently vim and neovim configs are [git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules). I found they are too extensible, constantly under development or modification, to be included here as other configs which will only be modified from time to time.
+Currently vim and neovim configs are [git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules). I found they are too extensible, constantly under development or modification, compared to other configs which will only be modified from time to time.
 
-I'm considering making emacs config a submodule too should the need arise.
+My emacs.d config has been migrated to [an independent repo](https://github.com/Linerre/emacs.d).
