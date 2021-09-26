@@ -39,6 +39,9 @@
     # editors
     neovim
     
+    # javascript
+    nodejs-16_x
+
   ];
 
   nixpkgs.overlays = [
