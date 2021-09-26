@@ -20,6 +20,8 @@ export JAVA_HOME="$HOME/.local/jdk-17.jdk/Contents/Home"
 export MAVEN_HOME="$HOME/.local/apache-maven-3.8.2/bin"
 export PATH=$HOME/.local/bin:${JAVA_HOME}:${MAVEN_HOME}:$PATH
 export PROJECTS_HOME=$HOME/projects
+# see https://docs.npmjs.com/cli/v6/using-npm/config#npmrc-files
+export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
 
 # remove duplicat entries from $PATH
 # zsh uses $path array along with $PATH 
