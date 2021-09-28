@@ -7,7 +7,7 @@
 	br = branch
 	sw = switch
 [core]
-	editor = nvim
+	editor = vim
 	#sshCommand = ssh -i ~/.ssh/m1_ed25519
 [pull]
 	ff = only
