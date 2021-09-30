@@ -7,14 +7,9 @@
 # xbindkeys &
 #sxhkd &
 
-# dwm blocks
-#dwmblocks &
 
-# loop
-#while :; do
-#	dwm > /dev/null 2>&1
-#done
-
+# start urxvt as a daemon
+urxvtd --quite --opendisplay --fork &
 
 # Execute awesome
 exec awesome
