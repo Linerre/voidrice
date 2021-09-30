@@ -8,8 +8,5 @@
 #sxhkd &
 
 
-# start urxvt as a daemon
-urxvtd --quite --opendisplay --fork &
-
 # Execute awesome
 exec awesome
