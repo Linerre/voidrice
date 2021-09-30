@@ -1,30 +1,40 @@
-Emacs.font:    Courier-18
-! Basics
-st.background:    #fbf1c7
-st.foreground:    #3c3836
+!URxvt config
+URxvt*font:	xft:Consolas:size=14
 
-! Colors
-! white and gray
-st.color0:			#fbf1c7
-st.color8:			#928374
-! red
-st.color1:			#cc241d
-st.color9:			#9d0006
-! green
-st.color2:			#98971a
-st.color10:			#79740e
-! yellow
-st.color3:			#d79921
-st.color11:			#b57614
-! blue
-st.color4:			#458588
-st.color12:			#076678
-! purple
-st.color5:			#b16286
-st.color13:			#8f3f71
-! aqua
-st.color6:			#689d6a
-st.color14:			#427b58
-! black
-st.color7:			#7c6f64
-st.color15:			#3c3836
+! -----------------------------------------------------------------------------
+! File: gruvbox-light.xresources
+! Description: Retro groove colorscheme generalized
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+! Last Modified: 6 Sep 2014
+! -----------------------------------------------------------------------------
+
+! hard contrast: *background: #f9f5d7
+*background: #fbf1c7
+! soft contrast: *background: #f2e5bc
+*foreground: #3c3836
+! Black + DarkGrey
+*color0:  #fdf4c1
+*color8:  #928374
+! DarkRed + Red
+*color1:  #cc241d
+*color9:  #9d0006
+! DarkGreen + Green
+*color2:  #98971a
+*color10: #79740e
+! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #b57614
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #076678
+! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #8f3f71
+! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #427b58
+! LightGrey + White
+*color7:  #7c6f64
+*color15: #3c3836
+
