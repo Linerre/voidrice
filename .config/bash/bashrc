@@ -8,14 +8,28 @@
 
 # user vars
 
-# make use of nerd font when using Arch ssh or Xorg
+
+# prompt should indicate:
+# 1. user identity (normal/root)
+# 2. hostname (particularly important when connecting remotely)
+# 3. current working directory
+# 4. time (when necessary) 
 term=$(echo $TERM)
-if [[ $term == 'xterm-256color' ]] || [[ $term == 'st-256color' ]]; then 
-    # this could be st-256color or xterm-256color
-    PS1='» \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
-# if in tty-like environment
-elif [[ $term == 'linux' ]]; then 
-    PS1='[\[\e[0;32m\]\h: \w\[\e[0m\] \[\e[0;35m\]\$\[\e[0m\]] '
+
+if [[ $term == 'xterm-256color' || $term == 'st-256color' ]]; then
+    if [[ $(hostname) == 'gohan' ]]; then 
+        # this should be user at gohan locally
+        # [H] PWD USER
+        PS1='[\[\e[0;31m\]H\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
+    elif [[ $(hostname) == 'goku' ]]; then
+        # user at goku locally
+        # [K] PWD USER
+        PS1='[\[\e[0;31m\]K\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
+    fi
+# otherwise user connects to the machine remotely 
+# or in tty-like environment, including tmux/screen (when $TERM == 'screen')
+else 
+    PS1='[\[\e[0;32m\]\h \w\[\e[0m\] \[\e[0;35m\]\$\[\e[0m\]] '
 fi
 
 
