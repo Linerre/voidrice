@@ -52,6 +52,9 @@ fi
 # alias
 alias ls='ls --color=auto' # NOTE: not posix
 alias rr='ranger'
+alias n="nvim"
+alias v="vim"
+alias e="emacs -nw"
 alias bz="nvim $HOME/.bashrc"
 alias bz="source $HOME/.bashrc"
 alias nr="nvim $HOME/projetcs/nvim/init.vim"
