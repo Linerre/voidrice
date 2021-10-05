@@ -55,7 +55,9 @@ alias sz="source $ZDOTDIR/.zshrc"
 [[ $- != *i* ]] && return
 
 # alias
-#alias ls='ls --color=auto' # NOTE: not posix
+alias v="vim"
+alias n="nvim"
+alias e="emacs -nw"
 alias rr='ranger'
 alias bz="nvim $HOME/.bashrc"
 alias bz="source $HOME/.bashrc"
@@ -77,7 +79,6 @@ case $KERNEL_NAME in
         alias ll="ls -alh"
         alias la="ls -a"
         alias lla="ls -alhF"
-	#alias emacs="$HOME/projects/emacs-src/src/emacs -nw"
         ;;
 esac
 
