@@ -2,5 +2,6 @@
 # Author: Errenil
 # Last Change: 2021-09-27
 
+# Make npm install pkgs to ~/.local/bin
 # see https://docs.npmjs.com/cli/v6/configuring-npm/npmrc#files
 prefix = ${HOME}/.local/
