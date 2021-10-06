@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  # allow non-free software 
+  # allow non-free software
   nixpkgs.config.allowUnfree = true;
- 
+
   # for now just install these pkgs, do not use home-manager
   # to manage my dotfiles
 
@@ -14,19 +14,20 @@
     # CLI
     curl
     ffmpeg
-    neofetch
     git
     htop
     imagemagick
+    neofetch
     mpv
     openssl
+    ripgrep
     sqlite
     tmux
     tokei
     wget
     youtube-dl
     zsh		# macOS zshell seems trashy
-    
+
     # C/C++
     clang_12
     #gcc11
@@ -38,7 +39,7 @@
 
     # editors
     neovim
-    
+
     # javascript
     nodejs-16_x
 
@@ -47,8 +48,8 @@
   nixpkgs.overlays = [
     # Import emacs-overlay
     (import (builtins.fetchTarball {
-      #Then you can replace the word `master' in there (which is the branch name) 
-      #with a commit id (for exapmle 3c649677294bdedb776ec69b14719b7171666a8a 
+      #Then you can replace the word `master' in there (which is the branch name)
+      #with a commit id (for exapmle 3c649677294bdedb776ec69b14719b7171666a8a
       #which is the latest commit on master as of writing).
       #url = https://github.com/nix-community/emacs-overlay/archive/f2c57ef22b058a9a8ffdc746259cbbcea7595e95.tar.gz;
       url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
@@ -60,12 +61,12 @@
     #   });
     # })
   ];
-  
+
   programs.emacs = {
     enable = true;
     package = pkgs.emacsGit-nox;
   };
- 
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -83,5 +84,5 @@
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "21.05";
-  
+
 }
