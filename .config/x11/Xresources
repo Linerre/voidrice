@@ -1,5 +1,8 @@
 !URxvt config
 URxvt*font:	xft:Consolas:size=14
+Urxvt.saveLines: 1000
+URxvt*scrollTtyOutput:  false
+URxvt.scrollBar:        false
 
 ! --------------------------------------
 ! File: kaolin-light.xresources
