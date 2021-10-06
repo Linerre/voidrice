@@ -14,14 +14,14 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-#env:
+env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  #TERM: alacritty
+  TERM: alacritty
 
 window:
   # Window dimensions (changes require restart)
@@ -174,12 +174,13 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
-# Colors (Gruvbox light)
+# Colors (kaolin)
 colors:
   # Default colors
   primary:
-    background: '#fbf1c7'
-    foreground: '#3c3836'
+    #background: '#f5f6f5'
+    background: '#edeeed'
+    foreground: '#383e3f'
 
     # Bright and dim foreground colors
     #
@@ -187,8 +188,8 @@ colors:
     # present. If the bright foreground color is not set, or
     # `draw_bold_text_with_bright_colors` is `false`, the normal foreground
     # color will be used.
-    #dim_foreground: '#828482'
-    #bright_foreground: '#eaeaea'
+    dim_foreground: '#e0e0e0'
+    bright_foreground: '#595959'
 
   # Cursor colors
   #
@@ -249,25 +250,25 @@ colors:
 
   # Normal colors
   normal:
-    black:   '#fbf1c7'
-    red:     '#cc241d'
-    green:   '#98971a'
-    yellow:  '#d79921'
-    blue:    '#458588'
-    magenta: '#b16286'
-    cyan:    '#689d6a'
-    white:   '#7c6f64'
+    black:   '#383e3f'
+    red:     '#e84c58'
+    green:   '#13665f'
+    yellow:  '#e36b3f'
+    blue:    '#3b84cc'
+    magenta: '#a9779c'
+    cyan:    '#6facb3'
+    white:   '#7c878a'
 
   # Bright colors
   bright:
-    black:   '#928374'
-    red:     '#9d0006'
-    green:   '#79740e'
+    black:   '#383e3f'
+    red:     '#e84c58'
+    green:   '#39854c'
     yellow:  '#b57614'
-    blue:    '#076678'
-    magenta: '#8f3f71'
-    cyan:    '#427b58'
-    white:   '#3c3836'
+    blue:    '#53859d'
+    magenta: '#b16286'
+    cyan:    '#458588'
+    white:   '#2b2b2f'
 
   # Dim colors
   #
