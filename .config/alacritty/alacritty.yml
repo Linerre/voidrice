@@ -683,6 +683,7 @@ colors:
 key_bindings:
   # Emacs meta key
   - { key: X,         mods: Alt,      chars: "\x1bx"  }
+  - { key: W,         mods: Alt,      chars: "\x1bw"  }
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
