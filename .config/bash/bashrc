@@ -16,7 +16,7 @@
 # 4. time (when necessary) 
 term=$(echo $TERM)
 
-if [[ $term == 'xterm-256color' || $term == 'st-256color' ]]; then
+if [[ $term == 'xterm-256color' || $term == 'st-256color' || $term == 'rxvt-unicode-256color' ]]; then
     if [[ $(hostname) == 'gohan' ]]; then 
         # this should be user at gohan locally
         # [H] PWD USER
