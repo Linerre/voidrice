@@ -29,7 +29,7 @@
     zsh		# macOS zshell seems trashy
 
     # C/C++
-    clang_12
+    #clang_12
     #gcc11
 
     # clojure
