@@ -11,7 +11,7 @@
     # terminal
     alacritty
 
-    # CLI
+    # cli
     curl
     ffmpeg
     git
@@ -43,6 +43,9 @@
 
     # javascript
     nodejs-16_x
+
+    # fonts
+    #sarasa-gothic
 
   ];
 
