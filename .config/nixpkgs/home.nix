@@ -28,9 +28,10 @@
     youtube-dl
     zsh		# macOS zshell seems trashy
 
-    # C/C++
-    #clang_12
-    #gcc11
+    # c/c++
+    #gcc10
+    ccls
+    clang
 
     # clojure
     openjdk16
@@ -64,7 +65,7 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsGit-nox;
+    package = pkgs.emacsGit;
   };
 
   # Let Home Manager install and manage itself.
