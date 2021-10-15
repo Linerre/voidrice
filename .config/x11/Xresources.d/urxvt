@@ -1,0 +1,6 @@
+!URxvt config
+URxvt*font:	xft:Consolas:size=18
+Urxvt.saveLines: 1000
+URxvt*scrollTtyOutput:  false
+URxvt.scrollBar:        false
+
