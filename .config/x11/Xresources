@@ -1,48 +1,8 @@
-!URxvt config
-URxvt*font:	xft:Consolas:size=18
-Urxvt.saveLines: 1000
-URxvt*scrollTtyOutput:  false
-URxvt.scrollBar:        false
+! Xresources
+#include "projects/voidrice/.config/x11/Xresources.d/nord-theme"
 
-! --------------------------------------
-! File: kaolin-light.xresources
-! Description: kaolin-theme light
-! Author: Ogden Webb
-! --------------------------------------
+! Urxvt config
+#include "projects/voidrice/.config/x11/Xresources.d/urxvt"
 
-! special
-*.foreground:   #383e3f
-*.background:   #f5f6f5
-*.cursorColor:  #383e3f
-
-! black
-*.color0:       #383e3f
-*.color8:       #383e3f
-
-! red
-*.color1:       #e84c58
-*.color9:       #e84c58
-
-! green
-*.color2:       #13665f
-*.color10:      #39854c
-
-! yellow
-*.color3:       #e36b3f
-*.color11:      #b08c77
-
-! blue
-*.color4:       #3b84cc
-*.color12:      #53859d
-
-! magenta
-*.color5:       #a9779c
-*.color13:      #b16286
-
-! cyan
-*.color6:       #6facb3
-*.color14:      #458588
-
-! white
-*.color7:       #7c878a
-*.color15:      #2b2b2f
+! emacs config
+#include "projects/voidrice/.config/x11/Xresources.d/emacs"

@@ -19,7 +19,7 @@ fi
 
 if [ -f "$userresources" ]; then
 
-    xrdb -merge "$userresources"
+    xrdb -merge -I$HOME "$userresources"
 
 fi
 
