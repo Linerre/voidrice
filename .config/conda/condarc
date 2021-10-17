@@ -1,0 +1,8 @@
+default_channels:
+  - https://mirror.sjtu.edu.cn/anaconda/pkgs/r
+  - https://mirror.sjtu.edu.cn/anaconda/pkgs/main
+custom_channels:
+  conda-forge: https://mirror.sjtu.edu.cn/anaconda/cloud/
+  pytorch: https://mirror.sjtu.edu.cn/anaconda/cloud/
+channels:
+  - defaults
