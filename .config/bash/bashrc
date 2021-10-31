@@ -7,14 +7,13 @@
 
 
 # user vars
+term=$(echo $TERM)
 
-
-# prompt should indicate:
+# The prompt should at least indicate:
 # 1. user identity (normal/root)
 # 2. hostname (particularly important when connecting remotely)
 # 3. current working directory
 # 4. time (when necessary) 
-term=$(echo $TERM)
 
 if [[ $term == 'xterm-256color' || $term == 'st-256color' || $term == 'rxvt-unicode-256color' ]]; then
     if [[ $(hostname) == 'gohan' ]]; then 
@@ -38,16 +37,16 @@ export JAVA_HOME="$HOME/.local/jdk-17.jdk/Contents/Home"
 export MAVEN_HOME="$HOME/.local/apache-maven-3.8.2/bin"
 export PATH=$HOME/.local/bin:${JAVA_HOME}:${MAVEN_HOME}:$PATH
 export PROJECTS_HOME=$HOME/projects
+
 # see https://docs.npmjs.com/cli/v6/using-npm/config#npmrc-files
 export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
 
-# source  cargo only when rust was installed under $HOME
+# source node path only when node was installed under $HOME/node
+[[ -d $HOME/node ]] && export PATH="$HOME/node/node-v16.13.0-linux-x64/bin:$PATH"
+
+# source  cargo path only when rust was installed under $HOME
 [[ -d $HOME/.cargo ]] && . "$HOME/.cargo/env"
 
-# added by Nix installer
-if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then 
-	source "$HOME/.nix-profile/etc/profile.d/nix.sh"
-fi 
 
 # alias
 alias ls='ls --color=auto' # NOTE: not posix
