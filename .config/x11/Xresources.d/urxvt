@@ -1,6 +1,6 @@
 !URxvt config
-URxvt*font:	xft:Consolas:size=18
+URxvt*font:	xft:IBM Plex Mono:size=16
 Urxvt.saveLines: 1000
 URxvt*scrollTtyOutput:  false
 URxvt.scrollBar:        false
-
+URxvt.perl-ext-common:	...,tabbed,...

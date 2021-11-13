@@ -5,4 +5,4 @@
 #include "projects/voidrice/.config/x11/Xresources.d/urxvt"
 
 ! emacs config
-#include "projects/voidrice/.config/x11/Xresources.d/emacs"
+!#include "projects/voidrice/.config/x11/Xresources.d/emacs"

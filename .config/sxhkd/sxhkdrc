@@ -1,8 +1,3 @@
-# =================
-# == keybindings ==
-# ==   Errelin   ==  
-# ==================
-
 # Fn key does not work with sxhkd 
 # so `super` key is used instead
 
