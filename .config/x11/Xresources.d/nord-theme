@@ -24,7 +24,7 @@
 #define nord15 #B48EAD
 #define cursorcolor #B1B6BF
 
-*.foreground:   nord4
+*.foreground:   nord5
 *.background:   nord0
 *.cursorColor:  cursorcolor
 *fading: 35

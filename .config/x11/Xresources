@@ -1,5 +1,5 @@
 ! Xresources
-#include "projects/voidrice/.config/x11/Xresources.d/nord-theme"
+#include "projects/voidrice/.config/x11/Xresources.d/solarized-theme"
 
 ! Urxvt config
 #include "projects/voidrice/.config/x11/Xresources.d/urxvt"
