@@ -18,6 +18,8 @@
 Brave*
 *.db
 history.cmdline
+.config/awesome/themes/
+.config/awesome/battery-widget/
 
 # ignore zsh history
 .zsh_history

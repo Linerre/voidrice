@@ -46,8 +46,8 @@ end
 --{{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.init("/home/errenil/.config/awesome/themes/default/theme.lua")
-beautiful.get().wallpaper = "/home/errenil/Pictures/wallpapers/mountain-0.jpg"
+beautiful.init(string.format("%s/.config/awesome/themes/default/theme.lua", os.getenv("HOME")))
+--beautiful.get().wallpaper = "/home/errenil/Pictures/wallpapers/mountain-0.jpg"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
