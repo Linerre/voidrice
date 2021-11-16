@@ -1,0 +1,3 @@
+! Settings specified via X resources in general override the equivalent settings in Emacs init files
+! In TUI, emacs really has little say on how it can appear. Besides inhibit-x-resources is enabled in the init file, so this file is barely usable.
+Emacs*cursorColor:    dark green
