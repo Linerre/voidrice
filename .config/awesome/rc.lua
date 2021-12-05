@@ -115,7 +115,7 @@ mytextclock = wibox.widget.textclock(" %Y-%m-%d %H:%M ", 60)
 
 -- battery --{{2
     -- Add widgets to the wibox
---}}2 
+--}}2
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -499,7 +499,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+      }, properties = { titlebars_enabled = false }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
