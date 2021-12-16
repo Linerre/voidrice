@@ -13,10 +13,10 @@ term=$(echo $TERM)
 # 1. user identity (normal/root)
 # 2. hostname (particularly important when connecting remotely)
 # 3. current working directory
-# 4. time (when necessary) 
+# 4. time (when necessary)
 
 if [[ $term == 'xterm-256color' || $term == 'st-256color' || $term == 'rxvt-unicode-256color' ]]; then
-    if [[ $(hostname) == 'gohan' ]]; then 
+    if [[ $(hostname) == 'gohan' ]]; then
         # this should be user at gohan locally
         # [H] PWD USER
         PS1='[\[\e[0;31m\]H\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
@@ -25,17 +25,19 @@ if [[ $term == 'xterm-256color' || $term == 'st-256color' || $term == 'rxvt-unic
         # [K] PWD USER
         PS1='[\[\e[0;31m\]K\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
     fi
-# otherwise user connects to the machine remotely 
+# otherwise user connects to the machine remotely
 # or in tty-like environment, including tmux/screen (when $TERM == 'screen')
-else 
+else
     PS1='[\[\e[0;32m\]\h \w\[\e[0m\] \[\e[0;35m\]\$\[\e[0m\]] '
 fi
 
 
 # env vars
-export JAVA_HOME="$HOME/.local/jdk-17.jdk/Contents/Home"
-export MAVEN_HOME="$HOME/.local/apache-maven-3.8.2/bin"
-export PATH=$HOME/.local/bin:${JAVA_HOME}:${MAVEN_HOME}:$PATH
+export EDITOR="/home/leon/.local/bin/emacs"
+
+#export JAVA_HOME="$HOME/.local/jdk-17.jdk/Contents/Home"
+#export MAVEN_HOME="$HOME/.local/apache-maven-3.8.2/bin"
+#export PATH=$HOME/.local/bin:${JAVA_HOME}:${MAVEN_HOME}:$PATH
 export PROJECTS_HOME=$HOME/projects
 export TEXLIVE_HOME="$HOME/texlive/2021/bin/x86_64-linux"
 export TEXLIVE_MAN="$HOME/texlive/2021/texmf-dist/doc/man"
@@ -66,18 +68,18 @@ alias bz="source $HOME/.bashrc"
 alias nr="nvim $HOME/projetcs/nvim/init.vim"
 alias nvr="nvim $HOME/.vim/vimrc"
 
+# Use virtualenv and virutalenvwrapper for now
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/leon/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/leon/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/leon/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/leon/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+#__conda_setup="$('/home/leon/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/home/leon/miniconda3/etc/profile.d/conda.sh" ]; then
+#        . "/home/leon/miniconda3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/home/leon/miniconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
 # <<< conda initialize <<<
-
