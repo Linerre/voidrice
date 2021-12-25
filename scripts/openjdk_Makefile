@@ -1,0 +1,74 @@
+SHELL = /bin/bash
+#PREFIX := /home/leon/projects/lab
+PREFIX := /usr/local
+
+SRC := .
+BINS := $(SRC)/bin
+CONF := $(SRC)/conf
+INCS := $(SRC)/include
+LIBS := $(SRC)/lib
+JMOD := $(SRC)/jmods
+LEGL := $(SRC)/legal
+
+
+options:
+	@echo "Options"
+
+install: install-bin install-inc install-lib install-dir
+
+install-bin:
+	#umask 022; mkdir $(PREFIX)/bin
+	for i in $(BINS)/*; do \
+		cp -r $$i $(PREFIX)/bin/ ; \
+	done
+
+install-inc:
+	#umask 022; mkdir $(PREFIX)/bin
+	for i in $(INCS)/*; do \
+		if [ -d $$i ]; then \
+			cp -fr $$i $(PREFIX)/include/ ; \
+		else \
+			cp -af $$i $(PREFIX)/include/ ; \
+		fi; \
+	done
+
+install-lib:
+	#umask 022; mkdir $(PREFIX)/bin
+	for i in $(LIBS)/*; do \
+		if [ -d $$i ]; then \
+			cp -fr $$i $(PREFIX)/lib/ ; \
+		else \
+			cp -af $$i $(PREFIX)/lib/ ; \
+		fi; \
+	done
+
+install-dir:
+	cp -af $(CONF) $(PREFIX)/ || exit 1
+	cp -af $(JMOD) $(PREFIX)/ || exit 1
+	cp -af $(LEGL) $(PREFIX)/ || exit 1
+
+uninstall: uninstall-bin uninstall-inc uninstall-lib uninstall-dir
+
+uninstall-bin:
+	for b in $(BINS)/* ; do \
+		rm -rf $(PREFIX)/bin/`basename $$b` || exit 1 ; \
+	done
+
+uninstall-inc:
+	for b in $(INCS)/* ; do \
+		rm -rf $(PREFIX)/include/`basename $$b` || exit 1 ; \
+	done
+
+uninstall-lib:
+	for b in $(LIBS)/* ; do \
+		rm -rf $(PREFIX)/lib/`basename $$b` || exit 1 ; \
+	done
+
+uninstall-dir:
+	rm -rf $(PREFIX)/conf
+	rm -rf $(PREFIX)/jmods
+	rm -rf $(PREFIX)/legal
+
+.PHONY: install uninstall \
+				install-bin instal-inc install-lib install-dir \
+				uninstall-bin uninstall-inc uninstall-lib uninstall-dir
