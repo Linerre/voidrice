@@ -5,63 +5,28 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# After startx, whatever in ~/.bash_profile has already been sourced, so there
+# is really no need to resource anything like $PATH or $EDITOR. Instead, place
+# in this file stuff that only make sense when X is running, such GUI settings
 
-# user vars
-term=$(echo $TERM)
 
-# The prompt should at least indicate:
-# 1. user identity (normal/root)
-# 2. hostname (particularly important when connecting remotely)
-# 3. current working directory
-# 4. time (when necessary)
-
-if [[ $term == 'xterm-256color' || $term == 'st-256color' || $term == 'rxvt-unicode-256color' ]]; then
-    if [[ $(hostname) == 'gohan' ]]; then
-        # this should be user at gohan locally
-        # [H] PWD USER
-        PS1='[\[\e[0;31m\]H\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
-    elif [[ $(hostname) == 'goku' ]]; then
-        # user at goku locally
-        # [K] PWD USER
-        PS1='[\[\e[0;31m\]K\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
-    fi
-# otherwise user connects to the machine remotely
-# or in tty-like environment, including tmux/screen (when $TERM == 'screen')
-else
-    PS1='[\[\e[0;32m\]\h \w\[\e[0m\] \[\e[0;35m\]\$\[\e[0m\]] '
+# Interactive, non-login shell prompt
+if [[ $(hostname) == 'gohan' ]]; then
+    # this should be user at gohan locally
+    # [H] PWD USER
+    PS1='[\[\e[0;31m\]H\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
+elif [[ $(hostname) == 'goku' ]]; then
+    # user at goku locally
+    # [K] PWD USER
+    PS1='[\[\e[0;31m\]K\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
 fi
 
 
-# env vars
-export EDITOR="/home/leon/.local/bin/emacs"
-
-#export JAVA_HOME="$HOME/.local/jdk-17.jdk/Contents/Home"
-#export MAVEN_HOME="$HOME/.local/apache-maven-3.8.2/bin"
-export PATH=$HOME/.local/bin:$PATH
-export PROJECTS_HOME=$HOME/projects
-export TEXLIVE_HOME="$HOME/texlive/2021/bin/x86_64-linux"
-export TEXLIVE_MAN="$HOME/texlive/2021/texmf-dist/doc/man"
-export TEXLIVE_INFO="$HOME/texlive/2021/texmf-dist/doc/info"
-
-# see https://docs.npmjs.com/cli/v6/using-npm/config#npmrc-files
-export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
-
-# source node path only when node was installed under $HOME/node
-[[ -d $HOME/node ]] && export PATH="$HOME/node/node-v16.13.0-linux-x64/bin:$PATH"
-[[ -d $HOME/texlive/2021 ]] && \
-    export PATH="$TEXLIVE_HOME:$PATH" \
-    export MANPATH="$TEXLIVE_MAN:$MANPATH" \
-    export INFOPATH="$TEXLIVE_INFO:$INFOPATH"
-
-# source  cargo path only when rust was installed under $HOME
-[[ -d $HOME/.cargo ]] && . "$HOME/.cargo/env"
-
-
-# alias
+# alias for interactive, non-login shell only
 alias ls='ls --color=auto' # NOTE: not posix
 alias rr='ranger'
-alias n="nvim"
-alias v="vim"
 alias e="emacs -nw"
-alias bz="nvim $HOME/.bashrc"
-alias bz="source $HOME/.bashrc"
+alias eg="$HOME/.local/bin/emacs-28.0.60"
+alias sz="source $HOME/.bashrc"
+
+# function

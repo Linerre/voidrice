@@ -2,4 +2,61 @@
 # ~/.bash_profile
 #
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+# Since I always log in first and then manually startx, bash config should
+# really be placed here for the login shell and to reduce redundancy, e.g #PATH
+# to be sourced twice due to the following line in ~/.bash_profile:
+# [[ -f ~/.bashrc ]] && . ~/.bashrc
+
+# user vars
+term=$(echo $TERM)
+xt="xterm-256color"
+st="st-256color"
+ut="rxvt-unicode-256"
+
+# The prompt should at least indicate:
+# 1. user identity (normal/root)
+# 2. hostname (particularly important when connecting remotely)
+# 3. current working directory
+# 4. time (when necessary)
+
+# otherwise user connects to the machine remotely
+# or in tty-like environment, including tmux/screen (when $TERM == 'screen')
+PS1='[\[\e[0;32m\]\h \w\[\e[0m\] \[\e[0;35m\]\$\[\e[0m\]] '
+
+
+# env vars
+export EDITOR="/home/leon/.local/bin/emacs -nw"
+
+#export JAVA_HOME="$HOME/.local/jdk-17.jdk/Contents/Home"
+#export MAVEN_HOME="$HOME/.local/apache-maven-3.8.2/bin"
+export PATH=$HOME/.local/bin:$PATH
+export PROJECTS_HOME=$HOME/projects
+
+# see https://docs.npmjs.com/cli/v6/using-npm/config#npmrc-files
+export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
+
+# source node path only when node was installed under $HOME/node
+[[ $(which node) != "/usr/local/bin/node" ]] && [[ -d $HOME/node ]] && \
+    export PATH="$HOME/node/node-v16.13.0-linux-x64/bin:$PATH"
+
+[[ -d $HOME/texlive/2021 ]] && \
+    # setting these vars will cause the paths to be added to
+    # corresponding $PATHs automatically; thus don't need to add them again
+    export TEXLIVE_HOME="$HOME/texlive/2021/bin/x86_64-linux"
+    export TEXLIVE_MAN="$HOME/texlive/2021/texmf-dist/doc/man"
+    export TEXLIVE_INFO="$HOME/texlive/2021/texmf-dist/doc/info"
+
+    #export PATH="$TEXLIVE_HOME:$PATH" \
+    #export MANPATH="$TEXLIVE_MAN:$MANPATH" \
+    #export INFOPATH="$TEXLIVE_INFO:$INFOPATH"
+
+# source  cargo path only when rust was installed under $HOME
+[[ -d $HOME/.cargo ]] && . "$HOME/.cargo/env"
+
+
+# alias for login shell only
+alias ls='ls --color=auto' # NOTE: not posix
+alias rr='ranger'
+alias n="nvim"
+alias v="vim"
+alias e="emacs -nw"
