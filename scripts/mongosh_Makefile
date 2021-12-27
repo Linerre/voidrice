@@ -1,0 +1,36 @@
+#.
+#├── bin
+#│   ├── mongocryptd-mongosh
+#│   └── mongosh
+#├── LICENSE-mongocryptd
+#├── LICENSE-mongosh
+#├── Makefile
+#├── mongosh.1.gz
+#├── README
+#└── THIRD_PARTY_NOTICES
+
+SHELL := /bin/bash
+
+#PREFIX := /home/leon/projects/lab
+PREFIX := /usr/local
+
+SRC := .
+BINS := $(SRC)/bin
+
+install: install-bin
+
+install-bin:
+	for i in $(BINS)/* ; do \
+		cp $$i $(PREFIX)/bin/ ; \
+	done
+	@echo "Check if the binaries are executable ..."
+	ls -lh $(PREFIX)/bin
+
+uninstall: uninstall-bin
+
+uninstall-bin:
+	for b in $(BINS)/* ; do \
+		rm -i $(PREFIX)/bin/`basename $$b` || exit 1 ; \
+	done
+
+.PHONY: install uninstall install-bin uninstall-bin

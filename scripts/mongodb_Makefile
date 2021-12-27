@@ -1,0 +1,47 @@
+#.
+#├── bin
+#│   ├── install_compass
+#│   ├── mongo
+#│   ├── mongod
+#│   └── mongos
+#├── LICENSE-Community.txt
+#├── Makefile
+#├── MPL-2
+#├── README
+#└── THIRD-PARTY-NOTICES
+
+SHELL := /bin/bash
+
+#PREFIX := /home/leon/projects/lab
+#VAR := /home/leon/projects/lab/var
+PREFIX := /usr/local
+VAR := /var
+
+SRC := .
+BINS := $(SRC)/bin
+DATA := $(VAR)/lib/mongo
+LOGS := $(VAR)/log/mongodb
+
+install: install-bin
+
+install-bin:
+	# Don't use -a since this will cp ownership (user instead of root) by default
+	# Similarly, use -r rather than -a for recursive copying.
+	# Not using -f intentioanlly so that error will be raised more strictly
+	for i in $(BINS)/* ; do \
+		cp $$i $(PREFIX)/bin/ ; \
+	done
+	[[ ! -d $(DATA) ]] && umask 022; mkdir -p $(DATA)
+	[[ ! -d $(LOGS) ]] && umask 022; mkdir -p $(LOGS)
+
+uninstall: uninstall-bin
+
+uninstall-bin:
+	for b in $(BINS)/* ; do \
+		rm $(PREFIX)/bin/`basename $$b` || exit 1 ; \
+	done
+	@echo "Remember to remove /var/log/mongodb and /var/lib/mongo"
+	@rm -ri $(DATA)
+	@rm -ri $(LOGS)
+
+.PHONY: install uninstall install-bin uninstall-bin
