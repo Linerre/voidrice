@@ -17,27 +17,27 @@ options:
 install: install-bin install-inc install-lib install-dir
 
 install-bin:
-	#umask 022; mkdir $(PREFIX)/bin
+	# No dir in the bin folder
 	for i in $(BINS)/*; do \
-		cp -a $$i $(PREFIX)/bin/ ; \
+		cp $$i $(PREFIX)/bin/ ; \
 	done
 
 install-inc:
-	#umask 022; mkdir $(PREFIX)/bin
+	# linux is a dir; thus -r
 	for i in $(INCS)/*; do \
-			cp -a $$i $(PREFIX)/include/ ; \
+			cp -r $$i $(PREFIX)/include/ ; \
 	done
 
 install-lib:
-	#umask 022; mkdir $(PREFIX)/bin
+	# several dirs
 	for i in $(LIBS)/*; do \
-			cp -a $$i $(PREFIX)/lib/ ; \
+			cp -r $$i $(PREFIX)/lib/ ; \
 	done
 
 install-dir:
-	cp -a $(CONF) $(PREFIX)/ || exit 1
-	cp -a $(JMOD) $(PREFIX)/ || exit 1
-	cp -a $(LEGL) $(PREFIX)/ || exit 1
+	cp -r $(CONF) $(PREFIX)/ || exit 1
+	cp -r $(JMOD) $(PREFIX)/ || exit 1
+	cp -r $(LEGL) $(PREFIX)/ || exit 1
 
 uninstall: uninstall-bin uninstall-inc uninstall-lib uninstall-dir
 
