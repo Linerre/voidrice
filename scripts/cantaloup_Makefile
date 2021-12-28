@@ -18,7 +18,8 @@ install:
 	done; \
 	cp -r $(DEP) $(PREFIX)/"$${thisdir}"/deps; \
 	cp $(DOC) $(PREFIX)/"$${thisdir}"/deps
-
+	@echo "Refer to https://cantaloupe-project.github.io/manual/5.0/getting-started.html\
+	for configuration"
 
 uninstall:
 	thisdir=`basename $$(/bin/pwd)`; \
