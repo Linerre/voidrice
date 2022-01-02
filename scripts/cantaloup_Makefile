@@ -13,11 +13,11 @@ install:
 	thisdir=`basename $$(/bin/pwd)`; mkdir -p $(PREFIX)/"$${thisdir}"/deps ; \
 	for i in $(SRC)/*; do \
 		if [ -f $$i ]; then \
-			cp -r $$i $(PREFIX)/"$${thisdir}"; \
+			cp -r $$i $(PREFIX)/"$${thisdir}"/; \
 		fi; \
 	done; \
-	cp -r $(DEP) $(PREFIX)/"$${thisdir}"/deps; \
-	cp $(DOC) $(PREFIX)/"$${thisdir}"/deps
+	cp -r $(DEP) $(PREFIX)/"$${thisdir}"/deps/ ; \
+	cp $(DOC) $(PREFIX)/"$${thisdir}"/deps/
 	@echo "Refer to https://cantaloupe-project.github.io/manual/5.0/getting-started.html\
 	for configuration"
 
