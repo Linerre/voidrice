@@ -25,7 +25,7 @@ PS1='[\[\e[0;32m\]\h \w\[\e[0m\] \[\e[0;35m\]\$\[\e[0m\]] '
 
 
 # env vars
-export EDITOR="/home/leon/.local/bin/emacs -nw"
+export EDITOR="/usr/local/bin/emacs -nw"
 
 #export JAVA_HOME="$HOME/.local/jdk-17.jdk/Contents/Home"
 #export MAVEN_HOME="$HOME/.local/apache-maven-3.8.2/bin"
