@@ -28,5 +28,6 @@ alias rr='ranger'
 alias e="emacs -nw"
 alias eg="$HOME/.local/bin/emacs-28.0.60"
 alias sz="source $HOME/.bashrc"
-
+alias clj="clojure-1.10"
+alias clojure="clojure-1.10"
 # function
