@@ -28,9 +28,9 @@ PS1='[\[\e[0;32m\]\h \w\[\e[0m\] \[\e[0;35m\]\$\[\e[0m\]] '
 export EDITOR="/usr/local/bin/emacs -nw"
 
 #export JAVA_HOME="$HOME/.local/jdk-17.jdk/Contents/Home"
-#export MAVEN_HOME="$HOME/.local/apache-maven-3.8.2/bin"
-export PATH=$HOME/.local/bin:$PATH
-export PROJECTS_HOME=$HOME/projects
+export MAVEN_HOME="$HOME/.local/maven-3.8.4/bin"
+export PATH="$MAVEN_HOME:$HOME/.local/bin:$PATH"
+export PROJECTS_HOME="$HOME/projects"
 
 # see https://docs.npmjs.com/cli/v6/using-npm/config#npmrc-files
 export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
