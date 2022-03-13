@@ -49,7 +49,7 @@ export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
     export INFOPATH="$TEXLIVE_INFO:$INFOPATH"
 
 # source  cargo path only when rust was installed under $HOME
-[[ -d $HOME/.cargo ]] && . "$HOME/.cargo/env"
+[[ ! -x /usr/bin/cargo ]] && [[ -d $HOME/.cargo ]] && . "$HOME/.cargo/env"
 
 
 # alias for login shell only
@@ -58,3 +58,4 @@ alias rr='ranger'
 alias n="nvim"
 alias v="vim"
 alias e="emacs -nw"
+alias mg="mg -n"
