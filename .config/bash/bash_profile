@@ -55,7 +55,7 @@ export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
 # alias for login shell only
 alias ls='ls --color=auto' # NOTE: not posix
 alias rr='ranger'
-alias n="nvim"
-alias v="vim"
 alias e="emacs -nw"
 alias mg="mg -n"
+alias sync="doas emaint sync -a"
+alias update="doas emerge -auvDU @world"

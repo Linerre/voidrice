@@ -26,8 +26,9 @@ fi
 alias ls='ls --color=auto' # NOTE: not posix
 alias rr='ranger'
 alias e="emacs -nw"
-alias eg="$HOME/.local/bin/emacs-28.0.60"
 alias sz="source $HOME/.bashrc"
 alias mg="mg -n"
+alias sync="doas emaint sync -a"
+alias update="doas emerge -auvDU @world"
 
 # function
