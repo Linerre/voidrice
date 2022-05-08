@@ -20,7 +20,7 @@ require("awful.hotkeys_popup.keys")
 
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
---{{{ Error handling
+-- Error handling
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
                      title = "Oops, there were errors during startup!",
@@ -41,17 +41,17 @@ do
         in_error = false
     end)
 end
---}}}
+--
 
---{{{ Variable definitions
+-- Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 beautiful.init(string.format("%s/.config/awesome/themes/default/theme.lua", os.getenv("HOME")))
 --beautiful.get().wallpaper = "/home/errenil/Pictures/wallpapers/mountain-0.jpg"
-
+beautiful.font = "Liberation Mono 12"
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
-editor = os.getenv("EDITOR") or "vim"
+editor = "emacs"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -63,26 +63,25 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
+    awful.layout.suit.spiral.dwindle,
+    awful.layout.suit.spiral,
+    awful.layout.suit.floating,
+    awful.layout.suit.max.fullscreen,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier,
     awful.layout.suit.corner.nw,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
 }
---}}}
 
---{{{ Menu
+-- Menu
 -- Create a launcher widget and a main menu
 myawesomemenu = {
    { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
@@ -102,20 +101,17 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
---}}}
+
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
---{{{ Wibar
--- clock --{{2
+-- Wibar
+-- clock
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock(" %Y-%m-%d %H:%M ", 60)
----}}2
 
--- battery --{{2
-    -- Add widgets to the wibox
---}}2
+-- battery: Add widgets to the wibox
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
