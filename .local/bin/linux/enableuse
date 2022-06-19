@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+echo -n "Enter category: "
+read -r CATEGORY                # e.g. dev-libs
+
+echo -n "Enter package: "
+read -r PACKAGE                 # e.g. emacs
+
+echo -n "Enter USEs to be enabled: "
+read -r USES
+
+
+PKG_USE="/etc/portage/package.use"
+
+# The following line will NOT work since redirection is done before doas is evoked
+# doas echo "message" > /root/owned/file
+
+# But this works fine
+echo "${CATEGORY}/${PACKAGE} ${USES}" | doas tee -a "${PKG_USE}/${CATEGORY}"
