@@ -1,0 +1,9 @@
+#!/usr/bin/env  bash
+
+CURRENT_IM=$(fcitx5-remote -q)
+
+if [[ ${CURRENT_IM} == "Default" ]]; then
+    printf "EN"
+else
+    printf "Wubi"
+fi
