@@ -9,6 +9,23 @@
 # is really no need to resource anything like $PATH or $EDITOR. Instead, place
 # in this file stuff that only make sense when X is running, such GUI settings
 
+# functions
+clean_sceenshots()
+{
+    echo -n "You are going to delete all the screenshots? [y/n] "
+    read -r resp
+    [[ ${resp} == 'y' ]] && rm ~/Pictures/screenshots/*.png || echo "Action canceled."
+}
+
+wrap_longpath()
+{
+    # Match a path part like `/path_part-or-part', 5 times or more
+    if [[ $(pwd) =~ (/[[:alnum:]_-]+){5,} ]]; then
+        PS1='[\[\e[0;31m\]H\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\]\n\[\e[0;32m\]\$\[\e[0m\] '
+    else
+        PS1='[\[\e[0;31m\]H\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
+    fi
+}
 
 # Interactive, non-login shell prompt
 if [[ $(hostname) == 'gohan' ]]; then
@@ -25,10 +42,11 @@ fi
 # alias for interactive, non-login shell only
 alias ls='ls --color=auto' # NOTE: not posix
 alias rr='ranger'
-alias e="emacs -nw"
-alias sz="source $HOME/.bashrc"
-alias mg="mg -n"
-alias sync="doas emaint sync -a"
-alias update="doas emerge -auvDU @world"
-
-# function
+alias e='emacs -nw'
+alias sz='source $HOME/.bashrc'
+alias mg='mg -n'
+alias sync='doas emaint sync -a'
+alias update='doas emerge -auvDU @world'
+alias scrot='scrot -shole --line color="#FAFAFA" ~/Pictures/screenshots/%Y-%m-%d_$p.png'
+alias clst='clean_sceenshots'
+alias brps='wrap_longpath'
