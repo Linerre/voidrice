@@ -26,7 +26,7 @@ PS1='[\[\e[0;32m\]\h \w\[\e[0m\] \[\e[0;35m\]\$\[\e[0m\]] '
 
 # env vars
 # export EDITOR="/usr/bin/emacs -nw"
-export XDG_CONFIG_HOME="$HOME/.config"HOME/.config
+export XDG_CONFIG_HOME="$HOME/.config"
 #export JAVA_HOME="$HOME/.local/jdk-17.jdk/Contents/Home"
 export MAVEN_HOME="$HOME/.local/maven-3.8.4/bin"
 export PATH="$MAVEN_HOME:$HOME/.local/bin:$PATH"
@@ -47,6 +47,8 @@ export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
     export PATH="$TEXLIVE_HOME:$PATH" \
     export MANPATH="$TEXLIVE_MAN:$MANPATH" \
     export INFOPATH="$TEXLIVE_INFO:$INFOPATH"
+
+export PATH="$HOME/.local/solana-release/bin:$PATH"
 
 # source  cargo path only when rust was installed under $HOME
 [[ ! -x /usr/bin/cargo ]] && [[ -d $HOME/.cargo ]] && . "$HOME/.cargo/env"
