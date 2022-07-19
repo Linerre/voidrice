@@ -5,25 +5,22 @@
 # picom --config ${HOME}/projects/voidrice/.config/picom/picom.conf &
 
 # wallpaper
-feh --no-fehbg --bg-scale ${HOME}/Pictures/wallpaper/cyberpunk2.jpg &
+# feh --no-fehbg --bg-scale ${HOME}/Pictures/wallpaper/cyberpunk2.jpg &
 
 # only one of sxhkd and xbindkeys could run
 # xbindkeys &
-sxhkd &
+# sxhkd &
 
-# redshift
-redshift &
 
 # fcitx5
 fcitx5 &
 
 # dwm blocks
-dwmblocks &
+# dwmblocks &
 
 # loop
-while :; do
-	dwm > /dev/null 2>&1
-done
+# while :; do
+#	dwm > /dev/null 2>&1
+# done
 
-## Execute dwm
-exec dwm
+# Execute dwm

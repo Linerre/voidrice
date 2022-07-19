@@ -48,9 +48,14 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export INPUT_METHOD=fcitx
 
+# redshift
+redshift &
 
-if [[ "$(hostname)" == "gohan" ]] ; then
-	source ${HOME}/projects/voidrice/.config/x11/gohan
-elif [[ "$(hostname)" == "goku" || "$(hostname)" == "near" ]] ; then
-	source ${HOME}/projects/voidrice/.config/x11/goku
-fi
+# wm
+exec awesome
+
+# if [[ "$(hostname)" == "gohan" ]] ; then
+# 	source ${HOME}/projects/voidrice/.config/x11/gohan
+# elif [[ "$(hostname)" == "goku" || "$(hostname)" == "near" ]] ; then
+# 	source ${HOME}/projects/voidrice/.config/x11/goku
+# fi
