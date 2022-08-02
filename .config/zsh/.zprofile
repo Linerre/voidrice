@@ -14,6 +14,12 @@ export PROJECTS_HOME=$HOME/projects
 # see https://docs.npmjs.com/cli/v6/using-npm/config#npmrc-files
 export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
 
+
+# fcitx5
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+
 # remove duplicat entries from $PATH
 # zsh uses $path array along with $PATH
 typeset -U PATH path
