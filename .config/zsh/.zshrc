@@ -24,16 +24,27 @@ setopt HIST_VERIFY
 bindkey -e
 
 # Hash
-hash -d dotfiles=$HOME/projetcs/voidrice/
-hash -d suckless=$HOME/projetcs/suckless/
+hash -d proj=$HOME/projects
+hash -d emd=$HOME/projects/emacs.d
+hash -d dotf=$HOME/projetcs/voidrice/
 hash -d bks=$HOME/Documents/books/
 
+# admin
+alias doas=sudo
+alias plz=sudo
+alias ctl=systemctl
 
 # moving
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+# pacman
+alias ps='pacman -Si'
+alias ss='pacman -Ss'
+alias pi='pacman -Qi'
+alias up='sudo pacman -Syu'
 
+# apps
 alias e="emacs -nw"
 alias za='zathura'

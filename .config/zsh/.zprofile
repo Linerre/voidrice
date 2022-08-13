@@ -16,9 +16,9 @@ export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
 
 
 # fcitx5
-GTK_IM_MODULE=fcitx
-QT_IM_MODULE=fcitx
-XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 
 # remove duplicat entries from $PATH
 # zsh uses $path array along with $PATH
