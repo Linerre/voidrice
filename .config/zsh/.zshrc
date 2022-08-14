@@ -45,6 +45,14 @@ alias ss='pacman -Ss'
 alias pi='pacman -Qi'
 alias up='sudo pacman -Syu'
 
+# git
+alias gt='git st'
+alias gl='git log'
+alias gw='git switch'
+alias ga='git add'
+alias gm='git cm'
+alias gd='git diff'
+
 # apps
 alias e="emacs -nw"
 alias za='zathura'
