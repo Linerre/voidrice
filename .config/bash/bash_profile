@@ -55,9 +55,19 @@ export PATH="$HOME/.local/solana-release/bin:$PATH"
 
 
 # alias for login shell only
-alias ls='ls --color=auto' # NOTE: not posix
-alias rr='ranger'
-alias e="emacs -nw"
-alias mg="mg -n"
+
+# admin
 alias sync="doas emaint sync -a"
 alias update="doas emerge -auvDU @world"
+
+# git
+alias gt='git st'
+alias gl='git log'
+alias gw='git switch'
+alias ga='git add'
+alias gm='git cm'
+alias gd='git diff'
+
+alias ls='ls --color=auto' # NOTE: not posix
+alias e="emacs -nw"
+alias mg="mg -n"
