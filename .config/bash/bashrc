@@ -40,13 +40,27 @@ fi
 
 
 # alias for interactive, non-login shell only
+
+#admin
+alias sync='doas emaint sync -a'
+alias update='doas emerge -auvDU @world'
+
+# bash
+alias clst='clean_sceenshots'
+alias brps='wrap_longpath'
+alias emd='cd $HOME/projects/emacs.d'
+alias dot='cd $HOME/voidrice'
+
+# git
+alias ga='git add'
+alias gd='git diff'
+alias gl='git log'
+alias gm='git cm'
+alias gt='git st'
+alias gw='git switch'
+
 alias ls='ls --color=auto' # NOTE: not posix
-alias rr='ranger'
 alias e='emacs -nw'
 alias sz='source $HOME/.bashrc'
 alias mg='mg -n'
-alias sync='doas emaint sync -a'
-alias update='doas emerge -auvDU @world'
 alias scrot='scrot -shole --line color="#FAFAFA" ~/Pictures/screenshots/%Y-%m-%d_$p.png'
-alias clst='clean_sceenshots'
-alias brps='wrap_longpath'
