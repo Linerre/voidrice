@@ -2,34 +2,14 @@
 # ~/.bash_profile
 #
 
-# Since I always log in first and then manually startx, bash config should
-# really be placed here for the login shell and to reduce redundancy, e.g #PATH
-# to be sourced twice due to the following line in ~/.bash_profile:
-# [[ -f ~/.bashrc ]] && . ~/.bashrc
-
-# user vars
-term=$(echo $TERM)
-xt="xterm-256color"
-st="st-256color"
-ut="rxvt-unicode-256"
-
-# The prompt should at least indicate:
-# 1. user identity (normal/root)
-# 2. hostname (particularly important when connecting remotely)
-# 3. current working directory
-# 4. time (when necessary)
-
-# otherwise user connects to the machine remotely
-# or in tty-like environment, including tmux/screen (when $TERM == 'screen')
-PS1='[\[\e[0;32m\]\h \w\[\e[0m\] \[\e[0;35m\]\$\[\e[0m\]] '
+# Set up PS1, alias, and user-defined fns
+# Can also be sourced at the end of .bash_profile
+[[ -f ~/.bashrc ]] && . ~/.bashrc
 
 
 # env vars
-# export EDITOR="/usr/bin/emacs -nw"
 export XDG_CONFIG_HOME="$HOME/.config"
-#export JAVA_HOME="$HOME/.local/jdk-17.jdk/Contents/Home"
-# export MAVEN_HOME="$HOME/.local/maven-3.8.4/bin"
-# export PATH="$MAVEN_HOME:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PROJECTS_HOME="$HOME/projects"
 
 # see https://docs.npmjs.com/cli/v6/using-npm/config#npmrc-files
@@ -52,22 +32,3 @@ export PATH="$HOME/.local/solana-release/bin:$PATH"
 
 # source  cargo path only when rust was installed under $HOME
 [[ ! -x /usr/bin/cargo ]] && [[ -d $HOME/.cargo ]] && . "$HOME/.cargo/env"
-
-
-# alias for login shell only
-
-# admin
-alias sync="doas emaint sync -a"
-alias update="doas emerge -auvDU @world"
-
-# git
-alias gt='git st'
-alias gl='git log'
-alias gw='git switch'
-alias ga='git add'
-alias gm='git cm'
-alias gd='git diff'
-
-alias ls='ls --color=auto' # NOTE: not posix
-alias e="emacs -nw"
-alias mg="mg -n"

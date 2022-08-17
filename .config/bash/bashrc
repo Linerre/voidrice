@@ -5,12 +5,26 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# After startx, whatever in ~/.bash_profile has already been sourced, so there
-# is really no need to resource anything like $PATH or $EDITOR. Instead, place
-# in this file stuff that only make sense when X is running, such GUI settings
-
 # hook direnv to bash
 eval "$(direnv hook bash)"
+
+# The prompt should at least indicate:
+# 1. user identity (normal/root)
+# 2. hostname (particularly important when connecting remotely)
+# 3. current working directory
+# 4. time (when necessary)
+
+if [[ $(hostname) == 'gohan' ]]; then
+    # this should be user at gohan locally
+    # [H] PWD USER
+    PS1='[\[\e[0;31m\]H\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
+elif [[ $(hostname) == 'goku' ]]; then
+    # user at goku locally
+    # [K] PWD USER
+    PS1='[\[\e[0;31m\]K\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
+fi
+# PS1='[\[\e[0;32m\]\h \w\[\e[0m\] \[\e[0;35m\]\$\[\e[0m\]] '
+
 
 # functions
 clean_sceenshots()
@@ -29,18 +43,6 @@ wrap_longpath()
         PS1='[\[\e[0;31m\]H\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
     fi
 }
-
-# Interactive, non-login shell prompt
-if [[ $(hostname) == 'gohan' ]]; then
-    # this should be user at gohan locally
-    # [H] PWD USER
-    PS1='[\[\e[0;31m\]H\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
-elif [[ $(hostname) == 'goku' ]]; then
-    # user at goku locally
-    # [K] PWD USER
-    PS1='[\[\e[0;31m\]K\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
-fi
-
 
 # alias for interactive, non-login shell only
 
