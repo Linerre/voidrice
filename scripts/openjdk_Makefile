@@ -1,6 +1,6 @@
 SHELL = /bin/bash
-#PREFIX := /home/leon/projects/lab
-PREFIX := /usr/local
+PREFIX := /home/leon/.local
+# PREFIX := /usr/local
 
 SRC := .
 BINS := $(SRC)/bin

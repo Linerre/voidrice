@@ -9,6 +9,9 @@
 # is really no need to resource anything like $PATH or $EDITOR. Instead, place
 # in this file stuff that only make sense when X is running, such GUI settings
 
+# hook direnv to bash
+eval "$(direnv hook bash)"
+
 # functions
 clean_sceenshots()
 {
