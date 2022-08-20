@@ -29,6 +29,16 @@ hash -d emd=$HOME/projects/emacs.d
 hash -d dotf=$HOME/projetcs/voidrice/
 hash -d bks=$HOME/Documents/books/
 
+# plugins
+autoload -Uz compinit promptinit
+compinit
+promptinit
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# direnv
+eval "$(direnv hook zsh)"
+
 # admin
 alias doas=sudo
 alias plz=sudo
