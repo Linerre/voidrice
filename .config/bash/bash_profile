@@ -20,13 +20,12 @@ export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
     export PATH="$HOME/node/node-v16.13.0-linux-x64/bin:$PATH"
 
 [[ -d $HOME/texlive/2021 ]] && \
-    export TEXLIVE_HOME="$HOME/texlive/2021/bin/x86_64-linux"
-    export TEXLIVE_MAN="$HOME/texlive/2021/texmf-dist/doc/man"
-    export TEXLIVE_INFO="$HOME/texlive/2021/texmf-dist/doc/info"
-
-    export PATH="$TEXLIVE_HOME:$PATH" \
-    export MANPATH="$TEXLIVE_MAN:$MANPATH" \
-    export INFOPATH="$TEXLIVE_INFO:$INFOPATH"
+    { export TEXLIVE_HOME="$HOME/texlive/2021/bin/x86_64-linux"
+      export TEXLIVE_MAN="$HOME/texlive/2021/texmf-dist/doc/man"
+      export TEXLIVE_INFO="$HOME/texlive/2021/texmf-dist/doc/info"
+      export PATH="$TEXLIVE_HOME:$PATH"
+      export MANPATH="$TEXLIVE_MAN:$MANPATH"
+      export INFOPATH="$TEXLIVE_INFO:$INFOPATH" }
 
 export PATH="$HOME/.local/solana-release/bin:$PATH"
 
