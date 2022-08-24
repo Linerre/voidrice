@@ -25,7 +25,8 @@ export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
       export TEXLIVE_INFO="$HOME/texlive/2021/texmf-dist/doc/info"
       export PATH="$TEXLIVE_HOME:$PATH"
       export MANPATH="$TEXLIVE_MAN:$MANPATH"
-      export INFOPATH="$TEXLIVE_INFO:$INFOPATH" }
+      export INFOPATH="$TEXLIVE_INFO:$INFOPATH"
+    }
 
 export PATH="$HOME/.local/solana-release/bin:$PATH"
 

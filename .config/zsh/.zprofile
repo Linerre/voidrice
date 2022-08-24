@@ -36,6 +36,7 @@ export NODE_MIRROR=https://mirrors.ustc.edu.cn/node/
       export TEXLIVE_MAN="$HOME/.local/texlive/2022/texmf-dist/doc/man"
       export TEXLIVE_INFO="$HOME/.local/texlive/2022/texmf-dist/doc/info"
       export MANPATH="$TEXLIVE_MAN:$MANPATH"
-      export INFOPATH="$TEXLIVE_INFO:$INFOPATH" }
+      export INFOPATH="$TEXLIVE_INFO:$INFOPATH" 
+    }
 
 export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
