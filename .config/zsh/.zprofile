@@ -31,12 +31,14 @@ export NODE_MIRROR=https://mirrors.ustc.edu.cn/node/
 [[ -d "$HOME/.cargo" ]] && . "$HOME/.cargo/env"
 
 # texlive
-[[ -d "$HOME/.local/texlive/2022" ]] && \
-    { export PATH="$HOME/.local/texlive/2022/bin/x86_64-linux:$PATH"
-      export TEXLIVE_MAN="$HOME/.local/texlive/2022/texmf-dist/doc/man"
-      export TEXLIVE_INFO="$HOME/.local/texlive/2022/texmf-dist/doc/info"
+[[ -d "$HOME/.local/texlive/2023" ]] && \
+    { export PATH="$HOME/.local/texlive/2023/bin/x86_64-linux:$PATH"
+      export TEXLIVE_MAN="$HOME/.local/texlive/2023/texmf-dist/doc/man"
+      export TEXLIVE_INFO="$HOME/.local/texlive/2023/texmf-dist/doc/info"
       export MANPATH="$TEXLIVE_MAN:$MANPATH"
       export INFOPATH="$TEXLIVE_INFO:$INFOPATH" 
     }
 
 export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+
+export PATH="/home/noel/.local/share/solana/install/active_release/bin:$PATH"
