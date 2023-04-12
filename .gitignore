@@ -13,8 +13,9 @@
 .config/coc/
 .config/configstore
 .config/*old*
-
+.config/zsh/.zcompdump
 .netrwhist
+
 Brave*
 *.db
 history.cmdline
