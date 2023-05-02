@@ -67,8 +67,10 @@ alias gd='git diff'
 alias e="emacs -nw"
 alias za='zathura'
 alias v="nvim"
-alias n="nvim"
+alias n="nix-shell"
 alias m="mg -n"
 
 # opam configuration
 [[ ! -r /home/noel/.opam/opam-init/init.zsh ]] || source /home/noel/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+if [ -e /home/noel/.nix-profile/etc/profile.d/nix.sh ]; then . /home/noel/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
