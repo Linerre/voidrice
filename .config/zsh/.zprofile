@@ -30,13 +30,14 @@ export NODE_MIRROR=https://mirrors.ustc.edu.cn/node/
 # source  cargo only when rust was installed under $HOME
 [[ -d "$HOME/.cargo" ]] && . "$HOME/.cargo/env"
 
-# texlive
-[[ -d "$HOME/.local/texlive/2023" ]] && \
-    { export PATH="$HOME/.local/texlive/2023/bin/x86_64-linux:$PATH"
-      export TEXLIVE_MAN="$HOME/.local/texlive/2023/texmf-dist/doc/man"
-      export TEXLIVE_INFO="$HOME/.local/texlive/2023/texmf-dist/doc/info"
+# native texlive
+LX_VER=2023
+[[ -d "$HOME/.local/texlive/${LX_VER}" ]] && \
+    { export PATH="$HOME/.local/texlive/${LX_VER}/bin/x86_64-linux:$PATH"
+      export TEXLIVE_MAN="$HOME/.local/texlive/${LX_VER}/texmf-dist/doc/man"
+      export TEXLIVE_INFO="$HOME/.local/texlive/${LX_VER}/texmf-dist/doc/info"
       export MANPATH="$TEXLIVE_MAN:$MANPATH"
-      export INFOPATH="$TEXLIVE_INFO:$INFOPATH" 
+      export INFOPATH="$TEXLIVE_INFO:$INFOPATH"
     }
 
 export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
