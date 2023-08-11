@@ -8,6 +8,7 @@
 	sw = switch
 [core]
 	editor = emacs
+	autocrlf = input
 	#sshCommand = ssh -i ~/.ssh/m1_ed25519
 [pull]
 	ff = only
