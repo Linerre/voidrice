@@ -1,8 +1,75 @@
-! Xresources
-#include "projects/voidrice/.config/x11/Xresources.d/solarized-theme"
+! Xresouce syntax
+! name.Class.resource: value
+! see: https://wiki.archlinux.org/title/X_resources#Xresources_syntax
 
-! Urxvt config
-#include "projects/voidrice/.config/x11/Xresources.d/urxvt"
+! Conventioanlly:
 
-! emacs config
-!#include "projects/voidrice/.config/x11/Xresources.d/emacs"
+!! Instance name starts wit lowercase letter:
+!! ``xterm'' means an instance and is also the programme name
+
+!! Class name (client/application level) is ``case-sensitive'' and usually starts with uppercase letter:
+!! ``XTerm'', ``XCalc'' (2nd letter also in uppercase if 1st is ``X'', a convention)
+
+!! Reference:
+!! https://unix.stackexchange.com/questions/216723/xterm-or-xterm-in-configuration-file
+
+!Class.resouce: value
+XTerm.vt100.locale: true
+Xterm.vt100.geometry: 90x40
+XTerm.vt100.metaSendsEscape: true
+! XTerm.vt100.reverseVideo: true
+XTerm.vt100.backarrowKey: false
+XTerm.ttyModes: erase ^?
+
+!name*resource: value
+xterm*faceName: Terminus
+xterm*faceSize: 18
+
+!
+! Generated with :
+! XRDB2Xreources.py
+!
+!*.foreground:  #3e3e3e
+!*.background:  #f4f4f4
+!*.cursorColor: #3f3f3f
+
+*.foreground:  #d1d5da
+*.background:  #24292e
+*.cursorColor: #d1d5da
+!
+! Black
+*.color0:      #3e3e3e
+*.color8:      #666666
+!
+! Red
+*.color1:      #970b16
+*.color9:      #de0000
+!
+! Green
+*.color2:      #07962a
+*.color10:     #87d5a2
+!
+! Yellow
+*.color3:      #f8eec7
+*.color11:     #f1d007
+!
+! Blue
+*.color4:      #003e8a
+*.color12:     #2e6cba
+!
+! Magenta
+*.color5:      #e94691
+*.color13:     #ffa29f
+!
+! Cyan
+*.color6:      #89d1ec
+*.color14:     #1cfafe
+!
+! White
+*.color7:      #ffffff
+*.color15:     #ffffff
+!
+! Bold, Italic, Underline
+*.colorBD:     #c95500
+!*.colorIT:
+!*.colorUL:
