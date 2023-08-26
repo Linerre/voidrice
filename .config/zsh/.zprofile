@@ -8,6 +8,7 @@ export ZDOTDIR=$HOME/projects/voidrice/.config/zsh
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
+export NIX_CONF_DIR=${XDG_CONFIG_HOME} # not necessary indeed but I like it anyway
 export KERNEL_NAME=$( uname | tr '[:upper:]' '[:lower:]' )
 export PATH=$HOME/.local/bin:$PATH
 export PROJECTS_HOME=$HOME/projects
@@ -41,3 +42,12 @@ LX_VER=2023
     }
 
 export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+
+# opam configuration
+[[ ! -r /home/noel/.opam/opam-init/init.zsh ]] || source /home/noel/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+# added by Nix installer
+if [ -e /home/noel/.nix-profile/etc/profile.d/nix.sh ];
+then
+    . /home/noel/.nix-profile/etc/profile.d/nix.sh;
+fi
