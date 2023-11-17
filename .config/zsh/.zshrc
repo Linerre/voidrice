@@ -39,6 +39,7 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # direnv
 eval "$(direnv hook zsh)"
 
+# ============ ALIAS ==============
 # admin
 alias doas=sudo
 alias plz=sudo
@@ -66,7 +67,26 @@ alias gd='git diff'
 # apps
 alias e="emacs -nw"
 alias za='zathura'
-alias v="nvim"
 alias n="nix-shell"
 alias m="mg -n"
 alias l="ls -lh"
+
+# ============ FUNCTION ==============
+# Usage: wiki_info "page_title"
+wiki_info() {
+    local API_URL="https://en.wikipedia.org/w/api.php"
+    local USR_AGT="Nobody/0.0.1 (Arch; Buu) Auto/0.0.1"
+    local PAGE_TITLE="$1"
+    curl -s "$API_URL" \
+         -A "$USR_AGT" \
+         --get \
+         --data-urlencode "action=query" \
+         --data-urlencode "format=json" \
+         --data-urlencode "prop=revisions|info" \
+         --data-urlencode "titles=$PAGE_TITLE" \
+         --data-urlencode "formatversion=2" \
+         --data-urlencode "rvprop=ids|timestamp" \
+         --data-urlencode "rvlimit=2" \
+         --data-urlencode "inprop=url" |
+        jq -r '.'
+}
