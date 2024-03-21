@@ -18,12 +18,266 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+---------------- Default Theme ---------------------
+local theme_path = string.format(
+   "%s/.config/awesome/themes/%s/theme.lua",
+   os.getenv("HOME"), "default"
+)
+
+beautiful.init(theme_path)
+
+local icons = require("icons")
+
+-- TODO: Merge these colors and fonts with theme module
+local display_font = "Liberation Sans 13"
+local dim_text = "#5c5c5c"
+---------------- Personal widgets -------------------
+-----------------------------------------------------
+-- 1. Battery
+-----------------------------------------------------
+local bat = {
+   capacity = "/sys/class/power_supply/BAT0/capacity",
+   status = "/sys/class/power_supply/BAT0/status",
+}
+
+local function trim(s)
+   return s:match("^%s*(.*%S)%s*$") or ""
+end
+
+
+local battery_icon = wibox.widget {
+   -- image = bat.icon,
+   resize = false,
+   downscale = true,
+   forced_height = 24,
+   forced_width= 24,
+   widget = wibox.widget.imagebox,
+}
+
+local battery_capacity = wibox.widget {
+   -- text = string.format("%d%%", bat_cap),
+   font = display_font,
+   align = "center",
+   valign = "center",
+   widget = wibox.widget.textbox,
+}
+
+
+local battery_widget = wibox.widget {
+   battery_icon,
+   battery_capacity,
+   spacing = 5,
+   -- `layout` can also be `widget` or whatever words that are not the properties
+   -- of a wibox.layout.* widget
+   layout = wibox.layout.fixed.horizontal,
+}
+
+-- Update battery info every minute
+gears.timer {
+   timeout = 60,
+   autostart  = true,
+   call_now = true,
+   callback = function()
+      local f_cap = assert(io.open(bat.capacity, "r"))
+      local bat_cap = tonumber(f_cap:read("*n"))
+      f_cap:close()
+      bat.cap = bat_cap
+      local f_st = assert(io.open(bat.status, "r"))
+      local bat_st = trim(f_st:read("*l"))
+      f_st:close()
+
+      if bat_st ~= "Discharging" then
+         if bat_cap >= 92 then
+            battery_icon.image = icons.battery.charging.charged
+            battery_capacity.text = string.format("%d%%", bat_cap)
+
+         elseif bat_cap >= 75 then
+            battery_icon.image = icons.battery.charging.good
+            battery_capacity.text = string.format("%d%%", bat_cap)
+         elseif bat_cap >= 50 then
+            battery_icon.image = icons.battery.charging.low
+            battery_capacity.text = string.format("%d%%", bat_cap)
+         elseif bat_cap <= 30 then
+            battery_icon.image = icons.battery.charging.caution
+            battery_capacity.text = string.format("%d%%", bat_cap)
+         else
+            battery_icon.image = icons.battery.charging.empty
+            battery_capacity.text = string.format("%d%%", bat_cap)
+         end
+      else
+         if bat_cap >= 92 then
+            battery_icon.image = icons.battery.discharging.full
+            battery_capacity.text = string.format("%d%%", bat_cap)
+         elseif bat_cap >= 75 then
+            battery_icon.image = icons.battery.discharging.good
+            battery_capacity.text = string.format("%d%%", bat_cap)
+         elseif bat_cap >= 50 then
+            battery_icon.image = icons.battery.discharging.low
+            battery_capacity.text = string.format("%d%%", bat_cap)
+         elseif bat_cap <= 30 then
+            battery_icon.image = icons.battery.discharging.caution
+            battery_capacity.text = string.format("%d%%", bat_cap)
+         else
+            battery_icon.image = icons.battery.discharging.empty
+            battery_capacity.text = string.format("%d%%", bat_cap)
+         end
+      end
+end
+}
+
+-----------------------------------------------------
+-- 2. Network
+-----------------------------------------------------
+local nw = {
+   connected = icons.network.connected.excellent,
+   disconnected = icons.network.disconnected,
+   operstate = "/sys/class/net/wlan0/operstate",
+   ip = "",
+}
+
+local net_icon  = wibox.widget {
+   resize = true,
+   valign = "center",
+   halign = "center",
+   downscale = true,
+   widget = wibox.widget.imagebox,
+}
+
+-- Check network connection every minite
+gears.timer {
+   timeout = 60,
+   autostart = true,
+   call_now = true,
+   callback = function()
+      local f_dev = assert(io.open(nw.operstate, "r"))
+      local dev_stat = trim(f_dev:read("*l"))
+      f_dev:close()
+
+      if dev_stat == "up" then
+         net_icon.image = icons.network.connected.excellent
+      else
+         net_icon.image = icons.network.disconnected
+      end
+   end
+}
+
+local net_quality = wibox.widget {
+   font = display_font,
+   align = "center",
+   valign = "center",
+   widget = wibox.widget.textbox,
+}
+
+
+local net_widget = wibox.widget {
+   net_icon,
+   net_quality,
+   layout = wibox.layout.fixed.horizontal,
+}
+
+-- Check network quality every minute
+local net_quality, qual_timer = awful.widget.watch(
+   -- 1st arg: command, of type string or table
+   -- Must enclose all arguments in parentheses; otherwise awk wont send anything to stdout in this case
+   -- {awful.util.shell, "-c", "gawk '/^\\s*w/ { print(int($3 * 100 / 70))}' /proc/net/wireless"},
+   {awful.util.shell, "-c", "gawk '/^\\s*w/ { printf(\"%d%\",int($3 * 100 / 70))}' /proc/net/wireless"},
+   -- 2nd arg: timeout, of type integer
+   60,
+   -- 3rd arg: callback, of type table, but actually a function
+   function(widget, stdout, stderr, reason, exitcode)
+      -- here widget refers to the to-be-returned textbox
+      if stdout then
+         widget.font = display_font
+         widget.text = trim(stdout)
+         widget.align = "center"
+         widget.valign = "center"
+         widget.widget = wibox.widget.textbox
+      else
+         widget.font = display_font
+         widget.text = stderr
+         widget.align = "center"
+         widget.valign = "center"
+         widget.widget = wibox.widget.textbox
+      end
+   end
+)
+
+-----------------------------------------------------
+-- 3. Volume
+-----------------------------------------------------
+local vol_value = wibox.widget {
+   font = display_font,
+   align = "center",
+   valign = "center",
+   widget = wibox.widget.textbox,
+}
+
+local vol_slider = wibox.widget {
+   bar_shape = gears.shape.rectangle,
+   bar_height = 3,
+   bar_color = beautiful.border_color,
+   handle_color = beautiful.fg_color,
+   handle_shape = gears.shape.circle,
+   handle_border_color = beautiful.border_color,
+   handle_border_width = 1,
+   minimum = 0,
+   maximum = 100,
+   value = 0,
+   forced_width = 100,
+   widget = wibox.widget.slider,
+}
+
+local vol_widget = wibox.widget {
+   vol_value,
+   vol_slider,
+   spacing = 5,
+   forced_width = 120,
+   layout = wibox.layout.fixed.horizontal,
+}
+
+-- Connect volume to update it on change
+vol_slider:connect_signal("property::value",
+                          function(_, new_vol)
+                             vol_value.text = string.format("%s", new_vol)
+                          end
+)
+
+-----------------------------------------------------
+-- 4. Clock and Calendar
+-----------------------------------------------------
+local txtclk = wibox.widget {
+   format = " %b %d %a %H:%M ",
+   font = display_font,
+   refresh = 60,
+   valign = "center",
+   halign = "center",
+   widget = wibox.widget.textclock,
+}
+
+local month_calendar = awful.widget.calendar_popup.month {
+   font = display_font,
+   week_numbers = true,
+   start_sunday = false,
+   style_weeknumber = {
+      fg_color = dim_text,
+   }
+}
+
+month_calendar:attach(txtclk, "tr")
+month_calendar:toggle()
+
+-----------------------------------------------------
+-- 5. System actions
+-----------------------------------------------------
+local system_icon = wibox.widget.imagebox(icons.system.shutdown, false)
+system_icon:buttons
+
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 -- Error handling
 if awesome.startup_errors then
     naughty.notify({ preset = naughty.config.presets.critical,
-                     title = "Oops, there were errors during startup!",
+                     title = "Oops, errors during startup!",
                      text = awesome.startup_errors })
 end
 
@@ -41,43 +295,33 @@ do
         in_error = false
     end)
 end
---
 
--- Variable definitions
--- Themes define colours, icons, font and wallpapers.
--- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), "default")
-beautiful.init(theme_path)
-
--- beautiful.font = "Droid Sans 12"
 -- This is used later as the default terminal and editor to run.
-terminal = "xfce4-terminal"
+terminal = "konsole"
 editor = os.getenv("EDITOR") or "emacs"
 editor_cmd = terminal .. " -e " .. editor
 ff = "firefox-bin"
 gg = "google-chrome-stable"
+chr = "chromium"
 emacs = "emacs"
-
-membar_enable = true -- Show memory bar
-memtext_format = " $1%" -- %1 percentage, %2 used %3 total %4 free
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
 -- If you do not like this or do not have such a key,
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
+-- However, you can use another modifier like Mod1, but it may conflict with others.
 modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.tile,
-    awful.layout.suit.floating,
     awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.spiral,
     awful.layout.suit.max.fullscreen,
+    awful.layout.suit.floating,
+    awful.layout.suit.spiral,
     awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
+    awful.layout.suit.tile.left,
+    awful.layout.suit.tile.left,
 }
 
 -- Menu
@@ -108,10 +352,6 @@ menubar.utils.terminal = terminal -- Set the terminal for apps that require it
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
--- Wibar
--- clock
--- Create a textclock widget
-mytextclock = wibox.widget.textclock(" %b %d %a %H:%M ", 60)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -210,8 +450,8 @@ awful.screen.connect_for_each_screen(function(s)
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
             mylauncher,
+            layout = wibox.layout.fixed.horizontal,
             s.mytaglist,
             s.mypromptbox,
         },
@@ -219,10 +459,15 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             spacing = 5,
-            -- require("battery-widget") {},
             -- mykeyboardlayout,
             wibox.widget.systray(),
-            mytextclock,
+            -- wibox.widget.imagebox(bat.icon, false, nil),
+            -- battery_icon,
+            -- battery_capacity,
+            net_icon,
+            net_quality,
+            battery_widget,
+            txtclk,
             s.mylayoutbox,
         },
     }
@@ -417,15 +662,29 @@ for i = 1, 9 do
                   {description = "move focused client to tag #"..i, group = "tag"}),
         -- Toggle tag on focused client.
         awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
-                  function ()
-                      if client.focus then
-                          local tag = client.focus.screen.tags[i]
-                          if tag then
-                              client.focus:toggle_tag(tag)
-                          end
-                      end
-                  end,
-                  {description = "toggle focused client on tag #" .. i, group = "tag"})
+           function ()
+              if client.focus then
+                 local tag = client.focus.screen.tags[i]
+                 if tag then
+                    client.focus:toggle_tag(tag)
+                 end
+              end
+           end,
+           {description = "toggle focused client on tag #" .. i, group = "tag"}),
+
+        -- Brightness of display using `light` package
+        awful.key({}, "XF86MonBrightnessUp",
+           function()
+              os.execute("light -s sysfs/backlight/intel_backlight -A 0.5")
+           end,
+           -- On command line, 0.5 = 0.5% while 5 = %5. Not sure why
+           {description = "Increase screen brightness by 5%", group = "extra"}),
+        awful.key({}, "XF86MonBrightnessDown",
+           function()
+              os.execute(string.format("light -s sysfs/backlight/intel_backlight -U 0.5"))
+           end,
+           {description = "Decrease screen brightness by 5%", group = "extra"})
+
     )
 end
 
@@ -474,7 +733,6 @@ awful.rules.rules = {
           "Gpick",
           "Kruler",
           "MessageWin",  -- kalarm.
-          "Sxiv",
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
           "veromix",
