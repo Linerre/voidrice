@@ -16,6 +16,10 @@ else
    RPS1="%(?..(%?%))"
 fi
 
+XILINX_VER=2023.2
+VIVADO=$HOME/Xilinx/Vivado/${XILINX_VER}/settings64.sh
+[[ -f $VIVADO ]] && source $VIVADO
+
 # options
 setopt AUTO_CD
 setopt HIST_VERIFY

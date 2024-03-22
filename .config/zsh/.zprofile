@@ -17,9 +17,13 @@ export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
 
 
 # fcitx5
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
+# No longer needed for wayland
 export XMODIFIERS=@im=fcitx
+export INPUT_METHOD=fcitx
+if [ $XDG_SESSION_TYPE = x11 ]; then
+    export GTK_IM_MODULE=fcitx
+    export QT_IM_MODULE=fcitx
+fi
 
 # remove duplicat entries from $PATH
 # zsh uses $path array along with $PATH
