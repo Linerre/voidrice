@@ -3,17 +3,16 @@
 -- For consistency, double quotes are used across config files
 
 -- Elementary icons
-local icon_root = "/usr/share/icons/elementary/"
-local status_icon = "status/32/"
-local action_icon = "action/32/"
+local status_icon = "/usr/share/icons/elementary/status/32/"
+local action_icon = "/usr/share/icons/elementary/actions/32/"
 -- Sub paths
 
 icons = {
    battery = {
       charging = {
          charged = status_icon .. "battery-full-charged.svg",
-         justfull = status_icon .. status .. "battery-full-charging.svg",
-         good = status_icon .. status .. "battery-good-charging.svg", -- 3/4
+         justfull = status_icon .. "battery-full-charging.svg",
+         good = status_icon .. "battery-good-charging.svg", -- 3/4
          low = status_icon .. "battery-low-charging.svg",   -- half
          caution = status_icon .. "battery-caution-charging.svg", -- 1/4
          empty = status_icon .. "battery-empty-charging.svg"
