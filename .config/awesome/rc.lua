@@ -54,23 +54,17 @@ local battery_icon = wibox.widget {
    widget = wibox.widget.imagebox,
 }
 
-local battery_capacity = wibox.widget {
-   -- text = string.format("%d%%", bat_cap),
-   font = display_font,
-   align = "center",
-   valign = "center",
-   widget = wibox.widget.textbox,
-}
-
-
-local battery_widget = wibox.widget {
-   battery_icon,
-   battery_capacity,
-   spacing = 5,
-   -- `layout` can also be `widget` or whatever words that are not the properties
-   -- of a wibox.layout.* widget
-   layout = wibox.layout.fixed.horizontal,
-}
+local bat_tooltip= awful.tooltip {}
+bat_tooltip:add_to_object(battery_icon)
+battery_icon:connect_signal(
+   "mouse::enter",
+   function()
+      local f_cap = assert(io.open(bat.capacity, "r"))
+      local bat_cap = tonumber(f_cap:read("*n"))
+      f_cap:close()
+      bat_tooltip.text = string.format("Remaining: %d%%", bat_cap)
+   end
+)
 
 -- Update battery info every minute
 gears.timer {
@@ -81,7 +75,6 @@ gears.timer {
       local f_cap = assert(io.open(bat.capacity, "r"))
       local bat_cap = tonumber(f_cap:read("*n"))
       f_cap:close()
-      bat.cap = bat_cap
       local f_st = assert(io.open(bat.status, "r"))
       local bat_st = trim(f_st:read("*l"))
       f_st:close()
@@ -89,37 +82,26 @@ gears.timer {
       if bat_st ~= "Discharging" then
          if bat_cap >= 92 then
             battery_icon.image = icons.battery.charging.charged
-            battery_capacity.text = string.format("%d%%", bat_cap)
-
          elseif bat_cap >= 75 then
             battery_icon.image = icons.battery.charging.good
-            battery_capacity.text = string.format("%d%%", bat_cap)
          elseif bat_cap >= 50 then
             battery_icon.image = icons.battery.charging.low
-            battery_capacity.text = string.format("%d%%", bat_cap)
          elseif bat_cap <= 30 then
             battery_icon.image = icons.battery.charging.caution
-            battery_capacity.text = string.format("%d%%", bat_cap)
          else
             battery_icon.image = icons.battery.charging.empty
-            battery_capacity.text = string.format("%d%%", bat_cap)
          end
       else
          if bat_cap >= 92 then
             battery_icon.image = icons.battery.discharging.full
-            battery_capacity.text = string.format("%d%%", bat_cap)
          elseif bat_cap >= 75 then
             battery_icon.image = icons.battery.discharging.good
-            battery_capacity.text = string.format("%d%%", bat_cap)
          elseif bat_cap >= 50 then
             battery_icon.image = icons.battery.discharging.low
-            battery_capacity.text = string.format("%d%%", bat_cap)
          elseif bat_cap <= 30 then
             battery_icon.image = icons.battery.discharging.caution
-            battery_capacity.text = string.format("%d%%", bat_cap)
          else
             battery_icon.image = icons.battery.discharging.empty
-            battery_capacity.text = string.format("%d%%", bat_cap)
          end
       end
 end
@@ -129,8 +111,6 @@ end
 -- 2. Network
 -----------------------------------------------------
 local nw = {
-   connected = icons.network.connected.excellent,
-   disconnected = icons.network.disconnected,
    operstate = "/sys/class/net/wlan0/operstate",
    ip = "",
 }
@@ -142,6 +122,24 @@ local net_icon  = wibox.widget {
    downscale = true,
    widget = wibox.widget.imagebox,
 }
+
+local net_tooltip = awful.tooltip {
+   align = "bottom"
+}
+net_tooltip:add_to_object(net_icon)
+net_icon:connect_signal(
+   "mouse::enter",
+   function()
+      awful.spawn.easy_async(
+         "awk '/^\\s*w/ {printf \"%d\",int($3 * 100 / 70)}' /proc/net/wireless",
+         function(stdout,stderr,reason,exit)
+            trimed = trim(stdout)
+            net_tooltip.text = string.format("Quality: %s%%", trimed)
+         end
+      )
+   end
+)
+
 
 -- Check network connection every minite
 gears.timer {
@@ -160,47 +158,6 @@ gears.timer {
       end
    end
 }
-
-local net_quality = wibox.widget {
-   font = display_font,
-   align = "center",
-   valign = "center",
-   widget = wibox.widget.textbox,
-}
-
-
-local net_widget = wibox.widget {
-   net_icon,
-   net_quality,
-   layout = wibox.layout.fixed.horizontal,
-}
-
--- Check network quality every minute
-local net_quality, qual_timer = awful.widget.watch(
-   -- 1st arg: command, of type string or table
-   -- Must enclose all arguments in parentheses; otherwise awk wont send anything to stdout in this case
-   -- {awful.util.shell, "-c", "gawk '/^\\s*w/ { print(int($3 * 100 / 70))}' /proc/net/wireless"},
-   {awful.util.shell, "-c", "gawk '/^\\s*w/ { printf(\"%d%\",int($3 * 100 / 70))}' /proc/net/wireless"},
-   -- 2nd arg: timeout, of type integer
-   60,
-   -- 3rd arg: callback, of type table, but actually a function
-   function(widget, stdout, stderr, reason, exitcode)
-      -- here widget refers to the to-be-returned textbox
-      if stdout then
-         widget.font = display_font
-         widget.text = trim(stdout)
-         widget.align = "center"
-         widget.valign = "center"
-         widget.widget = wibox.widget.textbox
-      else
-         widget.font = display_font
-         widget.text = stderr
-         widget.align = "center"
-         widget.valign = "center"
-         widget.widget = wibox.widget.textbox
-      end
-   end
-)
 
 -----------------------------------------------------
 -- 3. Volume
@@ -264,13 +221,28 @@ local month_calendar = awful.widget.calendar_popup.month {
 }
 
 month_calendar:attach(txtclk, "tr")
-month_calendar:toggle()
 
 -----------------------------------------------------
 -- 5. System actions
 -----------------------------------------------------
-local system_icon = wibox.widget.imagebox(icons.system.shutdown, false)
-system_icon:buttons
+local system_menu = awful.menu({
+      items = {
+         {"Sleep", function(args)
+             print("sleep")
+         end, icons.system.suspend
+         },
+         {"Logout", function() print("lock")
+         end, icons.system.logout},
+         {"Lock", function() print("logout") end, icons.system.lock},
+         {"Reboot", function() print("reboot") end, icons.system.reboot},
+         {"Shutdown", function() print("shutdown") end, icons.system.shutdown},
+      }
+})
+
+local system_actions = awful.widget.launcher({
+      image = icons.system.shutdown,
+      menu = system_menu
+})
 
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -315,13 +287,8 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.tile,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.floating,
     awful.layout.suit.spiral,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.left,
+    awful.layout.suit.floating,
 }
 
 -- Menu
@@ -335,7 +302,7 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "Alacritty", terminal },
+                                    { "Terminal", terminal },
                                     { "Emacs",     emacs },
                                     { "Fifrefox",  ff },
                                     { "Chrome",    gg },
@@ -414,7 +381,7 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Each screen has its own tag table.
     local l = awful.layout.suit    -- alias
-    local lyts = {l.tile, l.floating, l.floating,
+    local lyts = {l.tile, l.tile, l.floating,
                   l.tile, l.tile, l.tile,
                   l.tile, l.tile, l.tile}
     awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, lyts)
@@ -450,8 +417,8 @@ awful.screen.connect_for_each_screen(function(s)
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
-            mylauncher,
             layout = wibox.layout.fixed.horizontal,
+            mylauncher,
             s.mytaglist,
             s.mypromptbox,
         },
@@ -462,12 +429,10 @@ awful.screen.connect_for_each_screen(function(s)
             -- mykeyboardlayout,
             wibox.widget.systray(),
             -- wibox.widget.imagebox(bat.icon, false, nil),
-            -- battery_icon,
-            -- battery_capacity,
             net_icon,
-            net_quality,
-            battery_widget,
+            battery_icon,
             txtclk,
+            system_actions,
             s.mylayoutbox,
         },
     }
