@@ -5,6 +5,9 @@
 -- Elementary icons
 local status_icon = "/usr/share/icons/elementary/status/32/"
 local action_icon = "/usr/share/icons/elementary/actions/32/"
+
+-- MATE icons
+local mstatus_icon = "/usr/share/icons/mate/32x32/status/"
 -- Sub paths
 
 icons = {
@@ -40,6 +43,15 @@ icons = {
       logout = action_icon .. "system-log-out.svg",
       suspend = action_icon .. "system-suspend.svg",
       lock = action_icon .. "system-lock-screen.svg",
+   },
+   audio = {
+      volume = {
+         high = mstatus_icon .. "audio-volume-high.png",
+         medium = mstatus_icon .. "audio-volume-medium.png",
+         low = mstatus_icon .. "audio-volume-low.png",
+         off = mstatus_icon .. "audio-volume-off.png",
+         muted = mstatus_icon .. "audio-volume-off.png",
+      }
    }
 }
 

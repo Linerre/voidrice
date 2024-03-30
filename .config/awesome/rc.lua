@@ -108,96 +108,103 @@ end
 }
 
 -----------------------------------------------------
--- 2. Network
+-- 2. Network (use nm-applet for now)
 -----------------------------------------------------
-local nw = {
-   operstate = "/sys/class/net/wlan0/operstate",
-   ip = "",
-}
+-- local nw = {
+--    operstate = "/sys/class/net/wlan0/operstate",
+--    ip = "",
+-- }
+--
+-- local net_icon  = wibox.widget {
+--    resize = true,
+--    valign = "center",
+--    halign = "center",
+--    downscale = true,
+--    widget = wibox.widget.imagebox,
+-- }
+--
+-- local net_tooltip = awful.tooltip {
+--    align = "bottom"
+-- }
+-- net_tooltip:add_to_object(net_icon)
+-- net_icon:connect_signal(
+--    "mouse::enter",
+--    function()
+--       awful.spawn.easy_async(
+--          "awk '/^\\s*w/ {printf \"%d\",int($3 * 100 / 70)}' /proc/net/wireless",
+--          function(stdout,stderr,reason,exit)
+--             trimed = trim(stdout)
+--             net_tooltip.text = string.format("Quality: %s%%", trimed)
+--          end
+--       )
+--    end
+-- )
+--
+-- -- Check network connection every minite
+-- gears.timer {
+--    timeout = 60,
+--    autostart = true,
+--    call_now = true,
+--    callback = function()
+--       local f_dev = assert(io.open(nw.operstate, "r"))
+--       local dev_stat = trim(f_dev:read("*l"))
+--       f_dev:close()
+--
+--       if dev_stat == "up" then
+--          net_icon.image = icons.network.connected.excellent
+--       else
+--          net_icon.image = icons.network.disconnected
+--       end
+--    end
+-- }
 
-local net_icon  = wibox.widget {
-   resize = true,
-   valign = "center",
-   halign = "center",
-   downscale = true,
+-----------------------------------------------------
+-- 3. Volume
+-----------------------------------------------------
+local vol_icon = wibox.widget {
+   muted = false,
+   image = icons.audio.volume.high,
    widget = wibox.widget.imagebox,
 }
 
-local net_tooltip = awful.tooltip {
+local vol_tlp = awful.tooltip {
    align = "bottom"
 }
-net_tooltip:add_to_object(net_icon)
-net_icon:connect_signal(
+vol_tlp:add_to_object(vol_icon)
+vol_icon:connect_signal(
    "mouse::enter",
    function()
       awful.spawn.easy_async(
-         "awk '/^\\s*w/ {printf \"%d\",int($3 * 100 / 70)}' /proc/net/wireless",
+         -- -n, --quiet, --slient are all equivalent
+         "amixer sget Master",
          function(stdout,stderr,reason,exit)
             trimed = trim(stdout)
-            net_tooltip.text = string.format("Quality: %s%%", trimed)
+            vol_tlp.text = string.format("Volume: %s%%", trimed)
          end
       )
    end
 )
 
 
--- Check network connection every minite
-gears.timer {
-   timeout = 60,
-   autostart = true,
-   call_now = true,
-   callback = function()
-      local f_dev = assert(io.open(nw.operstate, "r"))
-      local dev_stat = trim(f_dev:read("*l"))
-      f_dev:close()
-
-      if dev_stat == "up" then
-         net_icon.image = icons.network.connected.excellent
-      else
-         net_icon.image = icons.network.disconnected
-      end
-   end
-}
-
------------------------------------------------------
--- 3. Volume
------------------------------------------------------
-local vol_value = wibox.widget {
-   font = display_font,
-   align = "center",
-   valign = "center",
-   widget = wibox.widget.textbox,
-}
-
-local vol_slider = wibox.widget {
-   bar_shape = gears.shape.rectangle,
-   bar_height = 3,
-   bar_color = beautiful.border_color,
-   handle_color = beautiful.fg_color,
-   handle_shape = gears.shape.circle,
-   handle_border_color = beautiful.border_color,
-   handle_border_width = 1,
-   minimum = 0,
-   maximum = 100,
-   value = 0,
-   forced_width = 100,
-   widget = wibox.widget.slider,
-}
-
-local vol_widget = wibox.widget {
-   vol_value,
-   vol_slider,
-   spacing = 5,
-   forced_width = 120,
-   layout = wibox.layout.fixed.horizontal,
-}
-
--- Connect volume to update it on change
-vol_slider:connect_signal("property::value",
-                          function(_, new_vol)
-                             vol_value.text = string.format("%s", new_vol)
+-- `:add_button` is the API for dev-version of awesome
+vol_icon:buttons(gears.table.join(
+                    awful.button(
+                       {},        -- No mod key needed
+                       1,         -- Left click
+                       function() -- press
+                          awful.spawn.with_shell("amixer -q set Master toggle")
+                          if vol_icon.muted then
+                             vol_icon:set_image(icons.audio.volume.high)
+                             vol_icon.muted = false
+                          else
+                             vol_icon:set_image(icons.audio.volume.muted)
+                             vol_icon.muted = true
                           end
-)
+                       end,
+                       nil        -- release
+                    )
+))
+
 
 -----------------------------------------------------
 -- 4. Clock and Calendar
@@ -225,6 +232,7 @@ month_calendar:attach(txtclk, "tr")
 -----------------------------------------------------
 -- 5. System actions
 -----------------------------------------------------
+-- TODO: Finish button functions
 local system_menu = awful.menu({
       items = {
          {"Sleep", function(args)
@@ -429,7 +437,8 @@ awful.screen.connect_for_each_screen(function(s)
             -- mykeyboardlayout,
             wibox.widget.systray(),
             -- wibox.widget.imagebox(bat.icon, false, nil),
-            net_icon,
+            vol_icon,
+            -- net_icon,
             battery_icon,
             txtclk,
             system_actions,
@@ -637,19 +646,48 @@ for i = 1, 9 do
            end,
            {description = "toggle focused client on tag #" .. i, group = "tag"}),
 
+        -- Somehow, XF86-* keys repeat the bound commands 9 times. For example,
+        -- Passing 1 will increase by 9%, not 1%. Reason remains unknown to me.
         -- Brightness of display using `light` package
         awful.key({}, "XF86MonBrightnessUp",
            function()
-              os.execute("light -s sysfs/backlight/intel_backlight -A 0.5")
+              os.execute("light -s sysfs/backlight/intel_backlight -A 1")
            end,
-           -- On command line, 0.5 = 0.5% while 5 = %5. Not sure why
            {description = "Increase screen brightness by 5%", group = "extra"}),
         awful.key({}, "XF86MonBrightnessDown",
            function()
-              os.execute(string.format("light -s sysfs/backlight/intel_backlight -U 0.5"))
+              os.execute("light -s sysfs/backlight/intel_backlight -U 1")
            end,
-           {description = "Decrease screen brightness by 5%", group = "extra"})
-
+           {description = "Decrease screen brightness by 5%", group = "extra"}),
+        -- Volume ALSA
+        awful.key({}, "XF86AudioRaiseVolume",
+           function()
+              os.execute("amixer -q sset Master 1%+")
+              -- awful.spawn(terminal .. "-e echo test")
+           end,
+           {description = "Raise volume by 5%", group = "extra"}),
+        awful.key({}, "XF86AudioLowerVolume",
+           function()
+              os.execute("amixer -q sset Master 1%-")
+           end,
+           {description = "Lower volume by 5%", group = "extra"}),
+        awful.key({}, "XF86AudioMute",
+           function()
+              os.execute("amixer -q set Master toggle")
+              if vol_icon.muted then
+                 vol_icon:set_image(icons.audio.volume.high)
+                 vol_icon.muted = false
+              else
+                 vol_icon:set_image(icons.audio.volume.muted)
+                 vol_icon.muted = true
+              end
+           end,
+           {description = "Mute audio", group = "extra"}),
+        awful.key({}, "XF86AudioMicMute",
+           function()
+              os.execute("amixer -q set Capture toggle")
+           end,
+           {description = "Mute microphone", group = "extra"})
     )
 end
 
@@ -671,8 +709,9 @@ clientbuttons = gears.table.join(
 root.keys(globalkeys)
 
 -- Rules to apply to new clients (through the "manage" signal).
+-- Use `xprop` to find out how to match an app, i.e. name? instance? or class?
 awful.rules.rules = {
-    -- All clients will match this rule.
+   -- General rule
     { rule = { },
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
@@ -685,39 +724,49 @@ awful.rules.rules = {
      }
     },
 
-    -- Floating clients.
+    -- Floating without titlebars
+    { rule = { class = "TelegramDesktop",
+               name =  "Media viewer",  -- telegram
+    },
+      properties = { floating = true,
+                     titlebars_enabled = false,
+                     placement = awful.placement.centered,
+                     maximized_vertical = true,
+                     maximized_horizontal = true,
+      }
+    },
+
+
+    -- Floating with title bars
     { rule_any = {
         instance = {
-          "DTA",  -- Firefox addon DownThemAll.
-          "copyq",  -- Includes session name in class.
-          "pinentry",
+           "DTA",  -- Firefox addon DownThemAll
+           "Devtools", -- Firefox devtools as separate window
+           "copyq",  -- Includes session name in class.
+           "pinentry",
+           "nm-connection-editor",
+           "goldendict",
         },
         class = {
           "Arandr",
-          "Blueman-manager",
-          "Gpick",
-          "Kruler",
-          "MessageWin",  -- kalarm.
-          "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
-          "Wpa_gui",
-          "veromix",
-          "xtightvncviewer"},
-
+          "spectacle",
+          "fcitx5-config-qt",
+          "mpv",
+        },
         -- Note that the name property shown in xprop might be set slightly after creation of the client
         -- and the name shown there might not match defined rules here.
         name = {
-          "Event Tester",  -- xev.
+           "Event Tester",  -- xev
         },
         role = {
-          "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
+          "pop-up", -- Chrome's (detached) Developer Tools
         }
-      }, properties = { floating = true }},
-
-
-    -- Add titlebars to normal clients and dialogs
-    { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = false }
     },
+      properties = { floating = true,
+                     titlebars_enabled = true,
+                     placement = awful.placement.centered,
+
+    }},
 }
 
 -- Signal function to execute when a new client appears.
@@ -765,8 +814,6 @@ client.connect_signal("request::titlebars", function(c)
         { -- Right
             awful.titlebar.widget.floatingbutton (c),
             awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.stickybutton   (c),
-            awful.titlebar.widget.ontopbutton    (c),
             awful.titlebar.widget.closebutton    (c),
             layout = wibox.layout.fixed.horizontal()
         },
@@ -781,3 +828,6 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+
+-- Spawn a few programs
+-- os.execute("xset r rate 400 100")
