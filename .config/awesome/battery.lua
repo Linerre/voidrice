@@ -1,46 +1,55 @@
--- Simple widgets for awesome status bar
--- If this file grows ever larger than 200 lines, consider a split
-
-local awful = require("awful")
-local wibox = require("wibox")
+-- Battery widgets for awesome status bar using upower instead of polling
+-- lgi comes from extra/lua53-lgi (current v0.9.2)
+-- Lib installed at /lib/libupower-glib.so, owned by upower (current v1.90.2)
+local upower = require("lgi").require("UPowerGlib")
 local timer = require("gears.timer")
+local wibox = require("wibox")
+local icons = require("icons")
+local setmetatable = setmetatable
 
-local bat = {}
-bat.capacity = "/sys/class/power_supply/BAT0/capacity"
-bat.status = "/sys/class/power_supply/BAT0/status"
+-- Some metadata for the battery BAT0 and AC on my machine
+local batmeta = {
+   capacity = "/sys/class/power_supply/BAT0/capacity",
+   status = "/sys/class/power_supply/AC/online",
+   batdev = "/org/freedesktop/UPower/devices/battery_BAT0",
+   acdev = "/org/freedesktop/UPower/devices/line_power_AC",
+}
 
-local function trim(s)
-   return s:match('^%s*(.*%S)%s*$') or ''
+local battery_widget = {}
+
+-- Callback function
+function battery_widget.callb()
+   local client = upower.Client()
+   local device = client:get_display_device()
+
+   local widget = wibox.widget.imagebox()
+   widget.client = client
+   widget.device = device
+
+   -- Attach device to this widget to
+   if device then
+      widget.text = string.format("Remainng: %d%%; Rate: %.2fW",
+                                          device.percentage,
+                                          device.energy_rate)
+   else
+      widget.text = "Unknown"
+   end
+
+   widget.device.on_notify = function(dev)
+      widget:emit_signal('upower::update', dev)
+   end
+
+   widget.client.on_notify = function(c)
+      widget:emit_signal('upower::plugchange', c)
+   end
+
+   return widget
 end
 
-local function battery_info()
-   local f_cap = assert(io.open(bat.capacity), "r")
-   local bat_cap = tonumber(f_cap:read("*n"))
-   f_cap.close()
+local mt = {}
 
-   local f_st = assert(io.open(bat.status), "r")
-   local bat_st = trim(f_st:read("*l"))
-   f_st.close()
-
-   return bat_cap, bat_st
+function mt.__call(self, ...)
+   return battery_widget.callb()
 end
 
--- local battery_widget = wibox.widget {
---    text = "Bat ",
---    align = "center",
---    valign = "center",
---    widget = wibox.widget.textbox,
--- }
-
--- Update battery info every 5 minutes
--- local update_timer = timer({ timeout = 300 })
--- update_timer:connect_signal(
---    "timeout",
---    function()
---       local cap, st = battery_info()
---       battery_widget.text = string.format("Bat: %d%%", cap)
---    end
--- )
--- update_timer:start()
-
-return battery_info
+return setmetatable(battery_widget, mt)

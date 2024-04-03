@@ -6,6 +6,8 @@ pcall(require, "luarocks.loader")
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
+-- For awesome-client to communicate with current instance of awesome
+require("awful.remote")
 -- Widget and layout library
 local wibox = require("wibox")
 -- Theme handling library
@@ -17,6 +19,7 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
+
 
 ---------------- Default Theme ---------------------
 local theme_path = string.format(
@@ -31,22 +34,27 @@ local icons = require("icons")
 -- TODO: Merge these colors and fonts with theme module
 local display_font = "Liberation Sans 13"
 local dim_text = "#5c5c5c"
----------------- Personal widgets -------------------
------------------------------------------------------
--- 1. Battery
------------------------------------------------------
-local bat = {
-   capacity = "/sys/class/power_supply/BAT0/capacity",
-   status = "/sys/class/power_supply/BAT0/status",
-}
 
+---------------- Helper Functions -------------------
 local function trim(s)
    return s:match("^%s*(.*%S)%s*$") or ""
 end
 
 
+---------------- Personal widgets -------------------
+
+-----------------------------------------------------
+-- 1. Battery
+-----------------------------------------------------
+local bat = {
+   capacity = "/sys/class/power_supply/BAT0/capacity",
+   status = "/sys/class/power_supply/AC/online",
+   batdbus = "/org/freedesktop/UPower/devices/battery_BAT0",
+   acdbus = "/org/freedesktop/UPower/devices/line_power_AC",
+}
+
 local battery_icon = wibox.widget {
-   -- image = bat.icon,
+   -- pre-defined/built-in attrs of imagebox widget
    resize = false,
    downscale = true,
    forced_height = 24,
@@ -54,58 +62,87 @@ local battery_icon = wibox.widget {
    widget = wibox.widget.imagebox,
 }
 
+
+local function get_batinfo()
+   -- Battery capactiy 0 - 100
+   local f_cap = assert(io.open(bat.capacity, "r"))
+   local bat_cap = tonumber(f_cap:read("*n"))
+   f_cap:close()
+
+   -- AC status: 1(on/true)/0(off/false)
+   local f_st = assert(io.open(bat.status, "r"))
+   local ac_st = tonumber(f_st:read("*l"))
+   f_st:close()
+   local ac_on = ac_st == 1 and true or false
+   return bat_cap, ac_on
+end
+
+-- Update battery icon only
+-- @param charging: whether the laptop is on AC (charging)
+local function update_bat_icon(charging)
+   local bat_cap, _ = get_batinfo()
+   if charging then
+      if bat_cap >= 92 then
+         battery_icon:set_image(icons.battery.charging.justfull)
+      elseif bat_cap >= 75 then
+         battery_icon:set_image(icons.battery.charging.good)
+      elseif bat_cap >= 50 then
+         battery_icon:set_image(icons.battery.charging.low)
+      elseif bat_cap <= 30 then
+         battery_icon:set_image(icons.battery.charging.caution)
+      else
+         battery_icon:set_image(icons.battery.charging.empty)
+      end
+   else
+      if bat_cap >= 92 then
+         battery_icon:set_image(icons.battery.charging.justfull)
+      elseif bat_cap >= 75 then
+         battery_icon:set_image(icons.battery.charging.good)
+      elseif bat_cap >= 50 then
+         battery_icon:set_image(icons.battery.charging.low)
+      elseif bat_cap <= 30 then
+         battery_icon:set_image(icons.battery.charging.caution)
+      else
+         battery_icon:set_image(icons.battery.charging.empty)
+      end
+   end
+end
+
+-- A tooltip for the battery icon
+local blgi = require("battery")
+local myblgi = blgi {}
+
+-- Update on AC un/plug
+myblgi:connect_signal('upower::plugchange',
+                    function(widget, client)
+                       if client.on_battery then
+                          update_bat_icon(false)
+                       end
+                          update_bat_icon(true)
+                    end
+)
+
+-- Update on Battery percentage change
+myblgi:connect_signal('upower::update',
+                    function(widget, device)
+                       if device.power_supply then
+                          -- not charging
+                          update_bat_icon(false)
+                       else
+                          update_bat_icon(true)
+                       end
+                    end
+)
+
+
 local bat_tooltip= awful.tooltip {}
 bat_tooltip:add_to_object(battery_icon)
 battery_icon:connect_signal(
    "mouse::enter",
    function()
-      local f_cap = assert(io.open(bat.capacity, "r"))
-      local bat_cap = tonumber(f_cap:read("*n"))
-      f_cap:close()
-      bat_tooltip.text = string.format("Remaining: %d%%", bat_cap)
+      bat_tooltip.text = string.format("%s", myblgi.text)
    end
 )
-
--- Update battery info every minute
-gears.timer {
-   timeout = 60,
-   autostart  = true,
-   call_now = true,
-   callback = function()
-      local f_cap = assert(io.open(bat.capacity, "r"))
-      local bat_cap = tonumber(f_cap:read("*n"))
-      f_cap:close()
-      local f_st = assert(io.open(bat.status, "r"))
-      local bat_st = trim(f_st:read("*l"))
-      f_st:close()
-
-      if bat_st ~= "Discharging" then
-         if bat_cap >= 92 then
-            battery_icon.image = icons.battery.charging.charged
-         elseif bat_cap >= 75 then
-            battery_icon.image = icons.battery.charging.good
-         elseif bat_cap >= 50 then
-            battery_icon.image = icons.battery.charging.low
-         elseif bat_cap <= 30 then
-            battery_icon.image = icons.battery.charging.caution
-         else
-            battery_icon.image = icons.battery.charging.empty
-         end
-      else
-         if bat_cap >= 92 then
-            battery_icon.image = icons.battery.discharging.full
-         elseif bat_cap >= 75 then
-            battery_icon.image = icons.battery.discharging.good
-         elseif bat_cap >= 50 then
-            battery_icon.image = icons.battery.discharging.low
-         elseif bat_cap <= 30 then
-            battery_icon.image = icons.battery.discharging.caution
-         else
-            battery_icon.image = icons.battery.discharging.empty
-         end
-      end
-end
-}
 
 -----------------------------------------------------
 -- 2. Network (use nm-applet for now)
@@ -724,7 +761,7 @@ awful.rules.rules = {
      }
     },
 
-    -- Floating without titlebars
+    -- Telegram
     { rule = { class = "TelegramDesktop",
                name =  "Media viewer",  -- telegram
     },
@@ -736,6 +773,29 @@ awful.rules.rules = {
       }
     },
 
+    -- GoldenDict
+    { rule = { class    = "GoldenDict-ng",
+               instance = "goldendict",
+    },
+      properties = { floating = true,
+                     titlebars_enabled = true,
+                     placement = awful.placement.left,
+                     maximized_vertical = true,
+                     width = 800,
+      }
+    },
+
+    -- Anki
+    { rule = { class    = "Anki",
+               instance = "anki",
+    },
+      properties = { floating = true,
+                     titlebars_enabled = true,
+                     placement = awful.placement.center,
+                     height = 767,
+                     width = 680,
+      }
+    },
 
     -- Floating with title bars
     { rule_any = {
@@ -744,8 +804,11 @@ awful.rules.rules = {
            "Devtools", -- Firefox devtools as separate window
            "copyq",  -- Includes session name in class.
            "pinentry",
-           "nm-connection-editor",
-           "goldendict",
+           "nm-connection-editor", -- wifi configuration
+           "nm-applet",            -- wifi password
+           "pcmanfm",
+           "obs",
+           "vlc",
         },
         class = {
           "Arandr",
