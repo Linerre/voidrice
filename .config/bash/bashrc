@@ -5,9 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# hook direnv to bash
-eval "$(direnv hook bash)"
-
 # The prompt should at least indicate:
 # 1. user identity (normal/root)
 # 2. hostname (particularly important when connecting remotely)
