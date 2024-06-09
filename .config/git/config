@@ -6,6 +6,7 @@
 	cm = commit
 	br = branch
 	sw = switch
+	h = help
 [core]
 	editor = emacs
 	autocrlf = input
@@ -17,3 +18,5 @@
 	defaultBranch = master
 [advice]
 	addIgnoredFile = false
+[credential]
+	helper = store
