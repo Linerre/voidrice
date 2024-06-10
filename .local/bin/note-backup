@@ -1,0 +1,25 @@
+#!/bin/env bash
+
+# Directory to check and commit from
+WORKDIR="$HOME/projects/zknotes"
+
+# Commit message
+TIMESTEMP=$(date '+%Y-%m-%d %A %H:%M')
+COMMIT_MSG="Automated backup [${TIMESTEMP}]"
+
+# Change to the working directory
+cd "$WORKDIR" || exit 1
+
+# Check for modified files
+if [[ -n "$(git status -s)" ]]; then
+  # Stage all changes
+  git add .
+
+  # Commit the changes
+  git commit -m "$COMMIT_MSG"
+
+  # Push the changes to the remote
+  git push origin master
+
+  echo "${COMMIT_MSG}" >> logs
+fi
