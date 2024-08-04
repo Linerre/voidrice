@@ -4,7 +4,7 @@
 WORKDIR="$HOME/projects/zknotes"
 
 # Commit message
-TIMESTEMP=$(date '+%Y-%m-%d %A %H:%M')
+TIMESTEMP=$(date '+%Y-%m-%d %a')
 COMMIT_MSG="Automated backup [${TIMESTEMP}]"
 
 # Change to the working directory
