@@ -55,10 +55,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # pacman
-alias ps='pacman -Si'
-alias ss='pacman -Ss'
-alias pi='pacman -Qi'
-alias up='sudo pacman -Syu'
+alias update='sudo pacman -Syu'
 
 # git
 alias gt='git st'
