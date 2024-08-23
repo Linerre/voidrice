@@ -70,7 +70,7 @@ alias e="emacs -nw"
 alias za='zathura'
 alias n="nix-shell"
 alias m="mg -n"
-alias l="ls -lh"
+alias l="ls -lh --group-directories-first -S"
 
 # ============ FUNCTION ==============
 # Usage: wiki_info "page_title"
