@@ -1,0 +1,9 @@
+set debuginfod enabled on
+source /usr/share/pwndbg/gdbinit.py
+
+# Customize pwndbg settings
+set context-sections code
+set context-stack-lines 10
+
+# Enable compact register display
+set show-compact-regs on
