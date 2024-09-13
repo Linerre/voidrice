@@ -36,7 +36,7 @@ export NODE_MIRROR=https://mirrors.ustc.edu.cn/node/
 [[ -d "$HOME/.cargo" ]] && . "$HOME/.cargo/env"
 
 # native texlive
-LX_VER=2023
+LX_VER=2024
 [[ -d "$HOME/.local/texlive/${LX_VER}" ]] && \
     { export PATH="$HOME/.local/texlive/${LX_VER}/bin/x86_64-linux:$PATH"
       export TEXLIVE_MAN="$HOME/.local/texlive/${LX_VER}/texmf-dist/doc/man"

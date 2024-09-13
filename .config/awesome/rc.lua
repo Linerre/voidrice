@@ -78,10 +78,9 @@ local function get_batinfo()
 end
 
 -- Update battery icon only
--- @param charging: whether the laptop is on AC (charging)
-local function update_bat_icon(charging)
-   local bat_cap, _ = get_batinfo()
-   if charging then
+local function update_bat_icon()
+   local bat_cap, ac_on = get_batinfo()
+   if ac_on then
       if bat_cap >= 92 then
          battery_icon:set_image(icons.battery.charging.justfull)
       elseif bat_cap >= 75 then
@@ -108,30 +107,34 @@ local function update_bat_icon(charging)
    end
 end
 
--- A tooltip for the battery icon
+-- Update battery icon at startup
+update_bat_icon()
+
+-- Then battery info is updated only on upower event
 local blgi = require("battery")
 local myblgi = blgi {}
 
 -- Update on AC un/plug
 myblgi:connect_signal('upower::plugchange',
-                    function(widget, client)
-                       if client.on_battery then
-                          update_bat_icon(false)
-                       end
-                          update_bat_icon(true)
-                    end
+                      function(widget, client)
+                         update_bat_icon()
+                       -- if client.on_battery then
+                       --    update_bat_icon(false)
+                       -- end
+                       --    update_bat_icon(true)
+                      end
 )
 
 -- Update on Battery percentage change
 myblgi:connect_signal('upower::update',
-                    function(widget, device)
-                       if device.power_supply then
-                          -- not charging
-                          update_bat_icon(false)
-                       else
-                          update_bat_icon(true)
-                       end
-                    end
+                      function(widget, device)
+                         update_bat_icon()
+                         -- if device.power_supply then
+                         --  -- not charging
+                         --  update_bat_icon(false)
+                         -- else
+                         --  update_bat_icon(true)
+                      end
 )
 
 
@@ -809,6 +812,7 @@ awful.rules.rules = {
            "pcmanfm",
            "obs",
            "vlc",
+           "sublime_text",
         },
         class = {
           "Arandr",
