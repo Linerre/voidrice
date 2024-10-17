@@ -25,7 +25,7 @@ if [ $XDG_SESSION_TYPE = x11 ]; then
     export QT_IM_MODULE=fcitx
 fi
 
-# remove duplicat entries from $PATH
+# remove duplicate entries from $PATH
 # zsh uses $path array along with $PATH
 typeset -U PATH path
 

@@ -18,6 +18,7 @@
 
 Brave*
 *.db
+*.xbel
 history.cmdline
 .config/awesome/themes/
 .config/awesome/battery-widget/
