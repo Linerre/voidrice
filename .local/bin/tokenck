@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# Configuration
+# Replace 'anthropic/api-key' with your actual path in pass
+API_KEY_PATH="Dev/claude-api-key"
+API_URL="https://api.anthropic.com/v1/messages"
+
+# Get API key from pass
+API_KEY=$(pass "$API_KEY_PATH")
+
+if [ -z "$API_KEY" ]; then
+    echo "Error: Could not retrieve API key from pass store"
+    exit 1
+fi
+
+# Function to check if required commands exist
+check_dependencies() {
+    local missing_deps=0
+    for cmd in curl jq pass; do
+        if ! command -v "$cmd" >/dev/null 2>&1; then
+            echo "Error: Required command '$cmd' not found"
+            missing_deps=1
+        fi
+    done
+
+    if [ $missing_deps -eq 1 ]; then
+        echo "Please enusre you have installed: curl, jq, pass"
+        exit 1
+    fi
+}
+
+# Function to make API call and get token usage
+get_token_usage() {
+    local message="$1"
+    if [ -z "$message" ]; then
+        message="Hello, how are you?"
+    fi
+
+    response=$(curl -s "$API_URL" \
+        -H "x-api-key: $API_KEY" \
+        -H "content-type: application/json" \
+        -H "anthropic-version: 2023-06-01" \
+        -d '{
+            "model": "claude-3-opus-20240229",
+            "max_tokens": 1000,
+            "messages": [{
+                "role": "user",
+                "content": "'"$message"'"
+            }]
+        }')
+
+    # Check if the API call was successful
+    if echo "$response" | jq -e '.error' >/dev/null 2>&1; then
+        echo "API Error:"
+        echo "$response" | jq '.error'
+        exit 1
+    fi
+
+    # Extract and display token usage
+    echo "Token Usage:"
+    echo "$response" | jq -r '.usage | {
+        "Input Tokens": .input_tokens,
+        "Output Tokens": .output_tokens,
+        "Total Tokens": .total_tokens
+    }' | jq -r 'to_entries | .[] | "\(.key): \(.value)"'
+}
+
+# Main script
+check_dependencies
+
+# If a message is provided as argument, use it; otherwise use default
+get_token_usage "$1"
