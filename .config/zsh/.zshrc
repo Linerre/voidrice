@@ -16,10 +16,6 @@ else
    RPS1="%(?..(%?%))"
 fi
 
-XILINX_VER=2023.2
-VIVADO=$HOME/Xilinx/Vivado/${XILINX_VER}/settings64.sh
-[[ -f $VIVADO ]] && source $VIVADO
-
 # options
 setopt AUTO_CD
 setopt HIST_VERIFY
@@ -90,4 +86,14 @@ wiki_info() {
          --data-urlencode "rvlimit=2" \
          --data-urlencode "inprop=url" |
         jq -r '.'
+}
+
+# Usage: ytm <URL>
+ytm() {
+    local DEST="$HOME/Music/ost"
+    local MUSIC_SRC="$1"
+    [[ ! -d "$DEST" ]] && mkdir "$DEST"
+    yt-dlp --extract-audio --audio-format mp3 \
+           --path "$DEST" \
+           --output "%(title)s.%(ext)s" "$MUSIC_SRC"
 }
