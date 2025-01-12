@@ -16,9 +16,11 @@ export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
 
 
 # fcitx5
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
+# export GTK_IM_MODULE=fcitx
+# export QT_IM_MODULE=fcitx
 if [ $XDG_SESSION_TYPE = x11 ]; then
+    export GTK_IM_MODULE=fcitx
+    export QT_IM_MODULE=fcitx
     export XMODIFIERS=@im=fcitx
     export INPUT_METHOD=fcitx
 fi

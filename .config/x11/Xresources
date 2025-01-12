@@ -25,7 +25,7 @@ XTerm.ttyModes: erase ^?
 xterm*faceName: Terminus
 xterm*faceSize: 18
 
-Xft.dpi: 120
+Xft.dpi: 128
 !
 ! Generated with :
 ! XRDB2Xreources.py
