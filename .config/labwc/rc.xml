@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+
+<!-- For a complete set of options with comments, see docs/rc.xml.all -->
+
+<labwc_config>
+  <windowSwitcher show="yes" preview="no" outlines="no" allWorkspaces="no">
+    <fields>
+      <field content="type" width="25%"/>
+      <field content="trimmed_identifier" width="25%"/>
+      <field content="title" width="50%"/>
+    </fields>
+  </windowSwitcher>
+  <theme>
+    <name></name>
+    <cornerRadius>8</cornerRadius>
+    <font name="sans" size="10" />
+  </theme>
+
+  <desktops number="5" />
+  <keyboard>
+    <default />
+    <!-- workspaces -->
+    <keybind key="W-1">
+      <action name="GoToDesktop" to="1" />
+    </keybind>
+    <keybind key="W-2">
+      <action name="GoToDesktop" to="2" />
+    </keybind>
+    <keybind key="W-3">
+      <action name="GoToDesktop" to="3" />
+    </keybind>
+    <keybind key="W-4">
+      <action name="GoToDesktop" to="4" />
+    </keybind>
+    <keybind key="W-5">
+      <action name="GoToDesktop" to="5" />
+    </keybind>
+    <!-- send windows to desktop -->
+    <keybind key="W-S-1">
+      <action name="SendToDesktop" to="1" follow="yes" wrap="yes" />
+    </keybind>
+    <keybind key="W-S-2">
+      <action name="SendToDesktop" to="2" follow="yes" wrap="yes" />
+    </keybind>
+    <keybind key="W-S-3">
+      <action name="SendToDesktop" to="3" follow="yes" wrap="yes" />
+    </keybind>
+    <keybind key="W-S-4">
+      <action name="SendToDesktop" to="4" follow="yes" wrap="yes" />
+    </keybind>
+    <keybind key="W-S-5">
+      <action name="SendToDesktop" to="5" follow="yes" wrap="yes" />
+    </keybind>
+
+    <!-- applications -->
+    <keybind key="W-Return">
+      <action name="Execute" command="foot" />
+    </keybind>
+    <keybind key="W-r">
+      <action name="Execute" command="fuzzel " />
+    </keybind>
+    <keybind key="W-c">
+      <action name="Close" />
+    </keybind>
+    <keybind key="W-j">
+      <action name="Focus" />
+    </keybind>
+    <keybind key="W-s">
+      <action name="Resize" />
+    </keybind>
+    <keybind key="W-f">
+      <action name="ResizeTo" width="1000" height="800" />
+    </keybind>
+    <keybind key="W-n">
+       <action name="NextWindow" />
+    </keybind>
+    <keybind key="W-p">
+       <action name="PreviousWindow" />
+    </keybind>
+
+    <!-- toggle titlebar -->
+    <keybind key="W-w">
+       <action name="SetDecorations" decorations="border" forceSSD="no" />
+    </keybind>
+    <keybind key="W-d">
+       <action name="ToggleDecorations" />
+    </keybind>
+    <!-- magnifier -->
+    <keybind key="W-m">
+      <action name="ZoomIn" />
+    </keybind>
+    <keybind key="W-n">
+      <action name="ZoomOut" />
+    </keybind>
+
+    <!-- volume -->
+    <keybind key="XF86MonBrightnessDown">
+      <action name="Execute">
+        <command>brightnessctl set 5%-</command>
+      </action>
+    </keybind>
+    <keybind key="XF86MonBrightnessUp">
+      <action name="Execute">
+        <command>brightnessctl set 5%+</command>
+      </action>
+    </keybind>
+
+    <!-- microphone volume control -->
+    <keybind key="XF86AudioMicMute">
+      <action name="Execute">
+        <command>wpctl set-mute @DEFAULT_SOURCE@ toggle</command>
+      </action>
+    </keybind>
+    <keybind key="W-XF86AudioRaiseVolume">
+      <action name="Execute">
+        <command>wpctl set-volume @DEFAULT_SOURCE@ 5%+</command>
+      </action>
+    </keybind>
+    <keybind key="W-XF86AudioLowerVolume">
+      <action name="Execute">
+        <command>wpctl set-volume @DEFAULT_SOURCE@ 5%-</command>
+      </action>
+    </keybind>
+
+    <!-- Unbinde Alt modifier -->
+    <keybind key="A-Up">
+      <action></action>
+    </keybind>
+    <keybind key="A-Down">
+      <action></action>
+    </keybind>
+    <!--
+      Remove a previously defined keybind
+      A shorter alternative is <keybind key="W-F4" />
+    -->
+    <keybind key="W-F4">
+      <action name="None" />
+    </keybind>
+  </keyboard>
+
+  <mouse>
+    <default />
+    <!-- Show a custom menu on desktop right click -->
+    <context name="Root">
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu" menu="some-custom-menu" />
+      </mousebind>
+    </context>
+  </mouse>
+
+</labwc_config>
