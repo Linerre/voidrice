@@ -46,7 +46,7 @@ LX_VER=2024
     }
 
 # solana
-[[ -d "$HOME/.local/share/solana/"]] && \
+[[ -d "$HOME/.local/share/solana/" ]] && \
     export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
 
 # opam configuration
