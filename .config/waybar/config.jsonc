@@ -2,17 +2,10 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 28,
+    "height": 24,
     // "width": 1280, // Waybar width
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": [
-        "wlr/workspaces",
-        "wlr/taskbar"
-    ],
-    "modules-center": [
-        "sway/window"
-    ],
     "modules-right": [
         "network",
         "pulseaudio",
@@ -30,20 +23,6 @@
         "custom/power"
     ],
     // Modules configuration
-    "wlr/workspaces": {
-        "format": "{name}",
-        "on-click": "activate",
-        "sort-by-number": true
-    },
-    "wlr/taskbar": {
-        "format": "{icon}",
-        "icon-size": 16,
-        "icon-theme": "hicolor",
-        "tooltip-format": "{title}",
-        "on-click": "activate",
-        "on-click-middle": "close",
-        "on-click-right": "minimize"
-    },
     // "keyboard-state": {
     //     "numlock": true,
     //     "capslock": true,
