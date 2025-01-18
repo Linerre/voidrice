@@ -26,7 +26,7 @@ mako >/dev/null 2>&1 &
 fcitx5 >/dev/null 2>&1 &
 
 # Screen temprature: Day: 4600K, Night: 3600K
-gammastep -O 4600 -b 0.78 >/dev/null 2>&1 &
+gammastep >/dev/null 2>&1 &
 
 # Lock screen after 5 minutes; turn off display after another 5 minutes.
 #
