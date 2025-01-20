@@ -22,14 +22,10 @@
 [credential]
 	helper = store
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 [delta]
-    navigate = true    # use n and N to move between diff sections
+  navigate = true    # use n and N to move between diff sections
+  syntax-theme = none
 	zero-style =
-    # delta detects terminal colors automatically;
-    # dark = true
-    # light = true
 [merge]
     conflictstyle = diff3
-[diff]
-    colorMoved = default
