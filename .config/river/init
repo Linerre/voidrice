@@ -123,7 +123,7 @@ riverctl map passthrough Super F11 enter-mode normal
 # Autostart
 # riverctl spawn "swaybg --image ~/Pictures/wallpaper/bliss.jpg >/dev/null 2>&1 &"
 riverctl spawn "kanshi >/dev/null 2>&1 &"
-riverctl spawn "waybar >/dev/null 2>&1 &"
+riverctl spawn "waybar -c ~/.config/waybar/river.jsonc >/dev/null 2>&1 &"
 riverctl spawn "mako >/dev/null 2>&1 &"
 riverctl spawn "fcitx5 >/dev/null 2>&1 &"
 riverctl spawn "gammastep >/dev/null 2>&1 &"

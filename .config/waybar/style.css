@@ -68,20 +68,7 @@ window#waybar.hidden {
     /* color: #a40000; */
 }
 
-/* button { */
-/*     /\* Use box-shadow instead of border so the text isn't offset *\/ */
-/*     box-shadow: inset 0 -3px transparent; */
-/*     /\* Avoid rounded borders under each button name *\/ */
-/*     border: none; */
-/*     border-radius: 0; */
-/* } */
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-/* button:hover { */
-/*     background: inherit; */
-/*     box-shadow: inset 0 -3px #4c504c; */
-/* } */
-
+/* river */
 #tags button {
   margin-right: 5px;
   padding: 0px 5px;
@@ -95,4 +82,21 @@ window#waybar.hidden {
 #tags button.focused {
   background-color: #225877;
   color: #ffffff;
+}
+
+/* sway */
+#workspaces button {
+  color: #888888;
+  margin: 0 2px;
+  padding: 0 10px;
+  min-width: 2px;
+  border-radius: 0;
+}
+
+#workspaces button.focused {
+  background-color: #225877;
+  color: #ffffff;
+  margin: 0 2px;
+  padding: 0 10px;
+  border-radius: 0;
 }
