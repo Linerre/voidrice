@@ -8,17 +8,25 @@
 }
 
 /* the whole bar */
-#waybar {
-  background-color: #225877;
-  color: #ffffff;
-}
+/* #waybar { */
+/*   background-color: #225877; */
+/*   color: #ffffff; */
+/* } */
 
+/* The whole bar */
+#waybar {
+    background: #225877;
+    color: white;
+    font-family: Cantarell, Noto Sans, sans-serif;
+    font-size: 13px;
+}
 
 .modules-left {
 	background-color: #323232;
 }
 
 .modules-right {
+	background-color: #323232;
 	padding: 0px 5px;
 }
 
@@ -85,18 +93,29 @@ window#waybar.hidden {
 }
 
 /* sway */
+#window {
+    font-weight: bold;
+}
+
 #workspaces button {
+  padding: 1px 10px;
+  margin: 0px 1px 0px 0px;
   color: #888888;
-  margin: 0 2px;
-  padding: 0 10px;
-  min-width: 2px;
-  border-radius: 0;
+  border-radius: 0px;
 }
 
 #workspaces button.focused {
-  background-color: #225877;
-  color: #ffffff;
-  margin: 0 2px;
-  padding: 0 10px;
-  border-radius: 0;
+  padding: 1px 10px;
+  margin: 0px 1px 0px 0px;
+  border-color: #4c7899;
+  color: white;
+  background-color: #285577;
+}
+
+#workspaces button.urgent {
+  border-color: #c9545d;
+  color: #c9545d;
+  padding: 1px 10px;
+  margin: 0px 1px 0px 0px;
+  border-radius: 0px;
 }
