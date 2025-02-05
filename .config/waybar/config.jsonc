@@ -8,8 +8,8 @@
 
     // Choose the order of the modules
     "modules-left": [
-        "river/tags",
-        "river/window"
+        "sway/workspaces",
+        "sway/mode"
     ],
     "modules-right": [
         "network",
@@ -32,6 +32,15 @@
     "river/window": {
         "format": "{}",
         "max-length": 40
+    },
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "format": "{name}",
+    },
+    "sway/mode": {
+        "format": "[{}]",
+        "max-length": 20
     },
     "clock": {
         // "timezone": "America/New_York",
