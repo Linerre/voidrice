@@ -1,21 +1,23 @@
 // -*- mode: jsonc -*-
 {
-    "layer": "top", // Waybar at top layer
-    "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 24,
+    "layer": "top",         // Waybar at top layer
+    "position": "bottom",   // Waybar position (top|bottom|left|right)
+    "height": 24,           // if not set will calculated dynamically
+    "spacing": 4,           // Gaps between modules (4px)
     // "width": 1280, // Waybar width
-    "spacing": 0, // Gaps between modules (4px)
+
     // Choose the order of the modules
+    "modules-left": [
+        "river/tags",
+        "river/window"
+    ],
     "modules-right": [
         "network",
         "pulseaudio",
-        "power-profiles-daemon",
         "cpu",
         "memory",
         "temperature",
         "backlight",
-        "keyboard-state",
-        "sway/language",
         "battery",
         "battery#bat2",
         "clock",
@@ -23,44 +25,13 @@
         "custom/power"
     ],
     // Modules configuration
-    // "keyboard-state": {
-    //     "numlock": true,
-    //     "capslock": true,
-    //     "format": "{name} {icon}",
-    //     "format-icons": {
-    //         "locked": "",
-    //         "unlocked": ""
-    //     }
-    // },
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 5,
-        "consume-icons": {
-            "on": " "
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
+    "river/tags": {
+        "num-tags": 5,
+        "tag-tabels": ["1", "2","3","5","5"],
     },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10
+    "river/window": {
+        "format": "{}",
+        "max-length": 40
     },
     "clock": {
         // "timezone": "America/New_York",
@@ -105,17 +76,6 @@
     "battery#bat2": {
         "bat": "BAT2"
     },
-    "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
-    },
     "network": {
         "interface": "wlan0", // (Optional) To force the use of this interface
         "format-wifi": "{essid} [{signalStrength}%]   ",
@@ -144,4 +104,8 @@
         },
         "on-click": "pavucontrol"
     },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    }
 }
