@@ -1,3 +1,4 @@
+
 * {
   border: none;
   margin: 0;
@@ -15,18 +16,19 @@
 
 /* The whole bar */
 #waybar {
-    background: #225877;
-    color: white;
-    font-family: Cantarell, Noto Sans, sans-serif;
-    font-size: 13px;
+  background-color: #225877;
+  color: white;
+  font-family: sans-serif;
+  font-size: 13px;
 }
 
 .modules-left {
-	background-color: #323232;
+  background-color: #323232;
+	padding: 0px 5px;
 }
 
 .modules-right {
-	background-color: #323232;
+  background-color: #323232;
 	padding: 0px 5px;
 }
 
@@ -92,30 +94,42 @@ window#waybar.hidden {
   color: #ffffff;
 }
 
+#tags button.focused:hover {
+  background-color: #225877;
+  color: #a40000;
+}
+
 /* sway */
 #window {
     font-weight: bold;
 }
 
+#workspace {
+}
+
 #workspaces button {
-  padding: 1px 10px;
-  margin: 0px 1px 0px 0px;
-  color: #888888;
-  border-radius: 0px;
+    margin: 1px;
+    padding: 1px;
+    color: #888888;
+    background-color: #323232;
+    border-radius: 0px;
+    border: 1px solid #4c7899;
+}
+
+#workspaces button:hover {
+  color: #a40000;
 }
 
 #workspaces button.focused {
-  padding: 1px 10px;
-  margin: 0px 1px 0px 0px;
-  border-color: #4c7899;
+  background-color: #225877;
   color: white;
-  background-color: #285577;
+}
+
+#workspaces button.focused:hover {
+  color: #a40000;
 }
 
 #workspaces button.urgent {
   border-color: #c9545d;
   color: #c9545d;
-  padding: 1px 10px;
-  margin: 0px 1px 0px 0px;
-  border-radius: 0px;
 }

@@ -21,7 +21,8 @@ set $menu fuzzel
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/wallpaper/bliss.jpg fill
+# output * bg ~/Pictures/wallpaper/swaypaper.jpg fill
+exec swaybg --image ~/Pictures/wallpaper/pwinxp.jpeg >/dev/null 2>&1 &
 exec fcitx5 >/dev/null 2>&1 &
 exec gammastep >/dev/null 2>&1 &
 #
@@ -229,16 +230,6 @@ bindsym $mod+r mode "resize"
 
 bar {
     swaybar_command waybar
-#     position top
-#
-#     # When the status_command prints a new line to stdout, swaybar updates.
-#     # The default just shows the current date and time.
-#     status_command while date +'%Y-%m-%d %HH:MM'; do sleep 60; done
-#     colors {
-#         statusline #ffffff
-#         background #323232
-#         inactive_workspace #32323200 #22587700 #888888
-#     }
 }
 
 include /etc/sway/config.d/*
