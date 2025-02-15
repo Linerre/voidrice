@@ -22,7 +22,7 @@ set $menu fuzzel
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg ~/Pictures/wallpaper/swaypaper.jpg fill
-exec swaybg --image ~/Pictures/wallpaper/pwinxp.jpeg >/dev/null 2>&1 &
+exec swaybg --image ~/Pictures/wallpaper/puddle.png >/dev/null 2>&1 &
 exec fcitx5 >/dev/null 2>&1 &
 exec gammastep >/dev/null 2>&1 &
 #
@@ -225,6 +225,9 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym $mod+Shift+a exec slurp | grim -g - - | wl-copy
 bindsym $mod+Shift+p exec slurp | grim -g
 
+# window rules
+for_window [app_id="anki"] floating enable
+for_window [class="goldendict"] floating enable
 
 #
 # Status Bar:
