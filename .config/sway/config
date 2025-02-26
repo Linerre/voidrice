@@ -223,7 +223,7 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
 # Screenshots:
 bindsym $mod+Shift+a exec slurp | grim -g - - | wl-copy
-bindsym $mod+Shift+p exec slurp | grim -g
+bindsym $mod+Shift+p exec slurp | grim
 
 # window rules
 for_window [app_id="anki"] floating enable
