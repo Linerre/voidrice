@@ -43,9 +43,9 @@
         "max-length": 20
     },
     "clock": {
-        // "timezone": "America/New_York",
-        "format": "{:%m-%d %H:%M}",
-        "format-alt": "{:%Y-%m-%d}",
+        "timezone": "Australia/Sydney",
+        "format": "{:%a %m-%d %H:%M}",
+        "format-alt": "{:%Y-%m-%d %a}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "cpu": {
@@ -88,30 +88,21 @@
     },
     "network": {
         "interface": "wlan0", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} [{signalStrength}%]   ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
+        "format-wifi": "{essid} [{signalStrength}%] ",
+        "format-ethernet": "{ipaddr}/{cidr}",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
         "format-disconnected": "Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon}  {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
+        "format": "Volume: {volume}%  {format_source}",
+        "format-bluetooth": "{volume}% {format_source}",
+        "format-bluetooth-muted": "{format_source}",
+        "format-muted": "Muted: {format_source}",
+        "format-source": "Speaker: {volume}% ",
+        "format-source-muted": "Muted",
         "on-click": "pavucontrol"
     },
     "tray": {
