@@ -18,6 +18,20 @@ set $term foot
 # Your preferred application launcher
 set $menu fuzzel
 
+
+# Define monitors
+set $laptop eDP-1
+set $monitor HDMI-A-1
+
+# Keyboard shortcuts to move focus between monitors
+bindsym $mod+p focus output $monitor
+bindsym $mod+n focus output $laptop
+
+# Keyboard shortcuts to move windows between monitors
+bindsym $mod+Shift+p move container to output $monitor
+bindsym $mod+Shift+n move container to output $laptop
+
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -25,6 +39,7 @@ set $menu fuzzel
 exec swaybg --image ~/Pictures/wallpaper/puddle.png >/dev/null 2>&1 &
 exec fcitx5 >/dev/null 2>&1 &
 exec gammastep >/dev/null 2>&1 &
+exec kanshi &
 #
 # Example configuration:
 #
@@ -36,13 +51,13 @@ exec gammastep >/dev/null 2>&1 &
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout 600 'swaylock -f -c 000000' \
+         timeout 900 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -c 000000'
 #
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
+# This will lock your screen after 600 seconds of inactivity, then turn off
+# your displays after another 900 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
@@ -223,11 +238,11 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
 # Screenshots:
 bindsym $mod+Shift+a exec slurp | grim -g - - | wl-copy
-bindsym $mod+Shift+p exec slurp | grim
+bindsym $mod+Shift+o exec slurp | grim
 
 # window rules
-for_window [app_id="anki"] floating enable
-for_window [class="goldendict"] floating enable
+# for_window [app_id="anki"] floating enable
+# for_window [class="goldendict"] floating enable
 
 #
 # Status Bar:
