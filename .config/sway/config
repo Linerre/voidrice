@@ -75,7 +75,7 @@ input type:touchpad {
 # input "1:1:AT_Translated_Set_2_keyboard" {
 input type:keyboard {
     xkb_layout "us"
-    xkb_options "caps:ctrl_shifted_capslock"
+    xkb_options "ctrl:nocaps"
     repeat_delay 300
     repeat_rate 50
     # xkb_variant "colemak,,typewriter"
