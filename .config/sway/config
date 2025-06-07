@@ -23,14 +23,6 @@ set $menu fuzzel
 set $laptop eDP-1
 set $monitor HDMI-A-1
 
-# Keyboard shortcuts to move focus between monitors
-bindsym $mod+p focus output $monitor
-bindsym $mod+n focus output $laptop
-
-# Keyboard shortcuts to move windows between monitors
-bindsym $mod+Shift+p move container to output $monitor
-bindsym $mod+Shift+n move container to output $laptop
-
 
 ### Output configuration
 #
@@ -161,6 +153,15 @@ input type:keyboard {
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+
+    # Keyboard shortcuts to move focus between monitors
+    bindsym $mod+p focus output $monitor
+    bindsym $mod+n focus output $laptop
+
+    # Keyboard shortcuts to move windows between monitors
+    bindsym $mod+Shift+p move container to output $monitor
+    bindsym $mod+Shift+n move container to output $laptop
+
 #
 # Layout stuff:
 #
