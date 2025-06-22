@@ -1,0 +1,7 @@
+ignore-empty-password
+show-failed-attempts
+
+color=000000
+indicator-idle-visible
+indicator-radius=150
+indicator-thickness=30

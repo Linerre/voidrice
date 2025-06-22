@@ -44,9 +44,9 @@ exec kanshi &
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 600 'swaylock -f -c 000000' \
+         timeout 600 'swaylock -f' \
          timeout 900 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -c 000000'
+         before-sleep 'swaylock -f'
 #
 # This will lock your screen after 600 seconds of inactivity, then turn off
 # your displays after another 900 seconds, and turn your screens back on when
@@ -159,8 +159,8 @@ input type:keyboard {
     bindsym $mod+n focus output $laptop
 
     # Keyboard shortcuts to move windows between monitors
-    bindsym $mod+Shift+p move container to output $monitor
-    bindsym $mod+Shift+n move container to output $laptop
+    bindsym $mod+Shift+p move workspace to output $monitor
+    bindsym $mod+Shift+n move workspace to output $laptop
 
 #
 # Layout stuff:
