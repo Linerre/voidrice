@@ -19,15 +19,24 @@ fi
 # options
 setopt AUTO_CD
 setopt HIST_VERIFY
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt HIST_IGNORE_DUPS
 
-# keybindings
+# emacs keybindings
 bindkey -e
 
-# Hash
+# hash
 hash -d proj=$HOME/projects
 hash -d emd=$HOME/projects/emacs.d
-hash -d dotf=$HOME/projetcs/voidrice/
+hash -d dots=$HOME/projetcs/voidrice/
 hash -d bks=$HOME/Documents/books/
+
+
+# history
+HISTFILE=~/.zhis
+HISTSIZE=2000
+SAVEHIST=500 # zsh saves this many lines from the in-memory history list to the history file upon shell exit
 
 # plugins
 autoload -Uz compinit promptinit
@@ -51,7 +60,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # pacman
-alias update='sudo pacman -Syu'
+alias update='paru -Syu'
 
 # git
 alias gt='git st'
