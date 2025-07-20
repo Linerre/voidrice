@@ -7,19 +7,6 @@ set drawbox
 # Use the `dim` attribute instead of underline for the cursor in the preview pane
 set cursorpreviewfmt "\033[7;2m"
 
-# use enter for shell commands
-map <enter> shell
-
-# show the result of execution of previous commands
-map ` !true
-
-# execute current file (must be executable)
-map x $$f
-map X !$f
-
-# dedicated keys for file opener actions
-#map o &mimeopen $f
-#map O $mimeopen --ask $f
 
 # define a custom 'open' command
 # This command is called when current file is not a directory. You may want to
@@ -55,9 +42,6 @@ cmd trash %set -f; mv $fx ~/.trash
 #     [ "$ans" = "y" ] && rm -rf $fx
 # }}
 
-# use '<delete>' key for either 'trash' or 'delete' command
-# map <delete> trash
-# map <delete> delete
 
 cmd open-with-cli $$@ $fx ## opens with a cli application inside lf client
 map o push :open-with-cli<space> ## input application
@@ -100,4 +84,27 @@ cmd edit-config ${{
     lf -remote "send $id source ~/.config/lf/lfrc"
 }}
 
+
+# Keybindings
 map C edit-config
+map n down
+map p up
+map <c-n> down
+map <c-p> up
+
+# use '<delete>' key for either 'trash' or 'delete' command
+# map <delete> trash
+# map <delete> delete
+# use enter for shell commands
+map <enter> shell
+
+# show the result of execution of previous commands
+map ` !true
+
+# execute current file (must be executable)
+map x $$f
+map X !$f
+
+# dedicated keys for file opener actions
+#map o &mimeopen $f
+#map O $mimeopen --ask $f
