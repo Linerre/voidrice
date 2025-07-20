@@ -76,6 +76,9 @@ alias za='zathura'
 alias n="nix-shell"
 alias m="mg -n"
 alias l="ls -lh --group-directories-first -S"
+alias l1="eza -1"
+alias ll="eza -l --group-directories-first --sort size"
+alias pn="stat --format '%A %a %U %G'"
 
 # ============ FUNCTION ==============
 # Usage: wiki_info "page_title"
