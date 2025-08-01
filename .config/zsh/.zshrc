@@ -7,13 +7,18 @@
 
 # prompt
 if [ $(whoami) = 'noel' ] ; then
-	 PS1="%F{magenta}> %f"
-   PS2="%F{yellow}>> %f"
-   RPS1="%(?..%F{red}(%?%))%f %B%F{green}%3c %f%b"
+    if [[ $0 == -* ]]; then
+        # Login shell - show hostname
+        PS1="[%m]%F{magenta} >%f"
+    else
+	    PS1="%F{magenta}> %f"
+    fi
+    PS2="%F{yellow}>> %f"
+    RPS1="%(?..%F{red}(%?%))%f %B%F{green}%3c %f%b"
 else
-   PS1="%F{red}%n%f %~ "
-   PS2="%F{yellow}>> %f"
-   RPS1="%(?..(%?%))"
+    PS1="%F{red}%n@%m%f %~ "
+    PS2="%F{yellow}>> %f"
+    RPS1="%(?..(%?%))"
 fi
 
 # options
