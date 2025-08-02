@@ -1,5 +1,5 @@
 set debuginfod enabled on
-source /usr/share/pwndbg/gdbinit.py
+# source /usr/share/pwndbg/gdbinit.py
 
 # Customize pwndbg settings
 set context-sections code
