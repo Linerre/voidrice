@@ -9,7 +9,7 @@
 if [ $(whoami) = 'noel' ] ; then
     if [[ $0 == -* ]]; then
         # Login shell - show hostname
-        PS1="[%m]%F{magenta} >%f"
+        PS1="[%m]%F{magenta}> %f"
     else
 	    PS1="%F{magenta}> %f"
     fi
