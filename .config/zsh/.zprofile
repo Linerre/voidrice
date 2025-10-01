@@ -32,10 +32,13 @@ typeset -U PATH path
 # change Nodejs mirror
 # export NODE_MIRROR=https://mirrors.ustc.edu.cn/node/
 
-# source  cargo only when rust was installed under $HOME
+# Cargo and Rust
 [[ -d "$HOME/.cargo" ]] && . "$HOME/.cargo/env"
 
-# native texlive
+# Haskell
+[[ -d "$HOME/.ghcup"]] && export PATH="$HOME/.ghcup/bin:${PATH}"
+
+# TexLive
 LX_VER=2025
 [[ -d "$HOME/.local/texlive/${LX_VER}" ]] && \
     { export PATH="$HOME/.local/texlive/${LX_VER}/bin/x86_64-linux:$PATH"
@@ -45,7 +48,7 @@ LX_VER=2025
       export INFOPATH="$TEXLIVE_INFO:$INFOPATH"
     }
 
-# solana
+# Solana
 [[ -d "$HOME/.local/share/solana/" ]] && \
     export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
 
