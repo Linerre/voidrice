@@ -36,7 +36,7 @@ typeset -U PATH path
 [[ -d "$HOME/.cargo" ]] && . "$HOME/.cargo/env"
 
 # Haskell
-[[ -d "$HOME/.ghcup"]] && export PATH="$HOME/.ghcup/bin:${PATH}"
+[[ -d "$HOME/.ghcup" ]] && export PATH="$HOME/.ghcup/bin:${PATH}"
 
 # TexLive
 LX_VER=2025
