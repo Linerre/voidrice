@@ -43,7 +43,7 @@
         "max-length": 20
     },
     "clock": {
-        "timezone": "Australia/Sydney",
+        "timezone": "Asia/Shanghai",
         "format": "{:%a %m-%d %H:%M}",
         "format-alt": "{:%Y-%m-%d %a}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
