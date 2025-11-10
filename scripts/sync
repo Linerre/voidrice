@@ -1,0 +1,106 @@
+#!/usr/bin/env sh
+
+# Sync my dot files
+
+declare -a apps
+declare -a themes
+apps=(lf npm git nix tmux foot sway helix ctags river sway waybar gammastep zellij environment.d)
+themes=(chacha ft carbon rustdoc)
+
+dst="${HOME}/.config"
+src="${HOME}/projects/voidrice/.config"
+esrc="${HOME}/projects/emacs.d"
+etheme="${HOME}/projects/emacs-themes"
+edst="${HOME}/.emacs.d"
+remote="git@github.com:Linerre"
+
+# When this fn runs, the src dir must have already existed
+function process_apps() {
+    for a in "${apps[@]}"; do
+	if [ -d "${dst}/${a}" ] ; then
+	    echo "Skipping $a as it exits ..."
+	else
+	    echo "Creating symlink for $a ..."
+	    ln -s "${src}/${a}" "${dst}/${a}"
+	fi
+    done
+}
+
+
+function sync_emacs() {
+    if [ -d ${edst} ] ; then
+	echo "Skipping ${edst} as it already exists ..."
+    else
+	echo "Creating symlink for emacs.d ..."
+	ln -s ${esrc} ${edst}
+    fi
+}
+
+
+
+function process_emacs() {
+    if [ ! -d ${esrc} ] ; then
+	echo "${esrc} does NOT exist. Did you forget to pull it?"
+	echo "Pulling emacs.d from ${remote}"
+	git clone "${remote}/emacs.d.git" "${HOME}/projects/emacs.d"
+    fi
+	sync_emacs
+}
+
+
+function pull_themes() {
+    local td="${HOME}/projects/emacs-themes"
+    [[ ! -d  ${td} ]] && mkdir -p ${td}
+    cd ${td}
+    for t in "${themes[@]}" ; do
+	case $t in
+	    chacha | ft | rustdoc )
+		git clone "${remote}/${t}-theme.git"
+		;;
+	    carbon )
+		git clone https://github.com/DogLooksGood/carbon-theme.git
+		;;
+	    *)
+		echo "Unknown theme $t"
+	esac
+    done
+}
+
+function process_themes() {
+    if [ ! -d ${etheme} ] ; then
+	echo "${etheme} does NOT exist. Did you pull the themes?"
+	echo "Start pulling themes ..."
+	pull_themes
+    fi
+
+    cd ${edst}/themes
+
+    for t in $(ls ${etheme}) ; do
+	    case $t in
+	        chacha-theme | ft-theme | carbon-theme )
+		        if [ -h "${edst}/themes/${t}.el" ] ; then
+		            echo "Skipping $t as it already symlinked ..."
+		        else
+		            echo "Creating symlinks for $t ..."
+		            ln -s "${etheme}/${t}/${t}.el" "${t}.el"
+		        fi
+		        ;;
+	        rustdoc-theme )
+		        if [ -h "${edst}/themes/${t}.el" ] ; then
+		            echo "Skipping $t as it already symlinked ..."
+		        else
+		            echo "Creating symlinks for $t ..."
+		            ln -s "${etheme}/${t}/rustdoc-dark-theme.el" "rustdoc-dark-theme.el"
+		        fi
+		        ;;
+	        *)
+		        echo "Skipping theme $t ..."
+		        ;;
+	    esac
+    done
+}
+
+
+process_apps
+process_emacs
+process_themes
