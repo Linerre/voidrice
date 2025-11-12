@@ -1,0 +1,7 @@
+#
+# ~/.bash_profile
+#
+
+# Set up PS1, alias, and user-defined fns
+# Can also be sourced at the end of .bash_profile
+[[ -f ~/.bashrc ]] && source ~/.bashrc

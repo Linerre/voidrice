@@ -1,0 +1,36 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# The prompt should at least indicate:
+# 1. user identity (normal/root)
+# 2. hostname (particularly important when connecting remotely)
+# 3. current working directory
+# 4. time (when necessary)
+
+
+# Set common parts first
+if [[ $(hostname) == 'gohan' ]]; then
+    host_char='H'
+elif [[ $(hostname) == 'goku' ]]; then
+    host_char='K'
+fi
+
+# Set prompt based on user
+if [[ $UID -eq 0 ]]; then
+    # Root user - red #
+    PS1="[\[\e[0;31m\]${host_char}\[\e[0m\]] \[\e[0;36m\]\w\[\e[0m\] \[\e[0;31m\]#\[\e[0m\] "
+else
+    # Normal user - green $
+    PS1="[\[\e[0;35m\]${host_char}\[\e[0m\]] \[\e[0;32m\]\w\[\e[0m\] \[\e[0;35m\]>\[\e[0m\] "
+fi
+
+# Built-ins
+set -o history
+
+# Import the shared stuff
+shared=${HOME}/projects/voidrice/.config/shells/shared.sh
+[ -f $shared ] && source $shared

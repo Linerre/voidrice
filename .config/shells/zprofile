@@ -1,0 +1,14 @@
+#
+# ~/.zprpfile
+#
+
+
+# remove duplicate entries from $PATH
+# zsh uses $path array along with $PATH
+typeset -U PATH path
+
+# change Nodejs mirror
+# export NODE_MIRROR=https://mirrors.ustc.edu.cn/node/
+
+# Shared settings
+[ -f ~/.zshrc  ] && source ~/.zshrc

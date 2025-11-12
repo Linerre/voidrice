@@ -1,0 +1,54 @@
+#
+# ~/.zshrc
+#
+# if not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# prompt
+if [[ $UID -eq 0 ]] ; then
+    PS1="%F{red}%n@%m%f %~ "
+    PS2="%F{yellow}>> %f"
+    RPS1="%(?..(%?%))"
+else
+    if [[ $0 == -* ]]; then
+        # Login shell - show hostname
+        PS1="[%m]%F{magenta}> %f"
+    else
+	    PS1="%F{magenta}> %f"
+    fi
+    PS2="%F{yellow}>> %f"
+    RPS1="%(?..%F{red}(%?%))%f %B%F{green}%3c %f%b"
+fi
+
+# options
+setopt AUTO_CD
+setopt HIST_VERIFY
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt HIST_IGNORE_DUPS
+
+# emacs keybindings
+bindkey -e
+
+# hash
+hash -d proj=$HOME/projects
+hash -d emd=$HOME/projects/emacs.d
+hash -d dots=$HOME/projetcs/voidrice/
+hash -d bks=$HOME/Documents/books/
+
+# plugins
+autoload -Uz compinit promptinit
+compinit
+promptinit
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# direnv
+eval "$(direnv hook zsh)"
+
+# history
+HISTFILE=~/.zhis
+
+# Import the shared stuff
+shared=${HOME}/projects/voidrice/.config/shells/shared.sh
+[ -f $shared ] && source $shared

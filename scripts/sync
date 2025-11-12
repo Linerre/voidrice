@@ -94,12 +94,12 @@ function process_themes() {
 		        fi
 		        ;;
 	        rustdoc-theme )
-		        if [ -h "${edst}/themes/${t}.el" ] ; then
+		        if [ -h "${edst}/themes/rustdoc-dark-theme.el" ] ; then
 		            echo "Skipping $t as it already symlinked ..."
 		        else
 		            echo "Creating symlinks for $t ..."
 		            ln -s "${etheme}/${t}/rustdoc-dark-theme.el" "rustdoc-dark-theme.el"
-		        fi
+	        fi
 		        ;;
 	        *)
 		        echo "Skipping theme $t ..."
@@ -108,7 +108,53 @@ function process_themes() {
     done
 }
 
+function process_shell() {
+    cd
+    if [ $(basename ${SHELL}) == bash ] ; then
+        if [ -h ${HOME}/.bashrc ] || [ -f ${HOME}/.bashrc ] ; then
+            echo "Removing current .bashrc ..."
+            rm -f ${HOME}/.bashrc
+        fi
+
+        if [ -h ${HOME}/.bash_profile ] || [ -f ${HOME}/.bash_profile ] ; then
+            echo "Removing current .bash_profile ..."
+            rm -f ${HOME}/.bash_profile
+        fi
+
+        echo "Creating symlink for .bash_profile and .bashrc ..."
+        ln -s ${src}/shells/bashrc ${HOME}/.bashrc
+        ln -s ${src}/shells/bash_profile ${HOME}/.bash_profile
+
+        if [[ $0 == -* ]] ; then
+            source ${HOME}/.bash_profile
+        else
+            source ${HOME}/.bashrc
+        fi
+
+    elif [ $(basename ${SHELL}) == zsh ] ; then
+        if [ -h ${HOME}/.zshrc ] || [ -f ${HOME}/.zshrc ] ; then
+            echo "Removing current .zshrc ..."
+            rm -f ${HOME}/.zshrc
+        fi
+
+        if [ -h ${HOME}/.zprofile ] || [ -f ${HOME}/.zprofile ] ; then
+            echo "Removing current .zprofile ..."
+            rm -f ${HOME}/.zprofile
+        fi
+
+        echo "Creating symlink for .zprofile and .zshrc ..."
+        ln -s ${src}/shells/zshrc ${HOME}/.zshrc
+        ln -s ${src}/shells/zprofile ${HOME}/.zprofile
+        if [[ $0 == -* ]] ; then
+            source ${HOME}/.zprofile
+        else
+            source ${HOME}/.zshrc
+        fi
+    fi
+}
+
 
 process_apps
 process_emacs
 process_themes
+process_shell
