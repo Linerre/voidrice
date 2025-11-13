@@ -154,7 +154,7 @@ function process_shell() {
 }
 
 
-process_apps
-process_emacs
-process_themes
-process_shell
+#process_apps
+#process_emacs
+#process_themes
+#process_shell
