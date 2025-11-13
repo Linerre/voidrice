@@ -4,7 +4,7 @@
 
 declare -a apps
 declare -a themes
-apps=(lf npm git nix tmux foot sway helix ctags river sway swaylock waybar gammastep zellij environment.d)
+apps=(lf npm git nix tmux foot fuzzel sway helix ctags river sway swaylock waybar gammastep zellij environment.d)
 themes=(chacha ft carbon rustdoc)
 
 dst="${HOME}/.config"
