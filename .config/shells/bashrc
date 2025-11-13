@@ -21,11 +21,10 @@ fi
 
 # Set prompt based on user
 if [[ $UID -eq 0 ]]; then
-    # Root user - red #
-    # PS1="[\[\e[0;31m\]${host_char}\[\e[0m\]] \[\e[0;36m\]\w\[\e[0m\] \[\e[0;31m\]#\[\e[0m\] "
-    PS1="\[\e[01;31m\]\h\[\e[01;34m\] \w \$\[\e[00m\]"
+    # Root user
+    PS1="\[\e[01;31m\]\h\[\e[01;34m\] \w #\[\e[00m\] "
 else
-    # Normal user - green $
+    # Normal user
     PS1="[\[\e[0;32m\]${host_char}\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]>\[\e[0m\] "
 fi
 
