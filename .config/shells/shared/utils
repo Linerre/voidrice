@@ -1,0 +1,45 @@
+# Usage: wiki_info "page_title"
+wiki_info() {
+    local API_URL="https://en.wikipedia.org/w/api.php"
+    local USR_AGT="Nobody/0.0.1 (Arch; Buu) Auto/0.0.1"
+    local PAGE_TITLE="$1"
+    curl -s "$API_URL" \
+         -A "$USR_AGT" \
+         --get \
+         --data-urlencode "action=query" \
+         --data-urlencode "format=json" \
+         --data-urlencode "prop=revisions|info" \
+         --data-urlencode "titles=$PAGE_TITLE" \
+         --data-urlencode "formatversion=2" \
+         --data-urlencode "rvprop=ids|timestamp" \
+         --data-urlencode "rvlimit=2" \
+         --data-urlencode "inprop=url" |
+        jq -r '.'
+}
+
+# Usage: ytm <URL>
+ytm() {
+    local DEST="$HOME/Music/ost"
+    local MUSIC_SRC="$1"
+    [[ ! -d "$DEST" ]] && mkdir "$DEST"
+    yt-dlp --extract-audio --audio-format mp3 \
+           --path "$DEST" \
+           --output "%(title)s.%(ext)s" "$MUSIC_SRC"
+}
+
+clean_sceenshots()
+{
+    echo -n "You are going to delete all the screenshots? [y/n] "
+    read -r resp
+    [[ ${resp} == 'y' ]] && rm ~/Pictures/screenshots/*.png || echo "Action canceled."
+}
+
+wrap_longpath()
+{
+    # Match a path part like `/path_part-or-part', 5 times or more
+    if [[ $(pwd) =~ (/[[:alnum:]_-]+){5,} ]]; then
+        PS1='[\[\e[0;31m\]H\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\]\n\[\e[0;32m\]\$\[\e[0m\] '
+    else
+        PS1='[\[\e[0;31m\]H\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
+    fi
+}

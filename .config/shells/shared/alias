@@ -1,0 +1,27 @@
+# admin
+alias doas=sudo
+alias plz=sudo
+alias ctl=systemctl
+
+# moving
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# git
+alias gt='git st'
+alias gl='git log'
+alias gw='git switch'
+alias ga='git add'
+alias gm='git cm'
+alias gd='git diff'
+
+# apps
+alias e="emacs -nw"
+alias za='zathura'
+alias n="nix-shell"
+alias m="mg -n"
+alias l="ls -lh --group-directories-first -S"
+alias l1="eza -1"
+alias ll="eza -lha --group-directories-first --sort size"
+alias pn="stat --format '%A %a %U %G'"

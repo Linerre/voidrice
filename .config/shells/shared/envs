@@ -1,0 +1,13 @@
+export EDITOR=emacs
+export PAGER=less
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export NIX_CONF_DIR=${XDG_CONFIG_HOME} # not necessary indeed but I like it anyway
+export KERNEL_NAME=$( uname | tr '[:upper:]' '[:lower:]' )
+export PROJECTS_HOME=$HOME/projects
+# see https://docs.npmjs.com/cli/v6/using-npm/config#npmrc-files
+export NPM_CONFIG_USERCONFIG=$HOME/.config/npm/npmrc
+HISTSIZE=2000
+SAVEHIST=500
+HISTIGNORE='sudo *'
