@@ -1,0 +1,117 @@
+#!/bin/env bash
+
+# Source the processor functions
+source ./processors
+
+# Define available sync functions with descriptions
+declare -A SYNC_FUNCTIONS=(
+    ["process_apps"]="Sync application configs (sway, htop, git, etc)"
+    ["process_emacs"]="Sync Emacs configuration"
+    ["process_themes"]="Sync themes (Emacs themes)"
+    ["process_shell"]="Sync shell configs (bash, zsh, etc)"
+)
+
+# Color codes
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+# Function to get function name by index
+get_function_by_index() {
+    local index=$1
+    local i=1
+    for func in "${!SYNC_FUNCTIONS[@]}"; do
+        if (( i == index )); then
+            echo "$func"
+            return
+        fi
+        ((i++))
+    done
+    echo ""
+}
+
+# Function to display menu
+show_menu() {
+    echo -e "\n${BLUE}=== Dotfiles Sync Menu ===${NC}"
+    echo -e "${YELLOW}Available sync options:${NC}"
+    
+    local i=1
+    for func in "${!SYNC_FUNCTIONS[@]}"; do
+        echo -e "  ${GREEN}$i${NC}) ${SYNC_FUNCTIONS[$func]}"
+        ((i++))
+    done
+    
+    local all_option=$i
+    echo -e "  ${GREEN}$i${NC}) Sync everything"
+    ((i++))
+    echo -e "  ${GREEN}$i${NC}) Exit"
+    
+    echo -e "\n${YELLOW}Please select one or more options (comma-separated, e.g., 1,3,5):${NC}"
+}
+
+# Function to process user selection
+process_selection() {
+    local selection=$1
+    local selected_functions=()
+    local total_functions=${#SYNC_FUNCTIONS[@]}
+    local all_option=$((total_functions + 1))
+    local exit_option=$((total_functions + 2))
+    
+    IFS=',' read -ra choices <<< "${selection// /}"
+    
+    for choice in "${choices[@]}"; do
+        if [[ $choice =~ ^[0-9]+$ ]]; then
+            if (( choice == all_option )); then
+                echo -e "\n${GREEN}Syncing everything...${NC}"
+                for func in "${!SYNC_FUNCTIONS[@]}"; do
+                    echo -e "${BLUE}Running: $func${NC}"
+                    $func
+                done
+                return
+            elif (( choice == exit_option )); then
+                echo -e "${YELLOW}Exiting...${NC}"
+                exit 0
+            elif (( choice >= 1 && choice <= total_functions )); then
+                local func_name=$(get_function_by_index $choice)
+                selected_functions+=("$func_name")
+            else
+                echo -e "${RED}Invalid option: $choice${NC}"
+                return 1
+            fi
+        else
+            echo -e "${RED}Invalid input: $choice${NC}"
+            return 1
+        fi
+    done
+    
+    if [[ ${#selected_functions[@]} -gt 0 ]]; then
+        echo -e "\n${GREEN}Starting selected sync operations...${NC}"
+        for func in "${selected_functions[@]}"; do
+            echo -e "${BLUE}Running: $func${NC}"
+            $func
+        done
+        echo -e "${GREEN}Sync completed!${NC}"
+    else
+        echo -e "${YELLOW}No functions selected${NC}"
+    fi
+}
+
+# Main execution flow
+main() {
+    if [[ $# -gt 0 ]]; then
+        echo -e "${BLUE}Processing command line selections...${NC}"
+        process_selection "$1"
+        return
+    fi
+    
+    while true; do
+        show_menu
+        read -r user_input
+        [[ -z "$user_input" ]] && continue
+        process_selection "$user_input" && break
+    done
+}
+
+main "$@"
