@@ -22,15 +22,29 @@ fi
 # Set prompt based on user
 if [[ $UID -eq 0 ]]; then
     # Root user - red #
-    PS1="[\[\e[0;31m\]${host_char}\[\e[0m\]] \[\e[0;36m\]\w\[\e[0m\] \[\e[0;31m\]#\[\e[0m\] "
+    # PS1="[\[\e[0;31m\]${host_char}\[\e[0m\]] \[\e[0;36m\]\w\[\e[0m\] \[\e[0;31m\]#\[\e[0m\] "
+    PS1="\[\e[01;31m\]\h\[\e[01;34m\] \w \$\[\e[00m\]"
 else
     # Normal user - green $
-    PS1="[\[\e[0;35m\]${host_char}\[\e[0m\]] \[\e[0;32m\]\w\[\e[0m\] \[\e[0;35m\]>\[\e[0m\] "
+    PS1="[\[\e[0;32m\]${host_char}\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]>\[\e[0m\] "
 fi
 
 # Built-ins
 set -o history
 
 # Import the shared stuff
-shared=${HOME}/projects/voidrice/.config/shells/shared.sh
-[ -f $shared ] && source $shared
+
+srcroot=${HOME}/projects/voidrice/.config/shells/shared
+mods=(${srcroot}/{envs,path,alias,misc,utils})
+
+if [ -d ${srcroot} ] ; then
+    if [[ $UID -eq 0 ]] ; then
+        source ${srcroot}/alias
+    else
+        for s in ${mods[@]} ; do
+            source ${srcroot}/$s
+        done
+    fi
+else
+    echo "Shared config not found. Exit."
+fi
