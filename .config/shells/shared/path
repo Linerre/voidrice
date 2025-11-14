@@ -1,7 +1,7 @@
 export PATH=${HOME}/.local/bin:${PATH}
 
 # Cargo and Rust
-[[ -d ${HOME}/.cargo ]] && . ${HOME}/.cargo/env
+[[ -f ${HOME}/.cargo/env ]] && source ${HOME}/.cargo/env
 
 # Haskell
 [[ -d ${HOME}/.ghcup ]] && export PATH="${HOME}/.ghcup/bin:${PATH}"
