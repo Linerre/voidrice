@@ -2,6 +2,8 @@
 alias doas=sudo
 alias plz=sudo
 alias ctl=systemctl
+alias sync="emaint sync -a"
+alias update="emerge -auvDU @world"
 
 # moving
 alias ..='cd ..'
