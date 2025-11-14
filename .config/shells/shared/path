@@ -1,30 +1,29 @@
-export PATH=$HOME/.local/bin:$PATH
+export PATH=${HOME}/.local/bin:${PATH}
 
 # Cargo and Rust
-[[ -d "$HOME/.cargo" ]] && . "$HOME/.cargo/env"
+[[ -d ${HOME}/.cargo ]] && . ${HOME}/.cargo/env
 
 # Haskell
-[[ -d "$HOME/.ghcup" ]] && export PATH="$HOME/.ghcup/bin:${PATH}"
+[[ -d ${HOME}/.ghcup ]] && export PATH="${HOME}/.ghcup/bin:${PATH}"
 
 # TexLive
 LX_VER=2025
-[[ -d "$HOME/.local/texlive/${LX_VER}" ]] && \
-    { export PATH="$HOME/.local/texlive/${LX_VER}/bin/x86_64-linux:$PATH"
-      export TEXLIVE_MAN="$HOME/.local/texlive/${LX_VER}/texmf-dist/doc/man"
-      export TEXLIVE_INFO="$HOME/.local/texlive/${LX_VER}/texmf-dist/doc/info"
+[[ -d ${HOME}/.local/texlive/${LX_VER} ]] && \
+    { export PATH="${HOME}/.local/texlive/${LX_VER}/bin/x86_64-linux:${PATH}"
+      export TEXLIVE_MAN="${HOME}/.local/texlive/${LX_VER}/texmf-dist/doc/man"
+      export TEXLIVE_INFO="${HOME}/.local/texlive/${LX_VER}/texmf-dist/doc/info"
       export MANPATH="${TEXLIVE_MAN}:${MANPATH}"
       export INFOPATH="${TEXLIVE_INFO}:${INFOPATH}"
     }
 
 # Solana
-[[ -d "$HOME/.local/share/solana/" ]] && \
-    export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+[[ -d ${HOME}/.local/share/solana/ ]] && \
+    export PATH="${HOME}/.local/share/solana/install/active_release/bin:${PATH}"
 
 # opam configuration
-[[ ! -r $HOME/.opam/opam-init/init.zsh ]] || source $HOME/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+[[ ! -r ${HOME}/.opam/opam-init/init.zsh ]] || source ${HOME}/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 # added by Nix installer
-if [ -e /home/noel/.nix-profile/etc/profile.d/nix.sh ];
-then
-    . /home/noel/.nix-profile/etc/profile.d/nix.sh;
+if [ -e ${HOME}/.nix-profile/etc/profile.d/nix.sh ]; then
+    . ${HOME}/.nix-profile/etc/profile.d/nix.sh
 fi
