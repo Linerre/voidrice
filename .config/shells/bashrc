@@ -32,11 +32,11 @@ fi
 set -o history
 
 # direnv
-command -v direnv > /dev/null && eval "$(direnv hook bash)"
+eval "$(direnv hook bash)"
 
 # Import the shared stuff
 srcroot=${HOME}/projects/voidrice/.config/shells/shared
-mods=(envs path alias misc utils)
+mods=(misc alias utils)
 
 if [ -d ${srcroot} ] ; then
     if [[ $UID -eq 0 ]] ; then

@@ -1,8 +1,13 @@
 #
 # ~/.bash_profile
 #
+# set up env and path
+dst=${HOME}/projects/voidrice/.config/shells/shared
+if [[ -d ${dst} ]] ; then
+    source ${dst}/path
+    source ${dst}/envs
+fi
 
 # Set up PS1, alias, and user-defined fns
 # Can also be sourced at the end of .bash_profile
 [[ -f ~/.bashrc ]] && source ~/.bashrc
-
