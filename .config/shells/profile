@@ -1,0 +1,8 @@
+# set up env and path
+dst=${HOME}/projects/voidrice/.config/shells/shared
+if [[ -d ${dst} ]] ; then
+    source ${dst}/path
+    source ${dst}/envs
+fi
+
+[[ -f ~/.bashrc ]] && source ~/.bashrc
