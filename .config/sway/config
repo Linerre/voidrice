@@ -32,6 +32,7 @@ exec swaybg --image ~/Pictures/wallpaper/bg.png >/dev/null 2>&1 &
 exec fcitx5 >/dev/null 2>&1 &
 exec gammastep >/dev/null 2>&1 &
 exec kanshi &
+exec mako &
 #
 # Example configuration:
 #
