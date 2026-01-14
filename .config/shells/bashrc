@@ -38,7 +38,7 @@ eval "$(direnv hook bash)"
 
 # Import the shared stuff
 srcroot=${HOME}/projects/voidrice/.config/shells/shared
-mods=(misc alias utils)
+mods=(path misc alias utils)
 
 if [ -d ${srcroot} ] ; then
     if [[ $UID -eq 0 ]] ; then
