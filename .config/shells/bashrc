@@ -17,6 +17,8 @@ if [[ $(hostname) == 'gohan' ]]; then
     host_char='H'
 elif [[ $(hostname) == 'goku' ]]; then
     host_char='K'
+else
+    host_char=$(hostname)
 fi
 
 # Set prompt based on user
