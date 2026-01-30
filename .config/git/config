@@ -21,4 +21,8 @@
 [credential]
 	helper = store
 [merge]
-    conflictstyle = diff3
+  conflictstyle = diff3
+[http]
+	proxy = http://127.0.0.1:20172
+[https]
+	proxy = http://127.0.0.1:20172
