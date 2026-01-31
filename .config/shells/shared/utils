@@ -43,3 +43,27 @@ wrap_longpath()
         PS1='[\[\e[0;31m\]H\[\e[0m\]] \[\e[0;34m\]\w\[\e[0m\] \[\e[0;32m\]\$\[\e[0m\] '
     fi
 }
+
+start_openvpn3()
+{
+    local config_name
+    if [[ $(hostname) == 'kido' ]]; then
+        config_name=ame
+    else
+        config_name=blxrvpn
+    fi
+
+    openvpn3 session-start --config ${config_name}
+}
+
+stop_openvpn3()
+{
+    local config_name
+    if [[ $(hostname) == 'kido' ]]; then
+        config_name=ame
+    else
+        config_name=blxrvpn
+    fi
+
+    openvpn3 session-manage --disconnect --config ${config_name}
+}

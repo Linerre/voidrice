@@ -49,6 +49,19 @@ eval "$(direnv hook zsh)"
 # history
 HISTFILE=~/.zhis
 
+
 # Import the shared stuff
-shared=${HOME}/projects/voidrice/.config/shells/shared.sh
-[ -f $shared ] && source $shared
+srcroot=${HOME}/projects/voidrice/.config/shells/shared
+mods=(path misc alias utils)
+
+if [ -d ${srcroot} ] ; then
+    if [[ $UID -eq 0 ]] ; then
+        source ${srcroot}/alias
+    else
+        for s in ${mods[@]} ; do
+            source ${srcroot}/$s
+        done
+    fi
+else
+    echo "Shared config not found. Exit."
+fi
