@@ -7,7 +7,7 @@ export PATH=${HOME}/.local/bin:${PATH}
 [[ -d ${HOME}/.ghcup ]] && export PATH="${HOME}/.ghcup/bin:${PATH}"
 
 # TexLive
-LX_VER=2025
+LX_VER=2026
 [[ -d ${HOME}/.local/texlive/${LX_VER} ]] && \
     { export PATH="${HOME}/.local/texlive/${LX_VER}/bin/x86_64-linux:${PATH}"
       export TEXLIVE_MAN="${HOME}/.local/texlive/${LX_VER}/texmf-dist/doc/man"
@@ -22,6 +22,10 @@ LX_VER=2025
 
 # opam configuration
 [[ ! -r ${HOME}/.opam/opam-init/init.zsh ]] || source ${HOME}/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+
+# foundry
+[[ -d ${HOME}/.foundry/bin ]] && export PATH="${HOME}/.foundry/bin:${PATH}"
 
 # added by Nix installer
 if [ -e ${HOME}/.nix-profile/etc/profile.d/nix.sh ]; then
