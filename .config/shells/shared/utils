@@ -67,3 +67,37 @@ stop_openvpn3()
 
     openvpn3 session-manage --disconnect --config ${config_name}
 }
+
+tssh()
+{
+  local target="$1"
+  shift
+
+  if [[ -z "$target" ]]; then
+    echo "Usage: tssh <ip-or-host> [ssh args...]"
+    return 1
+  fi
+
+  local host="$target"
+  local user_choice user
+
+  if [[ "$host" == <->.<->.<->.<-> ]]; then
+    host="${host//./-}"
+  fi
+
+  echo "Select SSH user:"
+  echo "1) ec2-user"
+  echo "2) ubuntu"
+  read "?Enter choice [1-2]: " user_choice
+
+  case "$user_choice" in
+    1) user="ec2-user" ;;
+    2) user="ubuntu" ;;
+    *)
+      echo "Invalid choice"
+      return 1
+      ;;
+  esac
+
+  command ssh "${user}@${host}" "$@"
+}
